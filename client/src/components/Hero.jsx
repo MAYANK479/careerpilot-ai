@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Hero() {
   return (
     <section className="flex flex-col items-center justify-center text-center mt-28 px-6">
@@ -11,12 +13,15 @@ function Hero() {
         shortlisted.
       </p>
 
-      <div className="mt-10 space-x-4">
-        <button className="bg-blue-600 px-8 py-4 rounded-xl hover:bg-blue-700">
+      <div className="mt-10 flex gap-4">
+        <Link
+          to="/upload"
+          className="bg-blue-600 px-8 py-4 rounded-xl hover:bg-blue-700 transition"
+        >
           Upload Resume
-        </button>
+        </Link>
 
-        <button className="border border-gray-600 px-8 py-4 rounded-xl hover:bg-gray-800">
+        <button className="border border-gray-600 px-8 py-4 rounded-xl hover:bg-gray-800 transition">
           Try Demo
         </button>
       </div>
