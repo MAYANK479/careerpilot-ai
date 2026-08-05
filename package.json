@@ -1,0 +1,7 @@
+{
+  "name": "ai-resume-analyzer",
+  "private": true,
+  "scripts": {
+    "dev": "node dev.js"
+  }
+}

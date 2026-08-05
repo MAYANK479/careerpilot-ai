@@ -2,37 +2,40 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+console.log("✅ index.js started");
+
+const uploadRoutes = require("./routes/uploadRoutes");
+const jobMatchRoutes = require("./routes/jobMatchRoutes");
+
 const app = express();
 
-// Middlewares
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: "5mb" }));
 
-// Test Route
-app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "🚀 AI Resume Analyzer Backend Running Successfully!"
+app.use("/api/upload", uploadRoutes);
+app.use("/api/job-match", jobMatchRoutes);
+
+app.use((error, req, res, next) => {
+  console.error("Request failed:", error);
+  const status = error.code === "LIMIT_FILE_SIZE" ? 413 : 500;
+  res.status(status).json({
+    success: false,
+    message:
+      error.code === "LIMIT_FILE_SIZE"
+        ? "PDF files must be 10 MB or smaller."
+        : error.message || "The resume could not be processed.",
   });
 });
 
-const requestedPort = Number(process.env.PORT) || 5000;
-const portsToTry = [requestedPort, 5001, 5002];
-
-function startServer(portIndex = 0) {
-  const port = portsToTry[portIndex];
-
-  app.listen(port, () => {
-    console.log(`✅ Server is running on http://localhost:${port}`);
-  }).on("error", (error) => {
-    if (error.code === "EADDRINUSE" && portIndex < portsToTry.length - 1) {
-      console.warn(`Port ${port} is busy. Trying ${portsToTry[portIndex + 1]}...`);
-      startServer(portIndex + 1);
-    } else {
-      console.error("Failed to start server:", error);
-      process.exit(1);
-    }
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "Backend Running 🚀",
   });
-}
+});
 
-startServer();
+const PORT = process.env.PORT || 5002;
+
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`);
+});
