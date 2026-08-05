@@ -54,7 +54,7 @@ function JobMatch() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white flex flex-col justify-between font-sans selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen bg-[#050816] text-white flex flex-col justify-between font-sans selection:bg-blue-500 selection:text-white">
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
       <Navbar />
 
@@ -73,7 +73,7 @@ function JobMatch() {
 
         {/* Inputs */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          <div className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px]">
+          <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
             <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider mb-4">
               <Target size={18} className="text-blue-400" />
               Your Resume Text
@@ -82,11 +82,11 @@ function JobMatch() {
               value={resumeText}
               onChange={(e) => setResumeText(e.target.value)}
               placeholder="Paste resume text or upload a PDF first..."
-              className="w-full h-56 p-5 rounded-2xl bg-[#030712] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
+              className="w-full h-56 p-5 rounded-2xl bg-[#050816] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
             />
           </div>
 
-          <div className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px]">
+          <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
             <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider mb-4">
               <Briefcase size={18} className="text-purple-400" />
               Target Job Description
@@ -95,7 +95,7 @@ function JobMatch() {
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
               placeholder="Paste full job posting requirements here..."
-              className="w-full h-56 p-5 rounded-2xl bg-[#030712] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
+              className="w-full h-56 p-5 rounded-2xl bg-[#050816] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
             />
           </div>
         </div>
@@ -123,7 +123,7 @@ function JobMatch() {
         {/* Results Card */}
         {result && (
           <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <div className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px] flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col sm:flex-row justify-between items-center gap-6">
               <div>
                 <span className="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Shortlist Rating</span>
                 <h2 className="text-3xl font-black text-white mt-3">Match Score: {result.matchScore}%</h2>

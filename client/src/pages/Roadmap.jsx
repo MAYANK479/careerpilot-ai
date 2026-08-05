@@ -50,7 +50,7 @@ function Roadmap() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#030712] text-white font-sans selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#050816] text-white font-sans selection:bg-blue-500 selection:text-white">
       <Navbar />
 
       <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-12">
@@ -67,7 +67,7 @@ function Roadmap() {
         </div>
 
         {/* Input Card */}
-        <div className="saas-card p-8 mb-12 bg-[#111827] border border-slate-800 rounded-[24px]">
+        <div className="saas-card p-8 mb-12 bg-[#0E1424] border border-slate-800 rounded-[24px]">
           <form onSubmit={handleGenerate} className="flex flex-col sm:flex-row gap-4 items-center">
             <div className="w-full sm:w-1/2">
               <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
@@ -78,10 +78,10 @@ function Roadmap() {
                 onChange={(e) => setSelectedRole(e.target.value)}
                 className="w-full px-4 py-3.5 rounded-xl border border-slate-800 bg-[#1E293B]/60 text-sm font-semibold text-white focus:outline-none focus:border-blue-500"
               >
-                <option value="Frontend Engineer" className="bg-[#111827]">Frontend Engineer</option>
-                <option value="Backend / Node.js Developer" className="bg-[#111827]">Backend / Node.js Developer</option>
-                <option value="AI / Machine Learning Engineer" className="bg-[#111827]">AI / Machine Learning Engineer</option>
-                <option value="Custom Role" className="bg-[#111827]">Custom Role...</option>
+                <option value="Frontend Engineer" className="bg-[#0E1424]">Frontend Engineer</option>
+                <option value="Backend / Node.js Developer" className="bg-[#0E1424]">Backend / Node.js Developer</option>
+                <option value="AI / Machine Learning Engineer" className="bg-[#0E1424]">AI / Machine Learning Engineer</option>
+                <option value="Custom Role" className="bg-[#0E1424]">Custom Role...</option>
               </select>
             </div>
 
@@ -132,7 +132,7 @@ function Roadmap() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
-                className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px]"
+                className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]"
               >
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-xs font-extrabold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20 flex items-center gap-1.5">

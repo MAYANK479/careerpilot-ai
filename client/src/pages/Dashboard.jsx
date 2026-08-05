@@ -35,7 +35,7 @@ function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#030712] text-white font-sans selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#050816] text-white font-sans selection:bg-blue-500 selection:text-white">
       <Navbar />
 
       <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-10">
@@ -53,7 +53,7 @@ function Dashboard() {
           </div>
 
           {/* Role Picker */}
-          <div className="flex items-center gap-3 bg-[#111827] px-4 py-2.5 rounded-[16px] border border-slate-800 shadow-sm">
+          <div className="flex items-center gap-3 bg-[#0E1424] px-4 py-2.5 rounded-[16px] border border-slate-800 shadow-sm">
             <Target size={18} className="text-blue-400 shrink-0" />
             <span className="text-xs font-bold text-[#94A3B8]">Target Role:</span>
             <select
@@ -61,11 +61,11 @@ function Dashboard() {
               onChange={(e) => setTargetRole(e.target.value)}
               className="bg-transparent text-xs font-bold text-white focus:outline-none cursor-pointer"
             >
-              <option value="Full Stack Engineer" className="bg-[#111827]">Full Stack Engineer</option>
-              <option value="Frontend Developer" className="bg-[#111827]">Frontend Developer</option>
-              <option value="Backend Developer" className="bg-[#111827]">Backend Developer</option>
-              <option value="AI / ML Engineer" className="bg-[#111827]">AI / ML Engineer</option>
-              <option value="DevOps & Cloud Engineer" className="bg-[#111827]">DevOps & Cloud Engineer</option>
+              <option value="Full Stack Engineer" className="bg-[#0E1424]">Full Stack Engineer</option>
+              <option value="Frontend Developer" className="bg-[#0E1424]">Frontend Developer</option>
+              <option value="Backend Developer" className="bg-[#0E1424]">Backend Developer</option>
+              <option value="AI / ML Engineer" className="bg-[#0E1424]">AI / ML Engineer</option>
+              <option value="DevOps & Cloud Engineer" className="bg-[#0E1424]">DevOps & Cloud Engineer</option>
             </select>
           </div>
         </div>
@@ -76,7 +76,7 @@ function Dashboard() {
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px] flex items-center gap-6"
+            className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex items-center gap-6"
           >
             <div className="relative w-24 h-24 shrink-0">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
@@ -110,7 +110,7 @@ function Dashboard() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px] flex flex-col justify-between"
+            className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col justify-between"
           >
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#94A3B8] uppercase tracking-wider">Skills Acquired</span>
@@ -129,7 +129,7 @@ function Dashboard() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px] flex flex-col justify-between"
+            className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col justify-between"
           >
             <div className="flex items-center justify-between">
               <span className="text-xs font-bold text-[#94A3B8] uppercase tracking-wider">Skill Gaps to Close</span>
@@ -147,7 +147,7 @@ function Dashboard() {
         {/* Middle Section: Skills Breakdown & Critical Gaps */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
           {/* Skills Mastery Progress */}
-          <div className="lg:col-span-2 saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px]">
+          <div className="lg:col-span-2 saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
             <h3 className="text-lg font-bold text-white mb-6 flex items-center justify-between">
               <span>Skills Mastery & Role Alignment</span>
               <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">{targetRole}</span>
@@ -172,7 +172,7 @@ function Dashboard() {
           </div>
 
           {/* Critical Skill Gaps Card */}
-          <div className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px] flex flex-col justify-between">
+          <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col justify-between">
             <div>
               <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
                 <AlertTriangle size={20} className="text-amber-400" />
@@ -218,7 +218,7 @@ function Dashboard() {
               <Link
                 key={tool.title}
                 to={tool.link}
-                className="saas-card-interactive p-6 bg-[#111827] border border-slate-800 rounded-[24px] flex flex-col justify-between group"
+                className="saas-card-interactive p-6 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col justify-between group"
               >
                 <div>
                   <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">

@@ -1,104 +1,94 @@
+import React from "react";
 import { motion } from "framer-motion";
-import { Upload, Cpu, Sparkles, Mic, CheckCircle } from "lucide-react";
+import { Upload, Cpu, Sparkles, Mic, CheckCircle, ArrowRight } from "lucide-react";
 
 const steps = [
   {
     num: "01",
     title: "Upload Resume",
-    desc: "Drop your PDF resume into our secure parser engine.",
+    desc: "Drop your PDF resume into our secure parser engine for instant analysis.",
     icon: Upload,
-    badge: "Input",
   },
   {
     num: "02",
     title: "AI Analysis",
-    desc: "Extract ATS keyword scores and skill gap breakdowns.",
+    desc: "Our AI extracts ATS keyword scores, skill gaps, and formatting issues.",
     icon: Cpu,
-    badge: "Processing",
   },
   {
     num: "03",
-    title: "Improve Resume",
-    desc: "One-click bullet rewriter for high impact achievements.",
+    title: "Improve & Rewrite",
+    desc: "One-click bullet rewriter optimizes achievements with action verbs and metrics.",
     icon: Sparkles,
-    badge: "Optimization",
   },
   {
     num: "04",
     title: "Practice Interview",
-    desc: "Voice mock interview with real-time speech scoring.",
+    desc: "Voice mock interview with real-time speech recognition and scoring.",
     icon: Mic,
-    badge: "Simulation",
   },
   {
     num: "05",
-    title: "Apply Jobs",
-    desc: "Shortlist matching postings with tailored cover letters.",
+    title: "Land the Job",
+    desc: "Apply with tailored cover letters and track your progress in the dashboard.",
     icon: CheckCircle,
-    badge: "Success",
   },
 ];
 
 function HowItWorks() {
   return (
-    <section className="py-28 lg:py-32 bg-[#030712] border-t border-slate-800/80 relative">
+    <section className="py-36 bg-[#050816] relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6">
-        {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block mb-4">
-            Structured Workflow
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-bold text-white leading-tight tracking-tight">
-            How CareerPilot AI Accelerates Your Hiring Process
+          <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-white leading-[1.1] tracking-tight">
+            How It Works
           </h2>
-          <p className="text-lg lg:text-[18px] text-[#94A3B8] mt-4 leading-relaxed font-normal">
-            Five intuitive steps to transform your job search from application to interview offer.
+          <p className="text-lg text-[#94A3B8] mt-6 leading-relaxed font-normal max-w-2xl mx-auto">
+            Five intuitive steps to transform your job search from application to offer.
           </p>
         </motion.div>
 
-        {/* Timeline Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 relative">
-          {steps.map((s, idx) => {
-            const Icon = s.icon;
-            return (
-              <motion.div
-                key={s.num}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="saas-card-interactive p-6 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-2xl font-extrabold text-blue-400 font-mono">
-                      {s.num}
-                    </span>
-                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-                      <Icon size={18} />
-                    </div>
+        {/* Horizontal Step Timeline */}
+        <div className="relative">
+          {/* Connector Line (Desktop) */}
+          <div className="hidden lg:block absolute top-[60px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {steps.map((s, idx) => {
+              const Icon = s.icon;
+              return (
+                <motion.div
+                  key={s.num}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="relative flex flex-col items-center text-center group"
+                >
+                  {/* Step Circle */}
+                  <div className="relative z-10 w-[120px] h-[120px] rounded-3xl bg-[#0E1424] border border-white/10 flex flex-col items-center justify-center mb-8 group-hover:border-blue-500/30 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300">
+                    <span className="text-xs font-black text-blue-400 uppercase tracking-widest mb-2">{s.num}</span>
+                    <Icon size={28} className="text-slate-300 group-hover:text-blue-400 transition-colors" />
                   </div>
-                  <h3 className="text-xl lg:text-[24px] font-bold text-white mb-2">
-                    {s.title}
-                  </h3>
-                  <p className="text-base text-[#94A3B8] leading-relaxed font-normal">
-                    {s.desc}
-                  </p>
-                </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-800/80">
-                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                    {s.badge}
-                  </span>
-                </div>
-              </motion.div>
-            );
-          })}
+                  <h3 className="text-lg font-bold text-white mb-2">{s.title}</h3>
+                  <p className="text-sm text-[#94A3B8] leading-relaxed max-w-[200px]">{s.desc}</p>
+
+                  {/* Arrow between steps (desktop only) */}
+                  {idx < steps.length - 1 && (
+                    <div className="hidden lg:block absolute top-[60px] -right-3 z-20">
+                      <ArrowRight size={16} className="text-slate-600" />
+                    </div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

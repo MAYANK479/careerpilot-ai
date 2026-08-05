@@ -66,7 +66,7 @@ function Portfolio() {
     : projectBlueprints.filter(p => p.category.includes(filter));
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#030712] text-white font-sans selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#050816] text-white font-sans selection:bg-blue-500 selection:text-white">
       <Navbar />
 
       <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-12">
@@ -91,7 +91,7 @@ function Portfolio() {
               className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
                 filter === cat
                   ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
-                  : "bg-[#111827] text-slate-300 hover:text-white border border-slate-800"
+                  : "bg-[#0E1424] text-slate-300 hover:text-white border border-slate-800"
               }`}
             >
               {cat}
@@ -107,7 +107,7 @@ function Portfolio() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.1 }}
-              className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px]"
+              className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-6">
                 <div>

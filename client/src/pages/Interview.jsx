@@ -210,7 +210,7 @@ function Interview() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white flex flex-col justify-between font-sans selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen bg-[#050816] text-white flex flex-col justify-between font-sans selection:bg-blue-500 selection:text-white">
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
       <Navbar />
 
@@ -229,7 +229,7 @@ function Interview() {
               </p>
             </div>
 
-            <div className="saas-card p-8 sm:p-10 bg-[#111827] border border-slate-800 rounded-[24px] space-y-8">
+            <div className="saas-card p-8 sm:p-10 bg-[#0E1424] border border-slate-800 rounded-[24px] space-y-8">
               {/* Role Picker */}
               <div>
                 <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-4">
@@ -320,7 +320,7 @@ function Interview() {
               </span>
             </div>
 
-            <div className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px] mb-6">
+            <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] mb-6">
               <div className="flex justify-between items-start gap-4">
                 <h2 className="text-xl font-bold text-white">
                   {questions[currentIdx]?.question}
@@ -334,7 +334,7 @@ function Interview() {
               </div>
             </div>
 
-            <div className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px] mb-6">
+            <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] mb-6">
               <div className="flex justify-between items-center mb-4">
                 <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Your Speech Transcript</label>
                 <button
@@ -351,7 +351,7 @@ function Interview() {
                 value={currentAnswer}
                 onChange={(e) => setCurrentAnswer(e.target.value)}
                 placeholder="Speak into microphone or type your response here..."
-                className="w-full h-48 p-5 rounded-2xl bg-[#030712] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
+                className="w-full h-48 p-5 rounded-2xl bg-[#050816] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
               />
             </div>
 
@@ -367,7 +367,7 @@ function Interview() {
         {/* Results */}
         {step === "results" && evaluation && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-            <div className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px] flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
                 <span className="text-xs font-bold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Evaluation Scorecard</span>
                 <h2 className="text-3xl font-black text-white mt-3">Overall Score: {evaluation.overallScore}/100</h2>

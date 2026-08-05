@@ -11,6 +11,7 @@ function Navbar() {
     { label: "Features", href: "#features" },
     { label: "Dashboard", to: "/dashboard" },
     { label: "Interview", to: "/interview" },
+    { label: "About", to: "/about" },
     { label: "Pricing", href: "#pricing" },
     { label: "Login", to: "/upload" },
   ];
@@ -23,12 +24,9 @@ function Navbar() {
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-blue-400 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
             <Compass size={22} className="stroke-[2.2]" />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col justify-center">
             <span className="text-xl font-bold tracking-tight text-white leading-none">
               CareerPilot <span className="text-blue-500">AI</span>
-            </span>
-            <span className="text-[10px] font-semibold text-slate-400 tracking-wider uppercase mt-1">
-              Next-Gen Career SaaS
             </span>
           </div>
         </Link>
@@ -67,7 +65,7 @@ function Navbar() {
         <div className="hidden lg:flex items-center gap-4">
           <Link
             to="/upload"
-            className="group flex items-center gap-2 text-sm font-bold px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white shadow-lg shadow-blue-600/30 hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-0.5"
+            className="group flex items-center gap-2 text-sm font-bold px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 transform hover:-translate-y-0.5 border border-blue-500/50"
           >
             <Sparkles size={16} />
             Get Started
@@ -92,7 +90,7 @@ function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-slate-800 bg-[#030712] overflow-hidden"
+            className="lg:hidden border-t border-white/5 bg-[#050816] overflow-hidden"
           >
             <div className="px-6 py-6 space-y-4">
               {navItems.map((item) => (
@@ -120,7 +118,7 @@ function Navbar() {
                 <Link
                   to="/upload"
                   onClick={() => setMobileOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 text-base font-bold px-6 py-3.5 rounded-full bg-blue-600 text-white"
+                  className="w-full flex items-center justify-center gap-2 text-base font-bold px-6 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/25"
                 >
                   <Sparkles size={16} />
                   Get Started Free

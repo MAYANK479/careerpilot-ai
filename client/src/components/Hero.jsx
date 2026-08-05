@@ -1,46 +1,44 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Play,
-  FileText,
-  Mic,
-  Briefcase,
-  Map,
-  CheckCircle2,
-  TrendingUp,
-  Award,
-  Sparkles,
-} from "lucide-react";
+import { ArrowRight, Play, TrendingUp, Sparkles, CheckCircle2, Award } from "lucide-react";
+import { useCountUp } from "../hooks/useCountUp";
 
-const badges = [
-  { icon: FileText, text: "ATS Analysis" },
-  { icon: Mic, text: "AI Interview" },
-  { icon: Briefcase, text: "Job Match" },
-  { icon: Map, text: "Career Roadmap" },
-];
+function AnimatedMetric({ label, value, suffix = "" }) {
+  const { count, ref } = useCountUp(value, 2000, 0);
+  return (
+    <div className="flex flex-col" ref={ref}>
+      <span className="text-2xl font-bold text-white">
+        {count.toLocaleString()}{suffix}
+      </span>
+      <span className="text-sm font-medium text-slate-400">{label}</span>
+    </div>
+  );
+}
 
 function HeroDashboardMockup() {
+  const { count: resumeScore, ref: resumeRef } = useCountUp(91, 1500, 0);
+  const { count: interviewScore, ref: interviewRef } = useCountUp(87, 1700, 0);
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 40 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
-      className="relative"
+      className="relative w-full max-w-[600px] mx-auto lg:mx-0 animate-float"
     >
       {/* Background ambient glow behind mockup */}
-      <div className="absolute -inset-4 bg-gradient-to-tr from-blue-600/20 via-blue-400/10 to-indigo-600/20 rounded-[32px] blur-2xl pointer-events-none" />
+      <div className="absolute -inset-4 bg-gradient-to-tr from-blue-600/20 via-purple-500/10 to-indigo-600/20 rounded-[32px] blur-2xl pointer-events-none" />
 
       {/* Main Floating Dashboard Card */}
-      <div className="relative saas-card p-6 sm:p-8 bg-[#111827] border border-slate-800 shadow-2xl rounded-[24px]">
+      <div className="relative saas-card p-6 sm:p-8 bg-[#0E1424] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
         {/* Header window controls */}
-        <div className="flex items-center justify-between border-b border-slate-800/80 pb-4 mb-6">
+        <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-6">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-rose-500/80" />
+            <div className="w-3 h-3 rounded-full bg-red-500/80" />
             <div className="w-3 h-3 rounded-full bg-amber-500/80" />
             <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
             <span className="ml-3 text-xs font-semibold text-slate-400 font-mono">
-              CareerPilot OS v2.4
+              Dashboard Overview
             </span>
           </div>
           <span className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
@@ -52,7 +50,7 @@ function HeroDashboardMockup() {
         {/* Metric Cards Grid */}
         <div className="grid grid-cols-2 gap-4 mb-6">
           {/* Resume Score Card */}
-          <div className="p-5 rounded-[20px] bg-[#1E293B]/60 border border-slate-800 flex items-center gap-4">
+          <div className="p-5 rounded-[20px] bg-[#111B2E] border border-white/5 flex items-center gap-4" ref={resumeRef}>
             <div className="relative w-16 h-16 shrink-0">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="40" fill="none" stroke="#1e293b" strokeWidth="8" />
@@ -68,11 +66,11 @@ function HeroDashboardMockup() {
                 />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center font-bold text-lg text-white">
-                91%
+                {resumeScore}%
               </div>
             </div>
             <div>
-              <p className="text-xs font-semibold text-slate-400">Resume Score</p>
+              <p className="text-xs font-medium text-slate-400">Resume Score</p>
               <p className="text-sm font-bold text-emerald-400 mt-0.5 flex items-center gap-1">
                 <TrendingUp size={14} /> Top 2% Match
               </p>
@@ -80,13 +78,13 @@ function HeroDashboardMockup() {
           </div>
 
           {/* Interview Readiness Card */}
-          <div className="p-5 rounded-[20px] bg-[#1E293B]/60 border border-slate-800 flex items-center gap-4">
+          <div className="p-5 rounded-[20px] bg-[#111B2E] border border-white/5 flex items-center gap-4" ref={interviewRef}>
             <div className="relative w-16 h-16 shrink-0">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
                 <circle cx="50" cy="50" r="40" fill="none" stroke="#1e293b" strokeWidth="8" />
                 <motion.circle
                   cx="50" cy="50" r="40" fill="none"
-                  stroke="#60A5FA"
+                  stroke="#8B5CF6"
                   strokeWidth="8"
                   strokeLinecap="round"
                   strokeDasharray={251}
@@ -96,46 +94,44 @@ function HeroDashboardMockup() {
                 />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center font-bold text-lg text-white">
-                87%
+                {interviewScore}%
               </div>
             </div>
             <div>
-              <p className="text-xs font-semibold text-slate-400">Interview Readiness</p>
-              <p className="text-sm font-bold text-blue-400 mt-0.5">High Confidence</p>
+              <p className="text-xs font-medium text-slate-400">Interview Ready</p>
+              <p className="text-sm font-bold text-purple-400 mt-0.5">High Confidence</p>
             </div>
           </div>
         </div>
 
         {/* Skills & Missing Skills Split */}
         <div className="space-y-4">
-          {/* Acquired Skills */}
-          <div className="p-4 rounded-[16px] bg-[#1E293B]/40 border border-slate-800/80">
-            <div className="flex justify-between text-xs font-bold text-slate-300 mb-2">
+          <div className="p-4 rounded-[16px] bg-[#111B2E] border border-white/5">
+            <div className="flex justify-between text-xs font-bold text-slate-300 mb-3">
               <span className="flex items-center gap-1.5 text-emerald-400">
                 <CheckCircle2 size={14} /> Mastered Skills
               </span>
-              <span className="text-slate-400">3 Core Technologies</span>
+              <span className="text-slate-400 font-medium">3 Core Technologies</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {["Java", "React", "Node"].map((skill) => (
-                <span key={skill} className="px-3 py-1 rounded-lg text-xs font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">
+              {["TypeScript", "React", "Node.js"].map((skill) => (
+                <span key={skill} className="px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                   {skill}
                 </span>
               ))}
             </div>
           </div>
 
-          {/* Missing Skills Alert */}
-          <div className="p-4 rounded-[16px] bg-[#1E293B]/40 border border-slate-800/80">
-            <div className="flex justify-between text-xs font-bold text-slate-300 mb-2">
+          <div className="p-4 rounded-[16px] bg-[#111B2E] border border-white/5">
+            <div className="flex justify-between text-xs font-bold text-slate-300 mb-3">
               <span className="flex items-center gap-1.5 text-amber-400">
                 <Sparkles size={14} /> Missing Target Skills
               </span>
-              <span className="text-amber-400">3 Skill Gaps Identified</span>
+              <span className="text-amber-400 font-medium">2 Skill Gaps</span>
             </div>
             <div className="flex flex-wrap gap-2">
-              {["Docker", "Redis", "System Design"].map((gap) => (
-                <span key={gap} className="px-3 py-1 rounded-lg text-xs font-semibold bg-amber-500/10 text-amber-300 border border-amber-500/20">
+              {["Docker", "System Design"].map((gap) => (
+                <span key={gap} className="px-3 py-1.5 rounded-lg text-xs font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
                   {gap}
                 </span>
               ))}
@@ -148,14 +144,14 @@ function HeroDashboardMockup() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
-          className="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-3 p-4 rounded-2xl bg-[#030712]/95 border border-slate-800 shadow-2xl backdrop-blur-xl"
+          className="absolute -bottom-6 -left-6 hidden sm:flex items-center gap-4 p-4 rounded-2xl bg-[#050816] border border-white/10 shadow-2xl"
         >
-          <div className="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400">
-            <Award size={20} />
+          <div className="w-12 h-12 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400">
+            <Award size={24} />
           </div>
           <div>
-            <p className="text-xs font-bold text-white">AI Analysis Complete</p>
-            <p className="text-[11px] text-slate-400">Shortlist probability increased +34%</p>
+            <p className="text-sm font-bold text-white">AI Analysis Complete</p>
+            <p className="text-xs font-medium text-slate-400 mt-0.5">Interview probability +34%</p>
           </div>
         </motion.div>
       </div>
@@ -165,12 +161,14 @@ function HeroDashboardMockup() {
 
 function Hero() {
   return (
-    <section className="relative py-20 lg:py-28 overflow-hidden">
-      {/* Slow Moving Glow Background */}
-      <div className="hero-glow top-0 left-1/2 -translate-x-1/2 animate-pulse-glow" />
-
-      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-16 lg:pt-0 lg:pb-0">
+      {/* Animated Backgrounds */}
+      <div className="bg-aurora" />
+      <div className="absolute inset-0 bg-dot-grid opacity-50" />
+      <div className="bg-noise" />
+      
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
           {/* Left Column (7 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -179,52 +177,51 @@ function Hero() {
             className="lg:col-span-7 space-y-8"
           >
             {/* Pill Tag */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-semibold shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-              The #1 AI Career Development Platform
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#111B2E] border border-white/10 shadow-sm backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+              <span className="text-sm font-semibold text-slate-300">
+                AI-Powered Career Platform
+              </span>
             </div>
 
             {/* 72px Hero Title */}
-            <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-bold text-white leading-[1.08] tracking-tight">
+            <h1 className="text-5xl sm:text-6xl lg:text-[72px] font-extrabold text-white leading-[1.05] tracking-tight">
               Land Your Dream Job{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
                 Faster with AI
               </span>
             </h1>
 
-            {/* 18px Subtext */}
-            <p className="text-lg lg:text-[18px] text-[#94A3B8] leading-relaxed max-w-2xl font-normal">
-              CareerPilot AI analyzes your resume against ATS algorithms, generates week-by-week learning roadmaps, builds portfolio project specs, and conducts real-time voice mock interviews.
+            {/* Subtext */}
+            <p className="text-lg text-[#94A3B8] leading-relaxed max-w-2xl font-normal">
+              Stop guessing what recruiters want. Our AI analyzes your resume, simulates technical interviews, and builds a personalized roadmap to get you hired.
             </p>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
                 to="/upload"
-                className="group flex items-center gap-3 px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-base shadow-xl shadow-blue-600/30 hover:shadow-blue-500/50 transition-all duration-300 transform hover:-translate-y-0.5"
+                className="group flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold text-base shadow-lg shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5 border border-blue-500/50"
               >
-                Upload Resume
+                Get Started Free
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href="#demo"
-                className="flex items-center gap-3 px-8 py-4 rounded-full bg-[#1E293B] hover:bg-[#334155] border border-slate-700/80 text-white font-semibold text-base transition-all duration-300"
+                className="flex items-center gap-3 px-8 py-4 rounded-full bg-[#111B2E] hover:bg-[#1e293b] border border-white/10 text-white font-semibold text-base transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shadow-black/20"
               >
                 <Play size={16} className="fill-white text-white" />
                 Watch Demo
               </a>
             </div>
 
-            {/* Feature Badges Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-slate-800/80">
-              {badges.map(({ icon: Icon, text }) => (
-                <div key={text} className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
-                    <Icon size={16} />
-                  </div>
-                  <span className="text-sm font-semibold text-slate-300">{text}</span>
-                </div>
-              ))}
+            {/* Trust Metrics */}
+            <div className="flex flex-wrap items-center gap-10 pt-8 border-t border-white/5">
+              <AnimatedMetric label="Active Students" value={25000} suffix="+" />
+              <div className="w-px h-10 bg-white/10 hidden sm:block" />
+              <AnimatedMetric label="ATS Success" value={94} suffix="%" />
+              <div className="w-px h-10 bg-white/10 hidden sm:block" />
+              <AnimatedMetric label="Interview Rate" value={89} suffix="%" />
             </div>
           </motion.div>
 

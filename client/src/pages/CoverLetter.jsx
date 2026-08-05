@@ -84,7 +84,7 @@ function CoverLetter() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030712] text-white flex flex-col justify-between font-sans selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen bg-[#050816] text-white flex flex-col justify-between font-sans selection:bg-blue-500 selection:text-white">
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
       <Navbar />
 
@@ -103,7 +103,7 @@ function CoverLetter() {
 
         {/* Inputs */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          <div className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px]">
+          <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
             <label className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-4 block">
               Your Resume Text
             </label>
@@ -111,11 +111,11 @@ function CoverLetter() {
               value={resumeText}
               onChange={(e) => setResumeText(e.target.value)}
               placeholder="Paste your resume text..."
-              className="w-full h-56 p-5 rounded-2xl bg-[#030712] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
+              className="w-full h-56 p-5 rounded-2xl bg-[#050816] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
             />
           </div>
 
-          <div className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px]">
+          <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
             <label className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-4 block">
               Target Job Description
             </label>
@@ -123,12 +123,12 @@ function CoverLetter() {
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
               placeholder="Paste the target job posting..."
-              className="w-full h-56 p-5 rounded-2xl bg-[#030712] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
+              className="w-full h-56 p-5 rounded-2xl bg-[#050816] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
             />
           </div>
         </div>
 
-        <div className="saas-card p-8 mb-8 bg-[#111827] border border-slate-800 rounded-[24px]">
+        <div className="saas-card p-8 mb-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
           <label className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3 block">
             Company Name (Optional)
           </label>
@@ -137,7 +137,7 @@ function CoverLetter() {
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
             placeholder="e.g. Google, Stripe, Amazon..."
-            className="w-full bg-[#030712] border border-slate-800 rounded-2xl px-5 py-4 text-sm font-semibold text-white focus:outline-none focus:border-blue-500"
+            className="w-full bg-[#050816] border border-slate-800 rounded-2xl px-5 py-4 text-sm font-semibold text-white focus:outline-none focus:border-blue-500"
           />
         </div>
 
@@ -167,7 +167,7 @@ function CoverLetter() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
-              className="saas-card p-8 bg-[#111827] border border-slate-800 rounded-[24px]"
+              className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]"
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
@@ -196,7 +196,7 @@ function CoverLetter() {
                 </div>
               </div>
 
-              <div className="bg-[#030712] rounded-2xl p-8 border border-slate-800">
+              <div className="bg-[#050816] rounded-2xl p-8 border border-slate-800">
                 <pre className="whitespace-pre-wrap text-sm text-slate-200 leading-relaxed font-sans">
                   {letter}
                 </pre>

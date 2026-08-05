@@ -1,96 +1,163 @@
+import React from "react";
 import { motion } from "framer-motion";
+import { CheckCircle2, Lock, ArrowRight, Award } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Map, CheckCircle2, ArrowRight, Clock, Award } from "lucide-react";
+import { useCountUp } from "../hooks/useCountUp";
 
-const milestones = [
-  { step: "01", title: "Frontend Architecture", status: "Completed", progress: 100, topics: "React 19, TypeScript, Tailwind, Next.js App Router" },
-  { step: "02", title: "Backend & Microservices", status: "Completed", progress: 100, topics: "Node.js, Express REST, PostgreSQL, Prisma ORM" },
-  { step: "03", title: "Data Structures & Algorithms", status: "In Progress", progress: 75, topics: "Arrays, Trees, Graphs, Dynamic Programming" },
-  { step: "04", title: "System Design & Cloud", status: "Active Milestone", progress: 50, topics: "Caching with Redis, Docker, Load Balancing" },
-  { step: "05", title: "Portfolio Capstone Project", status: "Upcoming", progress: 20, topics: "AI Document Analyzer & GitHub Blueprint" },
-  { step: "06", title: "Voice Mock Interviews", status: "Upcoming", progress: 0, topics: "Behavioral & Technical System Design Practice" },
+const roadmapData = [
+  {
+    week: "Week 1-2",
+    title: "Frontend Architecture",
+    topics: "React 19, TypeScript, State Management, Performance",
+    status: "completed",
+    progress: 100,
+  },
+  {
+    week: "Week 3-4",
+    title: "Backend & APIs",
+    topics: "Node.js, Express, PostgreSQL, Authentication",
+    status: "completed",
+    progress: 100,
+  },
+  {
+    week: "Week 5-6",
+    title: "System Design",
+    topics: "Scalability, Caching (Redis), Microservices",
+    status: "in-progress",
+    progress: 65,
+  },
+  {
+    week: "Week 7-8",
+    title: "Interview Prep",
+    topics: "Mock Interviews, Behavioral, Resume Polish",
+    status: "locked",
+    progress: 0,
+  }
 ];
+
+function TimelineCard({ item, index }) {
+  const isLeft = index % 2 === 0;
+  const isCompleted = item.status === "completed";
+  const isInProgress = item.status === "in-progress";
+  const isLocked = item.status === "locked";
+  
+  const { count, ref } = useCountUp(item.progress, 1500, 0);
+
+  return (
+    <div className={`relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group ${isLocked ? 'opacity-50 grayscale' : ''}`}>
+      
+      {/* Center Line Marker (Desktop) */}
+      <div className="hidden md:flex items-center justify-center w-10 h-10 rounded-full absolute left-1/2 -translate-x-1/2 shrink-0 z-20">
+        <div className={`w-10 h-10 rounded-full flex items-center justify-center border-4 border-[#050816] ${
+          isCompleted ? 'bg-emerald-500' : isInProgress ? 'bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.5)]' : 'bg-slate-700'
+        }`}>
+          {isCompleted && <CheckCircle2 size={20} className="text-[#050816] fill-emerald-500" />}
+          {isInProgress && <div className="w-3 h-3 bg-white rounded-full animate-ping" />}
+          {isLocked && <Lock size={16} className="text-slate-400" />}
+        </div>
+      </div>
+
+      {/* Card */}
+      <motion.div 
+        initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className="w-full md:w-[calc(50%-3rem)] saas-card p-6 bg-[#0E1424] border border-white/5 relative z-10"
+        ref={ref}
+      >
+        {/* Mobile Marker */}
+        <div className="md:hidden flex items-center gap-3 mb-4 border-b border-white/5 pb-4">
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+            isCompleted ? 'bg-emerald-500/20 text-emerald-400' : isInProgress ? 'bg-blue-500/20 text-blue-400' : 'bg-slate-700/50 text-slate-400'
+          }`}>
+            {isCompleted && <CheckCircle2 size={16} />}
+            {isInProgress && <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />}
+            {isLocked && <Lock size={16} />}
+          </div>
+          <span className="text-sm font-bold text-white">{item.week}</span>
+        </div>
+
+        <div className="hidden md:flex justify-between items-center mb-4">
+          <span className={`text-xs font-bold uppercase tracking-wider ${
+            isCompleted ? 'text-emerald-400' : isInProgress ? 'text-blue-400' : 'text-slate-400'
+          }`}>
+            {item.week}
+          </span>
+          {isCompleted && (
+            <span className="flex items-center gap-1 text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">
+              <Award size={14} /> Certified
+            </span>
+          )}
+        </div>
+
+        <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+        <p className="text-sm text-[#94A3B8] mb-6">{item.topics}</p>
+
+        {/* Progress Bar */}
+        <div className="space-y-2">
+          <div className="flex justify-between text-xs font-bold text-slate-300">
+            <span>Milestone Progress</span>
+            <span>{isLocked ? 0 : count}%</span>
+          </div>
+          <div className="w-full h-2 rounded-full bg-[#111B2E] overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: `${item.progress}%` }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: "easeOut" }}
+              className={`h-full rounded-full ${isCompleted ? 'bg-emerald-500' : 'bg-blue-500'}`}
+            />
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
 
 function RoadmapSection() {
   return (
-    <section className="py-28 lg:py-32 relative bg-[#030712] border-t border-slate-800/80">
-      <div className="max-w-[1400px] mx-auto px-6">
-        {/* Section Heading */}
+    <section className="py-40 bg-[#050816] relative overflow-hidden">
+      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block mb-4">
-            Structured Skill Milestones
+          <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 inline-block mb-6">
+            AI Learning Roadmap
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-bold text-white leading-tight tracking-tight">
-            Personalized Career Learning Roadmap
+          <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-white leading-[1.1] tracking-tight">
+            A Structured Path to <br className="hidden sm:block" /> Your Target Role
           </h2>
-          <p className="text-lg lg:text-[18px] text-[#94A3B8] mt-4 leading-relaxed font-normal">
-            Track your progress across six core engineering milestones to guarantee candidate readiness for top tech roles.
-          </p>
         </motion.div>
 
-        {/* Milestone Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {milestones.map((item, idx) => (
-            <motion.div
-              key={item.step}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.08 }}
-              className="saas-card-interactive p-6 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-black text-blue-400 font-mono">MILESTONE {item.step}</span>
-                  <span
-                    className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                      item.progress === 100
-                        ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20"
-                        : item.progress > 0
-                        ? "bg-blue-500/10 text-blue-400 border-blue-500/20"
-                        : "bg-slate-800 text-slate-400 border-slate-700"
-                    }`}
-                  >
-                    {item.status}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                <p className="text-sm text-[#94A3B8] leading-relaxed mb-6 font-normal">
-                  {item.topics}
-                </p>
-              </div>
-
-              {/* Progress bar */}
-              <div>
-                <div className="flex justify-between text-xs font-bold text-slate-300 mb-2">
-                  <span>Milestone Completion</span>
-                  <span>{item.progress}%</span>
-                </div>
-                <div className="w-full h-2 rounded-full bg-[#1E293B] overflow-hidden">
-                  <div
-                    className="h-full bg-blue-500 rounded-full transition-all duration-1000"
-                    style={{ width: `${item.progress}%` }}
-                  />
-                </div>
-              </div>
-            </motion.div>
-          ))}
+        {/* Timeline Container */}
+        <div className="relative max-w-5xl mx-auto">
+          {/* Center Vertical Line (Desktop only) */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-[#111B2E] -translate-x-1/2 z-0" />
+          
+          <div className="space-y-8 md:space-y-12">
+            {roadmapData.map((item, idx) => (
+              <TimelineCard key={item.title} item={item} index={idx} />
+            ))}
+          </div>
         </div>
 
-        <div className="mt-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20 text-center"
+        >
           <Link
             to="/roadmap"
-            className="inline-flex items-center gap-2 text-base font-bold text-blue-400 hover:text-blue-300 transition-colors"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#111B2E] hover:bg-[#1e293b] text-white font-bold text-lg transition-colors border border-white/10 shadow-lg"
           >
-            Generate Custom Learning Roadmap <ArrowRight size={18} />
+            Generate Your Roadmap <ArrowRight size={20} />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

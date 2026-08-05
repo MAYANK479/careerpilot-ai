@@ -1,10 +1,13 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Companies from "../components/Companies";
+import ProblemSection from "../components/ProblemSection";
 import Features from "../components/Features";
 import HowItWorks from "../components/HowItWorks";
-import InterviewSection from "../components/InterviewSection";
 import ResumeDemo from "../components/ResumeDemo";
+import ResumeBuilderSection from "../components/ResumeBuilderSection";
+import InterviewSection from "../components/InterviewSection";
+import CoverLetterSection from "../components/CoverLetterSection";
 import RoadmapSection from "../components/RoadmapSection";
 import DashboardPreview from "../components/DashboardPreview";
 import Testimonials from "../components/Testimonials";
@@ -14,44 +17,54 @@ import Footer from "../components/Footer";
 
 function Home() {
   return (
-    <div className="min-h-screen bg-[#030712] text-white flex flex-col justify-between selection:bg-blue-500 selection:text-white font-sans">
+    <div className="min-h-screen bg-[#050816] text-white flex flex-col justify-between selection:bg-blue-500 selection:text-white font-sans">
       <Navbar />
 
       <main className="flex-1 w-full">
-        {/* 1. Hero Section */}
+        {/* 1. Full-viewport Hero */}
         <Hero />
 
-        {/* 2. Companies / Trusted By */}
+        {/* 2. Companies Marquee */}
         <Companies />
 
-        {/* 3. Features (6 Premium Cards) */}
+        {/* 3. Problem Section — Why candidates fail */}
+        <ProblemSection />
+
+        {/* 4. Features Grid (6 AI Tools) */}
         <Features />
 
-        {/* 4. How It Works Timeline */}
+        {/* 5. How It Works (5-step timeline) */}
         <HowItWorks />
-
-        {/* 5. AI Interview Hero Feature */}
-        <InterviewSection />
 
         {/* 6. ATS Live Scanner Demo */}
         <ResumeDemo />
 
-        {/* 7. Skill Roadmap Timeline */}
+        {/* 7. AI Resume Builder */}
+        <ResumeBuilderSection />
+
+        {/* 8. AI Voice Interview */}
+        <InterviewSection />
+
+        {/* 9. Cover Letter Generator */}
+        <CoverLetterSection />
+
+        {/* 10. Career Roadmap Timeline */}
         <RoadmapSection />
 
-        {/* 8. SaaS Dashboard Preview */}
+        {/* 11. Full SaaS Dashboard Preview */}
         <DashboardPreview />
 
-        {/* 9. Candidate Testimonials */}
+        {/* 12. Testimonials Carousel */}
         <Testimonials />
 
-        {/* 10. Pricing Plans */}
+        {/* 13. Pricing Plans */}
         <Pricing />
 
-        {/* 11. FAQ Accordion */}
+        {/* 14. FAQ Accordion */}
         <FAQ />
       </main>
 
+      {/* 15. Final CTA + Footer */}
       <Footer />
     </div>
   );

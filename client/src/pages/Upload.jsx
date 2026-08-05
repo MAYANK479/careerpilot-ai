@@ -125,7 +125,7 @@ function Upload() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#030712] text-white font-sans selection:bg-blue-500 selection:text-white">
+    <div className="min-h-screen flex flex-col bg-[#050816] text-white font-sans selection:bg-blue-500 selection:text-white">
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
       <Navbar />
 
@@ -159,7 +159,7 @@ function Upload() {
                 ? "border-blue-500 bg-blue-500/10"
                 : file
                 ? "border-emerald-500 bg-emerald-500/10"
-                : "border-slate-800 hover:border-slate-700 bg-[#111827]"
+                : "border-slate-800 hover:border-slate-700 bg-[#0E1424]"
             }`}
           >
             <input {...getInputProps()} />

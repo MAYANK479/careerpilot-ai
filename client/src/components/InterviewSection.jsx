@@ -1,120 +1,115 @@
-import { Link } from "react-router-dom";
+import React from "react";
 import { motion } from "framer-motion";
-import { Mic, Zap, Award, Sparkles, Volume2, ArrowRight, Activity, CheckCircle2 } from "lucide-react";
+import { Mic, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function InterviewSection() {
   return (
-    <section className="py-28 lg:py-32 relative bg-[#030712] overflow-hidden border-t border-slate-800/80">
+    <section className="min-h-[90vh] bg-[#050816] relative overflow-hidden flex flex-col justify-center items-center py-20">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column (6 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-6 space-y-6"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider">
-              <Zap size={14} /> Flagship AI Feature
+      <div className="max-w-[1200px] mx-auto px-6 relative z-10 w-full text-center">
+        {/* Header Text */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <span className="text-xs font-bold text-purple-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 inline-block mb-6">
+            Signature Feature
+          </span>
+          <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-white leading-[1.1] tracking-tight">
+            Practice Voice Interviews <br className="hidden sm:block" /> with Real-Time AI
+          </h2>
+        </motion.div>
+
+        {/* Central UI Showcase */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto bg-[#0E1424] rounded-[32px] p-10 sm:p-16 border border-white/5 shadow-2xl relative"
+        >
+          {/* AI Interviewer Avatar */}
+          <div className="absolute top-6 left-6 sm:top-8 sm:left-8 flex items-center gap-3">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-purple-500 to-blue-500 p-[2px]">
+              <div className="w-full h-full rounded-full bg-[#0E1424] flex items-center justify-center overflow-hidden">
+                <img src={`https://api.dicebear.com/7.x/notionists/svg?seed=Sarah&backgroundColor=transparent`} alt="Interviewer" className="w-10 h-10 object-cover" />
+              </div>
+            </div>
+            <div className="text-left hidden sm:block">
+              <p className="text-sm font-bold text-white">Sarah Chen</p>
+              <p className="text-xs font-medium text-slate-400">Senior Technical Interviewer</p>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center justify-center mt-8 sm:mt-4">
+            {/* Massive Microphone Sphere */}
+            <div className="relative mb-12">
+              <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full bg-gradient-to-tr from-purple-600 to-blue-500 flex items-center justify-center text-white shadow-[0_0_50px_rgba(139,92,246,0.3)] animate-pulse">
+                <Mic size={56} className="sm:w-16 sm:h-16" />
+              </div>
+              <div className="absolute inset-0 rounded-full border-[3px] border-purple-400/30 animate-ping pointer-events-none" style={{ animationDuration: '2s' }} />
             </div>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-bold text-white leading-tight tracking-tight">
-              Practice Voice Interviews with Real-Time AI Feedback
-            </h2>
-
-            <p className="text-lg lg:text-[18px] text-[#94A3B8] leading-relaxed font-normal">
-              Eliminate interview anxiety. Practice technical architecture and behavioral questions with speech recognition, confidence scoring, and instant performance breakdowns.
-            </p>
-
-            {/* Feature Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              {[
-                { title: "Voice & Speech Simulator", desc: "Real-time Web Speech API" },
-                { title: "Behavioral & Technical", desc: "Tailored to target job role" },
-                { title: "Confidence Score Gauge", desc: "90+ rating breakdown" },
-                { title: "Real-Time Audio Transcript", desc: "Instant audio wave feedback" },
-              ].map((item) => (
-                <div key={item.title} className="flex items-start gap-3 p-4 rounded-2xl bg-[#111827] border border-slate-800/80">
-                  <CheckCircle2 size={18} className="text-blue-400 shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-sm font-bold text-white">{item.title}</p>
-                    <p className="text-xs text-[#94A3B8] mt-0.5">{item.desc}</p>
-                  </div>
-                </div>
+            {/* Audio Waves */}
+            <div className="flex items-center justify-center gap-1.5 sm:gap-2 h-16 mb-12">
+              {[30, 60, 90, 40, 75, 25, 85, 45, 95, 35, 70, 50, 80, 40, 100, 60, 30, 85, 45, 70].map((h, idx) => (
+                <motion.div
+                  key={idx}
+                  className="w-1.5 sm:w-2 rounded-full bg-gradient-to-t from-purple-500 to-blue-400"
+                  animate={{ height: ["20%", `${h}%`, "20%"] }}
+                  transition={{
+                    duration: 1.2,
+                    repeat: Infinity,
+                    delay: idx * 0.05,
+                  }}
+                />
               ))}
             </div>
 
-            <div className="pt-4">
-              <Link
-                to="/interview"
-                className="group inline-flex items-center gap-3 px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-base shadow-xl shadow-blue-600/30 transition-all duration-300 transform hover:-translate-y-0.5"
-              >
-                <Mic size={18} />
-                Start AI Voice Interview
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
+            {/* Live Transcript Preview */}
+            <div className="max-w-xl mx-auto mb-16">
+              <p className="text-lg sm:text-xl text-slate-300 font-medium leading-relaxed">
+                "For the database architecture, I chose <span className="text-white bg-white/10 px-2 rounded">PostgreSQL</span> because of its strong support for JSONB operations, which allows us to..."
+                <span className="inline-block w-2 h-5 bg-purple-500 ml-1 animate-pulse" />
+              </p>
             </div>
-          </motion.div>
 
-          {/* Right Column (6 cols): Large Mic & Visualizer Showcase Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-6"
+            {/* Metrics Row */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+              {[
+                { label: "Confidence", value: "92/100", color: "text-purple-400" },
+                { label: "Speech Speed", value: "145 wpm", color: "text-blue-400" },
+                { label: "Tech Depth", value: "High", color: "text-emerald-400" },
+                { label: "Filler Words", value: "Low", color: "text-amber-400" },
+              ].map((metric) => (
+                <div key={metric.label} className="p-4 rounded-2xl bg-[#111B2E] border border-white/5 text-center">
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-1.5">{metric.label}</span>
+                  <span className={`text-xl sm:text-2xl font-black ${metric.color}`}>{metric.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-16"
+        >
+          <Link
+            to="/interview"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-bold text-lg shadow-xl shadow-purple-600/20 transition-all duration-300 transform hover:-translate-y-0.5"
           >
-            <div className="saas-card p-8 sm:p-10 bg-[#111827] border border-slate-800 shadow-2xl rounded-[24px] relative overflow-hidden">
-              {/* Mic Icon Sphere Graphic */}
-              <div className="flex flex-col items-center justify-center py-8">
-                <div className="relative mb-6">
-                  <div className="w-28 h-28 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-2xl shadow-blue-500/40 animate-pulse">
-                    <Mic size={48} />
-                  </div>
-                  <div className="absolute inset-0 rounded-full border-2 border-blue-400/40 animate-ping pointer-events-none" />
-                </div>
-
-                {/* Animated Audio Wave Spectrum */}
-                <div className="flex items-center gap-1.5 h-10 mb-6">
-                  {[40, 75, 100, 60, 85, 30, 95, 50, 80, 45, 90, 65].map((h, idx) => (
-                    <motion.div
-                      key={idx}
-                      className="w-1.5 rounded-full bg-blue-500"
-                      animate={{ height: ["20%", `${h}%`, "20%"] }}
-                      transition={{
-                        duration: 1.2,
-                        repeat: Infinity,
-                        delay: idx * 0.1,
-                      }}
-                    />
-                  ))}
-                </div>
-
-                <p className="text-xs font-bold text-blue-400 uppercase tracking-widest bg-blue-500/10 px-4 py-1.5 rounded-full border border-blue-500/20 mb-6">
-                  Recording Active · Speech Recognition Engine
-                </p>
-
-                {/* Real-time Score Pill */}
-                <div className="grid grid-cols-3 gap-4 w-full pt-6 border-t border-slate-800/80">
-                  <div className="text-center p-3 rounded-xl bg-[#1E293B]/60 border border-slate-800">
-                    <span className="text-xs text-[#94A3B8] font-bold uppercase block mb-1">Confidence</span>
-                    <span className="text-base font-extrabold text-blue-400">92/100</span>
-                  </div>
-                  <div className="text-center p-3 rounded-xl bg-[#1E293B]/60 border border-slate-800">
-                    <span className="text-xs text-[#94A3B8] font-bold uppercase block mb-1">Technical</span>
-                    <span className="text-base font-extrabold text-emerald-400">89/100</span>
-                  </div>
-                  <div className="text-center p-3 rounded-xl bg-[#1E293B]/60 border border-slate-800">
-                    <span className="text-xs text-[#94A3B8] font-bold uppercase block mb-1">Fluency</span>
-                    <span className="text-base font-extrabold text-purple-400">95/100</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            Start Practice Interview
+            <ArrowRight size={20} />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
