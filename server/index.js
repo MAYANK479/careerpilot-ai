@@ -7,6 +7,7 @@ console.log("✅ index.js started");
 const uploadRoutes = require("./routes/uploadRoutes");
 const jobMatchRoutes = require("./routes/jobMatchRoutes");
 const interviewRoutes = require("./routes/interviewRoutes");
+const coverLetterRoutes = require("./routes/coverLetterRoutes");
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.json({ limit: "5mb" }));
 app.use("/api/upload", uploadRoutes);
 app.use("/api/job-match", jobMatchRoutes);
 app.use("/api/interview", interviewRoutes);
+app.use("/api/cover-letter", coverLetterRoutes);
 
 app.use((error, req, res, next) => {
   console.error("Request failed:", error);

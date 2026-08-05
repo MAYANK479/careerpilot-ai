@@ -173,6 +173,7 @@ ${jobDescription.slice(0, 10000)}`;
 }
 
 module.exports = {
+  callOllama,
   analyzeResumeWithOllama,
   compareResumeWithJobOllama,
 };
