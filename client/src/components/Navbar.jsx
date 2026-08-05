@@ -10,6 +10,7 @@ import {
   Menu,
   X,
   Compass,
+  Sparkles,
 } from "lucide-react";
 
 const navLinks = [
@@ -25,90 +26,91 @@ function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <motion.nav
+    <motion.header
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      className="sticky top-0 z-50 glass-strong"
+      className="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-2xl"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/25 group-hover:shadow-blue-500/40 transition-shadow">
-            <Compass size={18} className="text-white" />
+      <div className="max-w-7xl mx-auto w-full flex items-center justify-between px-6 py-4">
+        {/* Brand Logo */}
+        <Link to="/" className="flex items-center gap-3 group shrink-0">
+          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 via-blue-600 to-purple-600 flex items-center justify-center shadow-lg shadow-blue-500/25 group-hover:shadow-blue-500/40 transition-all duration-300 group-hover:scale-105">
+            <Compass size={22} className="text-white" />
           </div>
           <div className="flex flex-col">
-            <span className="text-base font-extrabold bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 bg-clip-text text-transparent leading-tight">
+            <span className="text-lg font-black tracking-tight bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
               CareerPilot
             </span>
-            <span className="text-[10px] font-semibold text-slate-500 tracking-widest uppercase -mt-0.5">
-              AI
+            <span className="text-[10px] font-bold text-blue-400/80 tracking-widest uppercase -mt-1">
+              AI PLATFORM
             </span>
           </div>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-1">
+        {/* Desktop Nav Links */}
+        <nav className="hidden md:flex items-center gap-1.5 bg-slate-900/60 p-1.5 rounded-2xl border border-slate-800/80">
           {navLinks.map(({ to, label, icon: Icon }) => {
             const active = location.pathname === to;
             return (
               <Link
                 key={to}
                 to={to}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all duration-200 ${
                   active
-                    ? "bg-blue-500/10 text-blue-400 shadow-sm shadow-blue-500/10"
-                    : "text-slate-400 hover:text-white hover:bg-white/5"
+                    ? "bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-md shadow-blue-500/20"
+                    : "text-slate-400 hover:text-slate-100 hover:bg-slate-800/50"
                 }`}
               >
-                <Icon size={15} />
+                <Icon size={16} />
                 {label}
               </Link>
             );
           })}
-        </div>
+        </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Desktop Action CTA */}
+        <div className="hidden md:flex items-center gap-3 shrink-0">
           <Link
             to="/upload"
-            className="text-sm font-semibold px-5 py-2 rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white transition-all shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30"
+            className="flex items-center gap-2 text-sm font-bold px-6 py-2.5 rounded-xl btn-primary-glow text-white transition-all"
           >
-            Get Started
+            <Sparkles size={16} />
+            Analyze Resume
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-slate-400 hover:text-white transition p-2"
+          className="md:hidden text-slate-400 hover:text-white p-2 rounded-xl bg-slate-900 border border-slate-800"
         >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-t border-slate-800/50 overflow-hidden"
+            className="md:hidden border-t border-slate-800 bg-slate-950/95 overflow-hidden"
           >
-            <div className="px-6 py-4 space-y-1">
+            <div className="px-6 py-4 space-y-2">
               {navLinks.map(({ to, label, icon: Icon }) => (
                 <Link
                   key={to}
                   to={to}
                   onClick={() => setMobileOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition ${
+                  className={`flex items-center gap-3 px-4 py-3.5 rounded-xl text-base font-bold transition ${
                     location.pathname === to
-                      ? "bg-blue-500/10 text-blue-400"
-                      : "text-slate-400 hover:text-white hover:bg-white/5"
+                      ? "bg-blue-600 text-white"
+                      : "text-slate-300 hover:bg-slate-900"
                   }`}
                 >
-                  <Icon size={16} />
+                  <Icon size={18} />
                   {label}
                 </Link>
               ))}
@@ -116,7 +118,7 @@ function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </motion.header>
   );
 }
 
