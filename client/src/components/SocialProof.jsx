@@ -40,19 +40,17 @@ function SocialProof() {
   ];
 
   return (
-    <section className="relative py-16 border-y border-slate-800/30">
+    <section className="relative py-12 border-y border-zinc-200 bg-white/40">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Heading */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center text-sm text-slate-500 font-medium mb-8"
+          className="text-center text-xs font-bold text-zinc-400 uppercase tracking-widest mb-6"
         >
           Trusted by students and professionals worldwide
         </motion.p>
 
-        {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, i) => (
             <motion.div
@@ -63,13 +61,13 @@ function SocialProof() {
               transition={{ delay: i * 0.1 }}
               className="text-center"
             >
-              <p className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <p className="text-3xl md:text-4xl font-extrabold text-blue-600">
                 <AnimatedCounter
                   target={stat.value}
                   suffix={stat.suffix}
                 />
               </p>
-              <p className="text-sm text-slate-500 mt-1">{stat.label}</p>
+              <p className="text-xs font-semibold text-zinc-500 mt-1">{stat.label}</p>
             </motion.div>
           ))}
         </div>
@@ -79,3 +77,4 @@ function SocialProof() {
 }
 
 export default SocialProof;
+

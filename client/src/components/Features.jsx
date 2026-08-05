@@ -1,110 +1,124 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import {
   FileText,
   Sparkles,
-  Briefcase,
-  Mic,
   FileEdit,
-  GitBranch,
+  Mic,
+  Briefcase,
+  Map,
+  ArrowRight,
 } from "lucide-react";
 
-const features = [
+const featuresList = [
   {
     icon: FileText,
-    title: "ATS Resume Analysis",
+    title: "ATS Resume Analyzer",
     description:
-      "Upload your PDF and get an instant ATS compatibility score with detailed breakdowns of strengths, weaknesses, grammar, and formatting.",
-    color: "from-blue-500 to-cyan-500",
-    shadowColor: "shadow-blue-500/20",
+      "Deep semantic scanning against Fortune 500 ATS engines. Get instant keyword coverage scores and line-by-line breakdown.",
+    link: "/upload",
+    tag: "ATS Engine",
   },
   {
     icon: Sparkles,
-    title: "AI Resume Rewrite",
+    title: "Resume Builder",
     description:
-      "Let AI improve your professional summary, project descriptions, and experience bullets with one click. See before/after diffs.",
-    color: "from-purple-500 to-pink-500",
-    shadowColor: "shadow-purple-500/20",
-  },
-  {
-    icon: Briefcase,
-    title: "Job Description Matching",
-    description:
-      "Paste any job posting and see your match score, missing skills, keyword coverage, and probability of getting shortlisted.",
-    color: "from-amber-500 to-orange-500",
-    shadowColor: "shadow-amber-500/20",
-  },
-  {
-    icon: Mic,
-    title: "AI Mock Interview",
-    description:
-      "Practice interviews with voice. Select your role, answer questions using speech-to-text, and get scored on communication and technical depth.",
-    color: "from-emerald-500 to-teal-500",
-    shadowColor: "shadow-emerald-500/20",
+      "Rewrite bullet points with high-impact action verbs and quantitative metrics in a single click using AI algorithms.",
+    link: "/upload",
+    tag: "AI Architect",
   },
   {
     icon: FileEdit,
-    title: "Cover Letter Generator",
+    title: "AI Cover Letter",
     description:
-      "Generate a tailored cover letter from your resume and job description in seconds. Copy or download instantly.",
-    color: "from-rose-500 to-pink-500",
-    shadowColor: "shadow-rose-500/20",
+      "Generate hyper-personalized cover letters aligned with the exact requirements and culture of target job postings.",
+    link: "/cover-letter",
+    tag: "One-Click Writer",
   },
   {
-    icon: GitBranch,
-    title: "GitHub Analyzer",
+    icon: Mic,
+    title: "AI Voice Interview",
     description:
-      "Paste your GitHub username and get AI-powered feedback on your repos, contribution patterns, README quality, and profile strength.",
-    color: "from-slate-400 to-slate-300",
-    shadowColor: "shadow-slate-400/20",
+      "Simulate real-time voice technical and HR interview rounds with speech-to-text feedback and confidence ratings.",
+    link: "/interview",
+    tag: "Voice Simulator",
+  },
+  {
+    icon: Briefcase,
+    title: "Job Matching",
+    description:
+      "Compare your profile directly against any job description to compute shortlist probabilities and missing skill gaps.",
+    link: "/job-match",
+    tag: "Gap Matcher",
+  },
+  {
+    icon: Map,
+    title: "Career Roadmap",
+    description:
+      "Receive week-by-week skill roadmaps tailored to your career goal with curated tutorials and project milestones.",
+    link: "/roadmap",
+    tag: "Roadmap Engine",
   },
 ];
 
 function Features() {
   return (
-    <section className="relative py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="features" className="py-28 lg:py-32 relative">
+      <div className="max-w-[1400px] mx-auto px-6">
+        {/* Section Heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center max-w-3xl mx-auto mb-20"
         >
-          <span className="text-xs font-semibold text-blue-400 uppercase tracking-widest">
-            Features
+          <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block mb-4">
+            Unified Career Intelligence
           </span>
-          <h2 className="text-4xl md:text-5xl font-extrabold mt-3">
-            Everything You Need to
-            <br />
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Land Your Dream Job
-            </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[48px] font-bold text-white leading-tight tracking-tight">
+            Six Powerful AI Tools Built into One Platform
           </h2>
-          <p className="text-slate-400 mt-4 max-w-xl mx-auto text-lg">
-            Six powerful AI tools designed for job seekers. All free, all
-            running locally on your machine.
+          <p className="text-lg lg:text-[18px] text-[#94A3B8] mt-4 leading-relaxed font-normal">
+            Everything you need to optimize your resume, prepare for rigorous interviews, and accelerate your tech career.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map(({ icon: Icon, title, description, color, shadowColor }, i) => (
+        {/* 6 Premium Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {featuresList.map(({ icon: Icon, title, description, link, tag }, i) => (
             <motion.div
               key={title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
-              className="group gradient-border rounded-2xl p-6 hover:scale-[1.02] transition-all duration-300"
+              className="saas-card-interactive p-8 flex flex-col justify-between group"
             >
-              <div
-                className={`w-11 h-11 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-4 shadow-lg ${shadowColor} group-hover:scale-110 transition-transform duration-300`}
-              >
-                <Icon size={20} className="text-white" />
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="w-12 h-12 rounded-[16px] bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                    <Icon size={24} />
+                  </div>
+                  <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#1E293B] text-slate-300 border border-slate-700/80">
+                    {tag}
+                  </span>
+                </div>
+
+                <h3 className="text-xl lg:text-[24px] font-bold text-white mb-3 tracking-tight">
+                  {title}
+                </h3>
+                <p className="text-base lg:text-[18px] text-[#94A3B8] leading-relaxed font-normal mb-8">
+                  {description}
+                </p>
               </div>
 
-              <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
-                {description}
-              </p>
+              <Link
+                to={link}
+                className="inline-flex items-center gap-2 text-sm font-bold text-blue-400 group-hover:text-blue-300 transition-colors"
+              >
+                Launch Tool
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
             </motion.div>
           ))}
         </div>

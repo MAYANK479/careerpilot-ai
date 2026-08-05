@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
@@ -7,10 +7,11 @@ import {
   Upload as UploadIcon,
   FileText,
   Loader2,
-  ArrowLeft,
-  CheckCircle,
-  XCircle,
+  CheckCircle2,
+  Sparkles,
 } from "lucide-react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5002";
@@ -79,7 +80,7 @@ function Upload() {
             const pct = Math.round((e.loaded * 100) / (e.total || 1));
             setProgress(Math.min(pct, 95));
             if (pct >= 100) {
-              setStage("Analyzing with AI — this may take a moment...");
+              setStage("Analyzing with AI — computing ATS score...");
             }
           },
         }
@@ -89,14 +90,11 @@ function Upload() {
       setStage("Analysis complete!");
 
       if (typeof res.data.resumeText !== "string") {
-        throw new Error(
-          "The backend returned an unexpected response format."
-        );
+        throw new Error("Unexpected backend response format.");
       }
 
       toast.success("Resume analyzed successfully!");
 
-      // Navigate to dashboard with analysis data
       setTimeout(() => {
         navigate("/dashboard", {
           state: {
@@ -106,14 +104,14 @@ function Upload() {
             analysisAvailable: res.data.analysisAvailable,
           },
         });
-      }, 800);
+      }, 600);
     } catch (err) {
       console.error("Resume upload failed:", err);
       setProgress(0);
       setStage("");
       toast.error(
         err.response?.data?.message ||
-          "Could not connect to the server. Make sure it is running on port 5002."
+          "Could not connect to server. Ensure port 5002 is active."
       );
     } finally {
       setLoading(false);
@@ -127,56 +125,41 @@ function Upload() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#030712] text-white font-sans selection:bg-blue-500 selection:text-white">
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
+      <Navbar />
 
-      {/* Header */}
-      <nav className="flex items-center justify-between px-8 py-5">
-        <Link
-          to="/"
-          className="flex items-center gap-2 text-slate-400 hover:text-white transition"
-        >
-          <ArrowLeft size={18} />
-          <span className="text-sm font-medium">Back to Home</span>
-        </Link>
-        <h1 className="text-lg font-bold text-blue-400">AI Resume Analyzer</h1>
-      </nav>
-
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col items-center justify-center px-6 pb-20">
+      <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-16 flex flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="text-center max-w-2xl mb-12"
         >
-          <h1 className="text-5xl font-extrabold tracking-tight">
-            Upload Your{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              Resume
-            </span>
+          <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block mb-4">
+            Resume Architect
+          </span>
+          <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
+            ATS Score & Keyword Optimizer
           </h1>
-          <p className="text-slate-400 mt-4 text-lg max-w-lg mx-auto">
-            Drop your PDF resume below and let AI analyze it for ATS
-            compatibility, missing skills, and actionable improvements.
+          <p className="text-[#94A3B8] mt-4 text-base sm:text-lg leading-relaxed font-normal">
+            Upload your PDF resume to compute instant ATS match scores, missing keywords, and section improvements.
           </p>
         </motion.div>
 
-        {/* Dropzone */}
+        {/* Dropzone Card */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.4, delay: 0.15 }}
           className="w-full max-w-xl"
         >
           <div
             {...getRootProps()}
-            className={`relative cursor-pointer rounded-2xl border-2 border-dashed p-12 text-center transition-all duration-300 ${
+            className={`saas-card p-12 text-center cursor-pointer transition-all duration-300 border-2 border-dashed rounded-[24px] ${
               isDragActive
-                ? "dropzone-active border-blue-500"
+                ? "border-blue-500 bg-blue-500/10"
                 : file
-                ? "border-emerald-500/40 bg-emerald-500/5"
-                : "border-slate-700 hover:border-blue-500/50 hover:bg-blue-500/5"
+                ? "border-emerald-500 bg-emerald-500/10"
+                : "border-slate-800 hover:border-slate-700 bg-[#111827]"
             }`}
           >
             <input {...getInputProps()} />
@@ -185,129 +168,101 @@ function Upload() {
               {file ? (
                 <motion.div
                   key="file-selected"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   className="flex flex-col items-center gap-3"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                    <FileText size={28} className="text-emerald-400" />
+                  <div className="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
+                    <FileText size={28} />
                   </div>
                   <div>
-                    <p className="font-semibold text-white">{file.name}</p>
-                    <p className="text-sm text-slate-500 mt-1">
-                      {formatBytes(file.size)} · PDF
-                    </p>
+                    <p className="text-base font-bold text-white">{file.name}</p>
+                    <p className="text-xs text-[#94A3B8] mt-0.5">{formatBytes(file.size)} · PDF</p>
                   </div>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       removeFile();
                     }}
-                    className="text-xs text-slate-500 hover:text-red-400 transition mt-1"
+                    className="text-xs font-semibold text-rose-400 hover:underline mt-1"
                   >
-                    Remove file
+                    Change File
                   </button>
                 </motion.div>
               ) : (
                 <motion.div
                   key="no-file"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  className="flex flex-col items-center gap-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex flex-col items-center gap-3"
                 >
-                  <div className="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center">
-                    <UploadIcon
-                      size={32}
-                      className={`${
-                        isDragActive ? "text-blue-400" : "text-slate-500"
-                      } transition`}
-                    />
+                  <div className="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/20">
+                    <UploadIcon size={28} />
                   </div>
                   <div>
-                    <p className="text-lg font-semibold text-slate-300">
-                      {isDragActive
-                        ? "Drop your resume here"
-                        : "Drag & drop your resume"}
+                    <p className="text-base font-bold text-white">
+                      {isDragActive ? "Drop PDF here" : "Click or drag PDF resume here"}
                     </p>
-                    <p className="text-sm text-slate-500 mt-1">
-                      or click to browse · PDF only · Max 10 MB
-                    </p>
+                    <p className="text-xs text-[#94A3B8] mt-1">Accepts PDF up to 10 MB</p>
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
-          {/* Progress Bar */}
-          <AnimatePresence>
-            {loading && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                className="mt-4"
-              >
-                <div className="flex items-center justify-between text-xs text-slate-400 mb-2">
-                  <span>{stage}</span>
-                  <span>{progress}%</span>
-                </div>
-                <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${progress}%` }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {/* Progress Indicator */}
+          {loading && (
+            <div className="mt-6">
+              <div className="flex justify-between text-xs font-bold text-[#94A3B8] mb-2">
+                <span>{stage}</span>
+                <span>{progress}%</span>
+              </div>
+              <div className="w-full h-2 rounded-full bg-[#1E293B] overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-blue-500 transition-all duration-300"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+            </div>
+          )}
 
-          {/* Analyze Button */}
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+          <button
             onClick={handleUpload}
             disabled={!file || loading}
-            className="mt-6 w-full py-4 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2"
+            className="mt-8 w-full py-4 rounded-full font-bold text-base bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-600/30 flex items-center justify-center gap-2 disabled:opacity-40 transition-all"
           >
             {loading ? (
               <>
                 <Loader2 size={20} className="animate-spin" />
-                Analyzing...
+                Analyzing Resume...
               </>
             ) : (
               <>
-                <UploadIcon size={20} />
-                Analyze Resume
+                <Sparkles size={20} />
+                Analyze Resume Now
               </>
             )}
-          </motion.button>
+          </button>
         </motion.div>
 
-        {/* Status Icons */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="mt-12 flex items-center gap-8 text-sm text-slate-500"
-        >
+        {/* Feature Badges */}
+        <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm font-semibold text-[#94A3B8]">
           <div className="flex items-center gap-2">
-            <CheckCircle size={16} className="text-emerald-500" />
-            <span>100% Private</span>
+            <CheckCircle2 size={16} className="text-emerald-400" />
+            <span>Instant ATS Match</span>
           </div>
           <div className="flex items-center gap-2">
-            <CheckCircle size={16} className="text-emerald-500" />
-            <span>Local AI</span>
+            <CheckCircle2 size={16} className="text-emerald-400" />
+            <span>Keyword Gap Analysis</span>
           </div>
           <div className="flex items-center gap-2">
-            <CheckCircle size={16} className="text-emerald-500" />
-            <span>No API Key</span>
+            <CheckCircle2 size={16} className="text-emerald-400" />
+            <span>AI Bullet Rewriter</span>
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }

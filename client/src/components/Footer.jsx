@@ -3,56 +3,68 @@ import { Compass } from "lucide-react";
 
 const footerLinks = [
   {
-    title: "Product",
+    title: "Platform Tools",
     links: [
       { label: "Resume Analyzer", to: "/upload" },
-      { label: "Job Match", to: "/job-match" },
-      { label: "Cover Letter", to: "/cover-letter" },
-      { label: "AI Interview", to: "/interview" },
+      { label: "AI Voice Mock Interview", to: "/interview" },
+      { label: "Job Description Matcher", to: "/job-match" },
+      { label: "Career Skill Roadmaps", to: "/roadmap" },
+      { label: "Portfolio Project Builder", to: "/portfolio" },
+      { label: "AI Cover Letter Generator", to: "/cover-letter" },
     ],
   },
   {
-    title: "Resources",
+    title: "Resources & SaaS",
     links: [
-      { label: "Dashboard", to: "/dashboard" },
-      { label: "GitHub Analyzer", to: "/github-analyzer" },
+      { label: "Candidate Dashboard", to: "/dashboard" },
+      { label: "ATS Optimization Guide", to: "/upload" },
+      { label: "Interview Questions Library", to: "/interview" },
+      { label: "System Architecture Blueprints", to: "/portfolio" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { label: "About CareerPilot AI", to: "/" },
+      { label: "Privacy Policy", to: "/" },
+      { label: "Terms of Service", to: "/" },
+      { label: "Status & Uptime", to: "/" },
     ],
   },
 ];
 
 function Footer() {
   return (
-    <footer className="border-t border-slate-800/50">
-      <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <Link to="/" className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
-                <Compass size={16} className="text-white" />
+    <footer className="border-t border-slate-800/80 bg-[#030712]">
+      <div className="max-w-[1400px] mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-16">
+          {/* Brand Column (2 cols) */}
+          <div className="md:col-span-2 space-y-4">
+            <Link to="/" className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-blue-400 flex items-center justify-center text-white shadow-lg shadow-blue-500/20">
+                <Compass size={22} className="stroke-[2.2]" />
               </div>
-              <span className="text-base font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                CareerPilot AI
+              <span className="text-xl font-bold tracking-tight text-white">
+                CareerPilot <span className="text-blue-500">AI</span>
               </span>
             </Link>
-            <p className="text-sm text-slate-500 max-w-xs leading-relaxed">
-              Your AI-powered career co-pilot. Analyze resumes, practice
-              interviews, and land your dream job — all for free.
+            <p className="text-base text-[#94A3B8] max-w-sm leading-relaxed font-normal">
+              The next-generation AI career development platform for engineers and job seekers. Optimize resumes, practice voice interviews, and land top tech roles.
             </p>
           </div>
 
-          {/* Link columns */}
+          {/* Link Columns (3 cols) */}
           {footerLinks.map((group) => (
             <div key={group.title}>
-              <h4 className="text-sm font-semibold text-white mb-4">
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
                 {group.title}
               </h4>
-              <ul className="space-y-2.5">
-                {group.links.map((link) => (
-                  <li key={link.to}>
+              <ul className="space-y-3">
+                {group.links.map((link, i) => (
+                  <li key={i}>
                     <Link
                       to={link.to}
-                      className="text-sm text-slate-500 hover:text-slate-300 transition"
+                      className="text-sm font-semibold text-[#94A3B8] hover:text-white transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -63,14 +75,13 @@ function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-10 pt-6 border-t border-slate-800/50 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-slate-600">
-            © {new Date().getFullYear()} CareerPilot AI. Built with React +
-            Node.js + Ollama
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-[#94A3B8] font-medium">
+            © {new Date().getFullYear()} CareerPilot AI Inc. All rights reserved.
           </p>
-          <p className="text-xs text-slate-600">
-            100% Free · Open Source · Runs Locally
+          <p className="text-xs text-[#94A3B8] font-medium">
+            Engineered with React + Tailwind + Node.js
           </p>
         </div>
       </div>

@@ -5,6 +5,8 @@ import Dashboard from "./pages/Dashboard";
 import JobMatch from "./pages/JobMatch";
 import CoverLetter from "./pages/CoverLetter";
 import Interview from "./pages/Interview";
+import Roadmap from "./pages/Roadmap";
+import Portfolio from "./pages/Portfolio";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Route path="/job-match" element={<JobMatch />} />
       <Route path="/cover-letter" element={<CoverLetter />} />
       <Route path="/interview" element={<Interview />} />
+      <Route path="/roadmap" element={<Roadmap />} />
+      <Route path="/portfolio" element={<Portfolio />} />
     </Routes>
   );
 }

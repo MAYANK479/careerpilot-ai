@@ -1,0 +1,2873 @@
+)for(const c of l.addedNodes)c.tagName===
+&&c.rel===
+use-credentials
+include
+anonymous
+:l.credentials=
+react.transitional.element
+react.fragment
++l),a.key!==void 0&&(c=
++a.key),
+object
+function
+number
+?args[]=
+&args[]=
+Minified React error #
+react.element
+react.portal
+react.strict_mode
+react.profiler
+react.consumer
+react.context
+react.forward_ref
+react.suspense
+react.suspense_list
+react.memo
+react.lazy
+react.activity
+react.memo_cache_sentinel
+@@iterator
+react.client.reference
+string
+Fragment
+Profiler
+StrictMode
+Suspense
+SuspenseList
+Activity
+Portal
+Context
+.Consumer
+,e=e!==
+ForwardRef(
+ForwardRef
+ (<anonymous>)
+@unknown:0:0
+props
+DetermineComponentFrameRoot
+,{value:
+ at new 
+)&&(Y=Y.replace(
+)?Ft(o):
+):Ft(
+}}function yn(e){try{var r=
+__reactFiber$
+__reactProps$
+__reactContainer$
+__reactEvents$
+__reactListeners$
+__reactHandles$
+__reactResources$
+__reactMarker$
+Capture
+undefined
+symbol
+boolean
+data-
+aria-
++u)}}function cr(e){switch(typeof e){case
+:case
+&&(r===
+||r===
+&&typeof u.get==
+&&typeof u.set==
+checked
+value
+false
+?document:void 0),typeof e>
++r.charCodeAt(0).toString(16)+
+})}function io(e,r,o,u,d,h,S,C){e.name=
+,S!=null&&typeof S!=
+&&typeof S!=
+?e.type=S:e.removeAttribute(
+),r!=null?S===
+?(r===0&&e.value===
+||e.value!=r)&&(e.value=
++cr(r)):e.value!==
++cr(r)&&(e.value=
++cr(r)):S!==
+&&S!==
+||e.removeAttribute(
+),r!=null?Ja(e,S,cr(r)):o!=null?Ja(e,S,cr(o)):u!=null&&e.removeAttribute(
+),d==null&&h!=null&&(e.defaultChecked=!!h),d!=null&&(e.checked=d&&typeof d!=
+&&typeof d!=
+),C!=null&&typeof C!=
+&&typeof C!=
+?e.name=
++cr(C):e.removeAttribute(
+)}function Bl(e,r,o,u,d,h,S,C){if(h!=null&&typeof h!=
+&&typeof h!=
+&&(e.type=h),r!=null||o!=null){if(!(h!==
+&&h!==
++cr(o):
+,r=r!=null?
++cr(r):o,C||r===e.value||(e.value=r),e.defaultValue=r}u=u??d,u=typeof u!=
+&&typeof u!=
+&&!!u,e.checked=C?e.checked:!!u,e.defaultChecked=!!u,S!=null&&typeof S!=
+&&(e.name=S),ro(e)}function Ja(e,r,o){r===
+&&Xa(e.ownerDocument)===e||e.defaultValue===
++o||(e.defaultValue=
+),r=o}o=cr(r),e.defaultValue=o,u=e.textContent,u===o&&u!==
+.split(
+||o===
+?u?e.setProperty(r,
+):r===
+?e.cssFloat=
+:e[r]=
+:u?e.setProperty(r,o):typeof o!=
+||o===0||Rf.has(r)?r===
+?e.cssFloat=o:e[r]=(
++o).trim():e[r]=o+
+}function ql(e,r,o){if(r!=null&&typeof r!=
+)===0?e.setProperty(u,
+):u===
+:e[u]=
+accept-charset
+htmlFor
+crossOrigin
+crossorigin
+accentHeight
+accent-height
+alignmentBaseline
+alignment-baseline
+arabicForm
+arabic-form
+baselineShift
+baseline-shift
+capHeight
+cap-height
+clipPath
+clip-path
+clipRule
+clip-rule
+colorInterpolation
+color-interpolation
+colorInterpolationFilters
+color-interpolation-filters
+colorProfile
+color-profile
+colorRendering
+color-rendering
+dominantBaseline
+dominant-baseline
+enableBackground
+enable-background
+fillOpacity
+fill-opacity
+fillRule
+fill-rule
+floodColor
+flood-color
+floodOpacity
+flood-opacity
+fontFamily
+font-family
+fontSize
+font-size
+fontSizeAdjust
+font-size-adjust
+fontStretch
+font-stretch
+fontStyle
+font-style
+fontVariant
+font-variant
+fontWeight
+font-weight
+glyphName
+glyph-name
+glyphOrientationHorizontal
+glyph-orientation-horizontal
+glyphOrientationVertical
+glyph-orientation-vertical
+horizAdvX
+horiz-adv-x
+horizOriginX
+horiz-origin-x
+imageRendering
+image-rendering
+letterSpacing
+letter-spacing
+lightingColor
+lighting-color
+markerEnd
+marker-end
+markerMid
+marker-mid
+markerStart
+marker-start
+overlinePosition
+overline-position
+overlineThickness
+overline-thickness
+paintOrder
+paint-order
+panose-1
+pointerEvents
+pointer-events
+renderingIntent
+rendering-intent
+shapeRendering
+shape-rendering
+stopColor
+stop-color
+stopOpacity
+stop-opacity
+strikethroughPosition
+strikethrough-position
+strikethroughThickness
+strikethrough-thickness
+strokeDasharray
+stroke-dasharray
+strokeDashoffset
+stroke-dashoffset
+strokeLinecap
+stroke-linecap
+strokeLinejoin
+stroke-linejoin
+strokeMiterlimit
+stroke-miterlimit
+strokeOpacity
+stroke-opacity
+strokeWidth
+stroke-width
+textAnchor
+text-anchor
+textDecoration
+text-decoration
+textRendering
+text-rendering
+transformOrigin
+transform-origin
+underlinePosition
+underline-position
+underlineThickness
+underline-thickness
+unicodeBidi
+unicode-bidi
+unicodeRange
+unicode-range
+unitsPerEm
+units-per-em
+vAlphabetic
+v-alphabetic
+vHanging
+v-hanging
+vIdeographic
+v-ideographic
+vMathematical
+v-mathematical
+vectorEffect
+vector-effect
+vertAdvY
+vert-adv-y
+vertOriginX
+vert-origin-x
+vertOriginY
+vert-origin-y
+wordSpacing
+word-spacing
+writingMode
+writing-mode
+xmlnsXlink
+xmlns:xlink
+xHeight
+x-height
+input
+radio
+'+yr(
++r)+'
+textarea
+select
+onClick
+onClickCapture
+onDoubleClick
+onDoubleClickCapture
+onMouseDown
+onMouseDownCapture
+onMouseMove
+onMouseMoveCapture
+onMouseUp
+onMouseUpCapture
+onMouseEnter
+button
+||typeof window.document>
+||typeof window.document.createElement>
+,{get:function(){Qa=!0}}),window.addEventListener(
+,so,so),window.removeEventListener(
+charCode
+unknown
+movementX
+mousemove
+movementY
+clipboardData
+Escape
+,Left:
+ArrowUp
+ArrowRight
+ArrowDown
+Delete
+,Menu:
+,Apps:
+,Scroll:
+,MozPrintableKey:
+},zw={8:
+Clear
+Enter
+Shift
+Control
+Pause
+CapsLock
+PageUp
+PageDown
+ArrowLeft
+Insert
+,113:
+,114:
+,115:
+,116:
+,117:
+,118:
+,119:
+,120:
+,121:
+,122:
+,123:
+,144:
+,145:
+,224:
+},jw={Alt:
+,Control:
+,Meta:
+,Shift:
+Unidentified
+keypress
+keydown
+keyup
+deltaX
+wheelDeltaX
+deltaY
+wheelDeltaY
+wheelDelta
+CompositionEvent
+documentMode
+TextEvent
+compositionend
+paste
+onChange
+change
+oninput
+onpropertychange
+focusin
+focusout
+selectionchange
+click
+contains
+||e.type===
+)||r===
+||e.contentEditable===
+)}var s1=fr&&
+selectionStart
+onSelect
+Webkit
+webkit
++r,o}var es={animationend:ba(
+AnimationEnd
+Animation
+AnimationIteration
+AnimationStart
+Transition
+TransitionRun
+TransitionStart
+TransitionCancel
+TransitionEnd
+).style,
+TransitionEvent
+animationend
+animationiteration
+animationstart
+transitionrun
+transitionstart
+transitioncancel
+transitionend
+?reportError:function(e){if(typeof window==
+&&typeof window.ErrorEvent==
+){var r=new window.ErrorEvent(
+,{bubbles:!0,cancelable:!0,message:typeof e==
+&&e!==null&&typeof e.message==
+uncaughtException
+||e===
+:typeof e,
+dialog
+cancel
+close
+iframe
+embed
+error
+toggle
+invalid
+bigint
++o||u.suppressHydrationWarning===!0||Jy(r.textContent,o)?(u.popover!=null&&(je(
+,r),je(
+,r)),u.onScroll!=null&&je(
+,r),u.onScrollEnd!=null&&je(
+&&o!==
+pending
+fulfilled
+rejected
+[object Object]
+object with keys {
+||typeof k==
+)return k=Xf(
+||typeof U==
+)return Se!==null?null:C(D,k,
+||typeof X==
+)return D=D.get(U)||null,C(k,D,
+forwards
+backwards
+unstable_legacy-backwards
+together
+||h===
+?d:null}if(d){ht=Xr(d.nextSibling),u=d.data===
++o,o=fu++,0<o&&(r+=
++o.toString(32)),r+=
+}else o=g1++,r=
++o.toString(32)+
+})})}function C1(e,r,o,u,d){if(o.flags|=32768,u!==null&&typeof u==
+&&typeof u.then==
+hidden
+visible
+stylesheet
+collapsed
+:h=S.createElementNS(
+:h=S.createElement(
+),h.innerHTML=
+:h=typeof u.is==
+?S.createElement(
+,{is:u.is}):S.createElement(
+title
+itemprop
+head > title
+:var S=db(
+,d).get(u+(o.href||
+)===(o.href==null||o.href===
+?null:o.href)&&h.getAttribute(
+)===(o.rel==null?null:o.rel)&&h.getAttribute(
+)===(o.title==null?null:o.title)&&h.getAttribute(
+:if(S=db(
+content
+)===(o.content==null?null:
++o.content)&&h.getAttribute(
+)===(o.name==null?null:o.name)&&h.getAttribute(
+)===(o.property==null?null:o.property)&&h.getAttribute(
+display
+important
+mount
+update
+Throttled
++e)}function Hy(e,r){var o=r.ownerDocument.createElement(
+submit
+formAction
+action
++F1)}cn(_g,
+),cn(xg,
+),cn(wg,
+),cn(
+onFocus
+onBlur
+onTransitionRun
+onTransitionStart
+onTransitionCancel
+onTransitionEnd
+mouseout
+mouseover
+onMouseLeave
+onPointerEnter
+pointerout
+pointerover
+onPointerLeave
+change click focusin focusout input keydown keyup selectionchange
+)),on(
+textInput
+onCompositionEnd
+compositionend focusout keydown keypress keyup mousedown
+compositionstart focusout keydown keypress keyup mousedown
+compositionupdate focusout keydown keypress keyup mousedown
+),V1=new Set(
+__bubble
+_reactListening
+touchstart
+touchmove
+wheel
+focus
+:F=Xw}var xe=(r&4)!==0,ot=!xe&&(e===
+),D=xe?$!==null?$+
+mouse
+pointer
+leave
+enter
+checkbox
+:var Ge=
+compositionupdate
+onCompositionUpdate
+onCompositionStart
+&&(Za||Ge!==
+?Ge===
+&&Za&&(ke=Zm()):(Ai=Y,If=
+onBeforeInput
+beforeinput
+children
+&&u===
+||Ei(e,u):(typeof u==
+||typeof u==
+)&&r!==
+&&Ei(e,
+:wi(e,
+:if(r!==
+){wi(e,
+:if(u===
+&&(r!==
+||o!==
+:if(typeof u==
+){e.setAttribute(o,
+&&(o===
+?(r!==
+&&st(e,r,
+,d.name,d,null),st(e,r,
+,d.formEncType,d,null),st(e,r,
+,d.formMethod,d,null),st(e,r,
+,d.formTarget,d,null)):(st(e,r,
+,d.encType,d,null),st(e,r,
+,d.method,d,null),st(e,r,
+:u!=null&&je(
+:if(u!=null){if(typeof u!=
+__html
+multiple
+muted
+suppressContentEditableWarning
+suppressHydrationWarning
+defaultValue
+defaultChecked
+innerHTML
+:if(u==null||typeof u==
+){e.removeAttribute(
++u),e.setAttributeNS(
+xlink:href
+contentEditable
+spellCheck
+draggable
+autoReverse
+externalResourcesRequired
+focusable
+preserveAlpha
+:u&&typeof u!=
+?e.setAttribute(o,
+:u===!0?e.setAttribute(o,
+):u!==!1&&u!=null&&typeof u!=
+:u!=null&&typeof u!=
+:u==null||typeof u==
+beforetoggle
+popover
+xlinkActuate
+xlink:actuate
+xlinkArcrole
+xlink:arcrole
+xlinkRole
+xlink:role
+xlinkShow
+xlink:show
+xlinkTitle
+xlink:title
+xlinkType
+xlink:type
+xmlBase
+xml:base
+xmlLang
+xml:lang
+xmlSpace
+xml:space
+:Cn(e,
+&&o[0]!==
+||o[1]!==
+&&o[1]!==
+)&&(o=kf.get(o)||o,Cn(e,o,u))}}function hh(e,r,o,u,d,h){switch(o){case
+&&o[1]===
+&&(d=o.endsWith(
+),r=o.slice(2,d?o.length-7:void 0),h=e[nr]||null,h=h!=null?h[o]:null,typeof h==
+&&e.removeEventListener(r,h,d),typeof u==
+)){typeof h!=
+):Cn(e,o,u)}}}function Zt(e,r,o){switch(r){case
+,o.srcSet,o,null),u&&st(e,r,
+dangerouslySetInnerHTML
+option
+selected
+source
+:for(B in o)if(o.hasOwnProperty(B)&&(u=o[B],u!=null))switch(B){case
+resource
+?0:e}function gh(e,r){return e===
+||typeof r.children==
+||typeof r.dangerouslySetInnerHTML==
+popstate
+SCRIPT
+STYLE
+&&h.rel.toLowerCase()===
+||o.removeChild(h),h=S}}else o===
+):(o.style.display=o._stashedDisplay||
+,o.getAttribute(
+&&o.removeAttribute(
+)):o.nodeType===3&&(r?(o._stashedText=o.nodeValue,o.nodeValue=
+):o.nodeValue=o._stashedText||
+),u&&u.nodeType===8)if(o=u.data,o===
+:if(o.rel.toLowerCase()===
+INPUT
+:if(!e.hasAttribute(
+:if(h=e.getAttribute(
+),h===
+&&e.hasAttribute(
+)!==(d.href==null||d.href===
+?null:d.href)||e.getAttribute(
+)!==(d.crossOrigin==null?null:d.crossOrigin)||e.getAttribute(
+:if(e.hasAttribute(
+),(h!==(d.src==null?null:d.src)||e.getAttribute(
+)!==(d.type==null?null:d.type)||e.getAttribute(
+)!==(d.crossOrigin==null?null:d.crossOrigin))&&h&&e.hasAttribute(
+)&&!e.hasAttribute(
+&&e.type===
+){var h=d.name==null?null:
+&&e.getAttribute(
+||e.type!==
+||e.data===
+}function Sh(e){return e.data===
+&&e.ownerDocument.readyState!==
+||o.readyState!==
+||r++}e=e.previousSibling}return null}function sb(e,r,o){switch(r=Lu(o),e){case
+?Cv(r):ni.r(e)}var ws=typeof document>
+][href=
+]',typeof o==
+&&(d+='[crossorigin=
+),Zt(r,
+,e),Dt(r),u.head.appendChild(r)))}}function oC(e){ni.D(e),lb(
+,e,null)}function lC(e,r){ni.C(e,r),lb(
+][as=
+&&o&&o.imageSrcSet?(d+='[imagesrcset=
+]',typeof o.imageSizes==
+&&(d+='[imagesizes=
+]')):d+='[href=
+:h=Es(e)}Jr.has(h)||(e=g({rel:
+,href:r===
+&&o&&o.imageSrcSet?void 0:e,as:r},o),Jr.set(h,e),u.querySelector(d)!==null||r===
+&&u.querySelector(Go(h))||r===
+&&u.querySelector(qo(h))||(r=u.createElement(
+script
+modulepreload
+'+yr(u)+'
+'+yr(e)+'
+audioworklet
+paintworklet
+serviceworker
+sharedworker
+worker
+),Zt(u,
+default
+data-precedence
+,e),T._p=new Promise(function(B,Y){T.onload=B,T.onerror=Y}),T.addEventListener(
+,function(){C.loading|=1}),T.addEventListener(
+,function(){C.loading|=2}),C.loading|=4,Bu(S,r,u)}S={type:
+,e),o.head.appendChild(h)),h={type:
+module
+:return typeof o.precedence==
+&&typeof o.href==
+?(r=Cs(o.href),o=xi(d).hoistableStyles,u=o.get(r),u||(u={type:
+,instance:null,count:0,state:null},o.set(r,u)),u):{type:
+:if(o.rel===
+&&typeof o.precedence==
+preload
+style
+:return r=o.async,o=o.src,typeof o==
+&&r&&typeof r!=
+&&typeof r!=
+?(r=Es(o),o=xi(d).hoistableScripts,u=o.get(r),u||(u={type:
+}function cb(e){return g({},e,{
+:e.precedence,precedence:null})}function pC(e,r,o,u){e.querySelector('link[rel=
+]['+r+
+)?u.loading=1:(r=e.createElement(
+),u.preload=r,r.addEventListener(
+,function(){return u.loading|=1}),r.addEventListener(
+,function(){return u.loading|=2}),Zt(r,
+,o),Dt(r),e.head.appendChild(r))}function Es(e){return'[src=
+]'}function qo(e){return
++e}function fb(e,r,o){if(r.count++,r.instance===null)switch(r.type){case
+:var u=e.querySelector('style[data-href~=
+:o.href,
+&&h.getAttribute(
+:if(typeof r.precedence!=
+||typeof r.href!=
+||r.href===
+:if(typeof r.rel!=
+:return e=r.disabled,typeof r.precedence==
+:if(r.async&&typeof r.async!=
+&&typeof r.async!=
+&&!r.onLoad&&!r.onError&&r.src&&typeof r.src==
+)return!0}return!1}function pb(e){return!(e.type===
+&&(e.state.loading&3)===0)}function gC(e,r,o,u){if(o.type===
+&&(typeof u.media!=
+,o),r.addEventListener(
+link[data-precedence],style[data-precedence]
+||S.getAttribute(
+not all
+,u),d.addEventListener(
+contextmenu
+dragenter
+gotpointercapture
+react-transition
+manual
+replace
+navigate
+navigatesuccess
+navigateerror
+19.2.3
+react-dom
+||typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE!=
+),p=f?.nonce||f?.getAttribute(
+),g=v?'[rel=
+:_E,v||(b.as=
+),b.crossOrigin=
+,b.href=m,p&&b.setAttribute(
+,w),b.addEventListener(
+vite:preloadError
+smooth
+Software Engineer
+How does the AI analyze my resume?
+},{q:
+,{className:
+,children:[n&&y.jsxs(
+,children:[y.jsx(
+}),y.jsx(
+,children:
+})]}),y.jsx(
+}),y.jsxs(
+,children:y.jsxs(
+,children:[y.jsxs(
+,{href:
+,className:
+,children:y.jsx(
+,{src:
+,alt:
+})}),y.jsx(
+,children:[
+How it works
+].map(j=>y.jsx(
+)),className:
+,children:j},j))}),y.jsxs(
+,{onClick:i,className:
+,{onClick:t,className:
+,{onClick:()=>l(!a),className:
+,children:a?y.jsx(Nl,{className:
+}):y.jsx(AS,{className:
+})})]})}),a&&y.jsxs(
+})]})]})]}),y.jsx(
+})]}),y.jsxs(
+,y.jsx(
+,{}),y.jsx(
+,{type:
+,value:p,onChange:j=>m(j.target.value),placeholder:
+border-[#e3e1dc] hover:border-zinc-450 bg-white hover:bg-zinc-50
+,ref:b,onChange:x,accept:
+}),y.jsx(IC,{className:`w-6 h-6 mx-auto mb-2 transition-all ${v?
+text-zinc-400 group-hover:-translate-y-0.5
+,children:v?
+Drag & drop your resume PDF here
+})]})]}),y.jsx(
+,{children:[y.jsx(
+})}),y.jsxs(
+})]})]}),y.jsxs(
+TypeScript
+Tailwind
+Redux
+System Design
+,{className:`text-[10px] font-medium px-2 py-0.5 border rounded-full ${P===4?
+bg-white text-zinc-700 border-[#e3e1dc] shadow-sm
+,P===4&&
+]},j))})]})]})]})})]})}),
+,{id:
+,children:y.jsx(kc,{className:
+,{children:'Change 
+,{children:'Mention concrete metrics: e.g. 
+'})]})]})]})]}),y.jsxs(
+,children:y.jsx(MC,{className:
+,children:[1,2,3,4,3,2,1,2,3,4,5,3,1].map((j,P)=>y.jsx(
+,style:{height:`${j*4}px`}},P))}),y.jsx(
+,children:y.jsx(DC,{className:
+,children:y.jsx(Ic,{className:
+})]})})]})]})]})}),y.jsx(
+,children:[{step:
+,title:
+,desc:
+,icon:y.jsx(kc,{className:
+})},{step:
+,icon:y.jsx(Ic,{className:
+,icon:y.jsx(fp,{className:
+})}].map((j,P)=>y.jsxs(
+,children:j.icon}),y.jsxs(
+,j.step]}),y.jsx(
+,children:j.title}),y.jsx(
+,children:j.desc}),P<2&&y.jsx(
+,children:y.jsx(Ob,{className:
+})})]},P))})]})}),y.jsx(
+,{onClick:()=>f(W?null:P),className:
+,{children:j.q}),W?y.jsx(zC,{className:
+}):y.jsx(Ob,{className:
+})]}),W&&y.jsx(
+,children:j.a})]},P)})})]})}),y.jsx(
+,y.jsx(jC,{className:
+})]})]})}),y.jsx(
+,target:
+,rel:
+,children:y.jsx(LC,{className:
+,children:y.jsx(NS,{className:
+,children:y.jsx(OS,{className:
+})})]})]}),y.jsxs(
+Learning Plans
+Mock Interviews
+,{children:y.jsx(
+,children:j})},j))})]}),y.jsxs(
+Terms of Service
+,children:j})},j))})]})]}),y.jsxs(
+,new Date().getFullYear(),
+]}),y.jsxs(
+,children:[y.jsx(TS,{className:
+})]})]})]})})]})},wc=
+,CE=wc.trim()!==
+&&wc!==
+&&!wc.includes(
+),EE={apiKey:wc,authDomain:
+,projectId:
+,storageBucket:
+,messagingSenderId:
+,appId:
+,measurementId:
+Firebase initialization skipped (invalid or missing keys):
+cp_users_v2
+cp_data_v2_
+At least 8 characters
+At least one number
+Password reset link sent to your email.
+,localStorage.setItem(Jo,JSON.stringify(i)),{success:!0,message:
+}):{success:!1,message:
+)[0],targetRole:
+}:s?{success:!1,message:s}:{success:!1,message:
+,targetRole:
+Auth not initialized
+users
+),[m,v]=re.useState(
+),[g,b]=re.useState(
+),[w,x]=re.useState(
+),s()},R=async P=>{if(P.preventDefault(),x(
+),!f.trim()){x(
++W.join(
+Login failed.
+An unexpected error occurred. Check console for details.
+Google Login failed.
+An unexpected error occurred during Google Login.
+Please enter your email address to reset password.
+,{onClick:N,className:
+,children:y.jsx(Nl,{className:
+,children:l===
+Welcome Back
+Save Your Analysis
+Create Account
+Enter your credentials to access your career roadmap.
+Join CareerPilot to start tracking your readiness score.
+,{onSubmit:R,className:
+)},onBlur:()=>{f.trim()&&!ft.isValidEmail(f)?b(
+border-red-400
+you@example.com
+,children:g})]}),y.jsxs(
+,children:[y.jsx(UC,{className:
+,required:!0,value:m,onChange:P=>v(P.target.value),className:
+,placeholder:
+})]}),l===
+&&y.jsxs(
+,{className:m.length>=8?
+text-zinc-400 font-light
+• Minimum 8 characters
+• At least one number (0-9)
+text-zinc-800 font-medium
+• At least one special character (!@#...)
+login
+,onClick:j,className:
+})})]}),w&&y.jsxs(
+,children:[y.jsx(RS,{className:
+,{children:w})]}),y.jsx(
+,disabled:A,className:
+,children:A?y.jsxs(y.Fragment,{children:[y.jsx(Ms,{className:
+Signing In...
+Creating Account...
+w-3.5 h-3.5
+Sign In
+})})]}),y.jsxs(
+,onClick:M,className:
+,viewBox:
+,fill:
+,{onClick:()=>{c(l===
+signup
+)},className:
+Don't have an account? Sign up
+Already have an account? Log in
+Score
+#18181b
+#3f3f46
+#71717a
+Excellent
+:t>=40?
+Needs Work
+,children:[y.jsx(aE,{width:
+,height:
+,children:y.jsxs(sE,{cx:
+,innerRadius:
+,outerRadius:
+,barSize:12,data:i,startAngle:180,endAngle:0,children:[y.jsx(oE,{type:
+,domain:[0,100],angleAxisId:0,tick:!1}),y.jsx(lE,{background:{fill:
+},dataKey:
+,cornerRadius:6})]})}),y.jsxs(
+,children:[t,
+]}),y.jsx(
+,children:s()})]})]})},Pb=({skill:t})=>{const i=t.status===
+bg-[#fcfcfa] text-zinc-800 border-[#e3e1dc] shadow-sm
+bg-transparent text-zinc-500 border-dashed border-[#e3e1dc]
+w-3 h-3 text-zinc-500
+w-3 h-3 text-zinc-300
+acquired
+,{children:[y.jsxs(
+,i.name]}),y.jsxs(
+,children:[i.experienceLevel||
+ Track • Here's your career readiness overview
+,{onClick:a,className:
+,children:[y.jsx(qC,{className:
+Share Report
+,style:{animationDelay:
+},children:[y.jsxs(
+,children:[y.jsx(Mc,{className:
+,children:i.targetRole}),y.jsxs(
+,i.targetCompanies||
+]})]}),y.jsxs(
+,children:[y.jsx($C,{className:
+,children:m}),y.jsxs(
+ Acquired
+,style:{width:`${v}%`}})})]}),y.jsxs(
+,children:[y.jsx(Tb,{className:
+,children:[t.readinessScore,
+,children:t.readinessScore>=80?
+:t.readinessScore>=60?
+Developing
+,children:[y.jsx(kS,{className:
+,children:[i.streak||1,
+]})}),y.jsxs(
+,children:[i.xp||150,
+]})]})]}),y.jsxs(
+,children:[y.jsx(Rb,{className:
+Core Capabilities
+,children:[t.strengths?.slice(0,4).map((g,b)=>y.jsxs(
+,children:y.jsx(lm,{className:
+,children:g})]},b)),(!t.strengths||t.strengths.length===0)&&y.jsxs(
+})]})]})]}),y.jsxs(
+,children:[y.jsx(fp,{className:
+Critical Skill Gaps
+,children:[t.weaknesses?.slice(0,4).map((g,b)=>y.jsxs(
+,children:g})]},b)),(!t.weaknesses||t.weaknesses.length===0)&&y.jsxs(
+Role Compatibility
+,children:y.jsx(US,{score:t.readinessScore})})]}),y.jsxs(
+},children:[y.jsx(
+,y.jsxs(
+,t.skills?.filter(g=>g.status===
+).length||0,
+,children:[(t.skills||[]).filter(g=>g.status===
+).map(g=>y.jsx(Pb,{skill:g},g.name)),(t.skills||[]).filter(g=>g.status===
+).length===0&&y.jsx(
+})]})]})]})]}),f&&f.length>0&&y.jsxs(
+Local NLP Career Matching Engine
+,children:f.slice(0,4).map((g,b)=>y.jsxs(
+,children:g.title}),y.jsxs(
+,children:[g.match_score,
+]})]}),y.jsx(
+,children:g.description}),y.jsx(
+,style:{width:`${g.match_score}%`}})}),y.jsxs(
+,children:[g.matched_skills?.length>0&&y.jsxs(
+,children:g.matched_skills.map(w=>y.jsx(
+,children:w},w))})]}),g.missing_skills?.length>0&&y.jsxs(
+,children:g.missing_skills.map(w=>y.jsx(
+,t.ONBOARDING=
+,t.DASHBOARD=
+,t.PLAN=
+,t.INTERVIEW=
+,t.PROJECTS=
+,t.RESUME=
+,t.JOBS=
+Dashboard
+Learning Plan
+Build Portfolio
+Resume Architect
+Interview Prep
+Job Board
+})}),c.map(f=>y.jsxs(
+bg-white text-zinc-900 font-bold border border-[#e3e1dc] shadow-sm
+text-zinc-900
+text-zinc-400 group-hover:text-zinc-650
+,children:f.label})]},f.id))]}),y.jsxs(
+,{onClick:n,className:
+,children:y.jsx(DS,{className:
+,{onClick:l,className:
+,children:[y.jsx(Dc,{className:
+,{onClick:s,className:
+,children:[y.jsx(zS,{className:
+,children:[y.jsx(jS,{className:
+},{id:se.PROJECTS,icon:MS,label:
+},{id:se.RESUME,icon:kc,label:
+},{id:se.INTERVIEW,icon:Dc,label:
+},{id:se.JOBS,icon:Mc,label:
+,children:[m.map(w=>y.jsxs(
+,{onClick:()=>v(w.id),className:
+text-zinc-900 scale-105
+text-zinc-400 group-hover:text-zinc-600
+text-zinc-900 opacity-100 font-bold
+text-zinc-500 opacity-80
+})]},w.id)),y.jsxs(
+,{onClick:g,className:
+})]})]})}),f&&y.jsx(
+,onClick:()=>p(!1)}),y.jsxs(
+translate-y-0
+translate-y-full
+,{onClick:()=>p(!1),className:
+aria-label
+Close Menu
+w-5 h-5
+,{onClick:()=>{c(),p(!1)},className:
+,children:y.jsx(HC,{className:
+,{onClick:()=>{n(),p(!1)},className:
+,{onClick:()=>{l(),p(!1)},className:
+,children:y.jsx(Dc,{className:
+,{onClick:()=>{s(),p(!1)},className:
+,children:y.jsx(zS,{className:
+,{onClick:()=>{a(),p(!1)},className:
+,children:y.jsx(jS,{className:
+,children:y.jsx(RS,{className:
+,{onClick:i,disabled:n,className:
+Learning Plan & Progress
+Resume Data & Analysis
+Interview History & Feedback
+,children:c})]},f))})]}),y.jsx(
+})]})]})})]}),y.jsxs(
+,{onClick:l,disabled:n,className:
+,children:n?y.jsxs(y.Fragment,{children:[y.jsx(Ms,{className:
+Resetting...
+Reset Progress
+_blank
+,{ref:c,className:
+,children:y.jsx(US,{score:t})}),y.jsxs(
+,children:i}),y.jsx(
+,children:[y.jsx(FC,{className:
+,children:[n,
+]})]})]})}),y.jsxs(
+,{onClick:p,className:
+,children:[a?y.jsx(lm,{className:
+}):y.jsx(VC,{className:
+,{children:a?
+Copy Caption
+,{onClick:m,className:
+,children:[y.jsx(NS,{className:
+,{children:
+,{onClick:v,className:
+,children:[y.jsx(OS,{className:
+ $|$ 
+}${i.email?`\\href{mailto:${i.email}}{\\underline{${ut(i.email)}}} $|$ `:
+}${i.linkedin?ut(i.linkedin)+
+}${i.website?ut(i.website):
+))}} \\\\`:
+,R=n.technologies?.length?`\\textbf{Technologies}{: ${ut(n.technologies.join(
+,M=n.tools?.length?`\\textbf{Tools}{: ${ut(n.tools.join(
+))}}`:
++(typeof i==
+retry-after
+Retry-After
+),f=l.status||(l.message?.includes(
+)?429:l.message?.includes(
+)||c.includes(
+API_KEY_INVALID
+No valid API keys remain. Please provide valid Gemini API keys.
+quota
+RESOURCE_EXHAUSTED
+gemini-2.5-flash
+),n=i.indexOf(
+,headers:{
+Backend API call failed, attempting fallback modes:
+gemini-3.6-flash
+gemini-2.0-flash
+)||x.includes(
+All Gemini model candidates failed.
+Direct Gemini API error:
+Failed to generate AI response via Gemini API.
+Backend API Connection Refused:
+)}},qb=async(t,i)=>{const s=()=>[{weekNumber:1,theme:
+,tasks:[{id:
+,title:`Setup Development Environment for ${t}`,description:
+,type:
+task-1-2
+Review Core Language Features
+course
+task-1-3
+Study Basic Architecture Patterns
+Learn MVC, RESTful APIs, and basic client-server data flow.
+reading
+REST API architecture basics
+task-1-4
+Version Control Best Practices
+Master Git branching, commits, and pull request workflows.
+Git branching workflow tutorial
+Applied Skills & Mini Projects
+task-2-1
+Build a Simple CRUD Application
+Create a basic functional app to practice core operations.
+project
+task-2-2
+Authentication & Security Basics
+Implement session-based or token-based authentication.
+JWT authentication backend tutorial
+task-2-3
+Database Integration & Schema Design
+Connect database and design schema for application entities.
+Database schema normalization tutorial
+task-2-4
+Unit Testing Fundamentals
+Write unit tests for the core logic and endpoints.
+Introduction to unit testing tutorial
+No Gemini API keys found. Using mock learning plan for local demo.
+Zero-to-Hero
+Guidance over Content
+Learn React
+Progressive Difficulty
+Pacing & Progression
+Variety & Specificity
+No Placeholder Names
+Week 1
+Foundations
+Learning
+Untitled
+Advanced State Management with Redux
+Scalable Microservices Architecture
+Strict Deliverables
+Outcome-Based
+Definition of Done
+Build a working authentication system
+Resource-Rich
+React useReducer advanced patterns tutorial 2024
+System Design distributed caching Redis architecture
+weekNumber
+theme
+tasks
+description
+estimatedHours
+completed
+videoQuery
+Must ALWAYS be false initially
+)){const x=m.lastIndexOf(
+)&&!x.theme.toLowerCase().includes(
+Tech Company
+Intermediate
+,c=a.length>0?`CRITICAL: ALREADY GENERATED: ${a.join(
+)}. DO NOT REPEAT THESE themes or titles. Generate completely NEW ideas.`:
+student
+fresher
+beginner
+Finished & Deployed
+Complex & Broken
+NO To-Do Lists. NO simple CRUD. Must deal with Scale, Security, or Optimization.
+Hiring-Signal
+Free Tier
+Project Name (Max 5 words)
+difficulty
+2 sentences max. Highlight technical complexity.
+techStack
+Tool1
+Tool2
+Tool3
+userStories
+As a user, I want to...
+As a admin, I want to...
+keyFeatures
+Feature 1
+Feature 2
+resumeValue
+1 punchy sentence explaining why this impresses a recruiter.
+implementationFlow
+Step 1
+Step 2
+Step 3
+learningOutcomes
+Skill 1
+Skill 2
+referenceGithubUrl
+)){const x=g.lastIndexOf(
+Project Idea
+A technical project relevant to the role.
+React
+Node.js
+Demonstrates core competencies.
+Design
+Build
+],learningOutcomes:x.learningOutcomes||[
+react project
+,title:`${t||
+} Analytics Engine`,difficulty:
+Redis
+Kafka
+Proves ability to handle high-throughput data processing.
+Ingest Stream
+Process Buffer
+Visualize
+Stream Processing
+Caching
+Real-time ingestion
+Data aggregation
+},{id:
+,difficulty:
+,description:
+,techStack:[
+PostgreSQL
+Docker
+Demonstrates understanding of distributed systems and fault tolerance.
+Leader Election
+Job Queue
+Worker Nodes
+Distributed Consensus
+Container Orchestration
+Fault tolerance
+Load distribution
+Express
+Shows grasp of backend security and infrastructure patterns.
+Auth Middleware
+Rate Limiter
+Proxy Logic
+Security Patterns
+Reverse Proxy
+Middleware
+Rate limiting
+JWT Auth
+)||t.name.endsWith(
+example.com
+yourname
+username
+user-name
+Failed to extract text from PDF. Please upload a clear PDF file.
+Alright, let's move on
+You mentioned [X]. Can you elaborate on why you chose that over [Y]?
+That makes sense. Let me dig deeper into [specific aspect]...
+Got it. Now, building on that, [follow-up question]
+Great. Let's shift gears and talk about [new topic].
+Thanks for that. I'd like to explore [different area] now.
+FAANG
+Ask hard questions, expect precise answers
+Focus on practical knowledge
+Medium-Hard DSA problem
+Practical coding scenario
+Do you have any questions for me?
+Tell me about your project
+What technologies did you use and why?
+What is Git? Why do we use it?
+What is Cloud Computing?
+What is Big Data?
+What is SDLC?
+Explain Phantom Reads and isolation levels
+Context switches and kernel mode
+Race conditions and optimistic locking
+Designing a Scalable Distributed System
+CAP theorem deep dive
+junior
+`:`- Start professionally: 
+Can you be more specific?
+What do you mean by that?
+Interesting. Tell me more about...
+Hmm, are you sure?
+Let's think about that differently
+Hold on
+Let me stop you there
+we're
+let's
+you've
+that's
+Alright
+Got it
+What happened?
+Tell me about yourself.
+Walk me through that project.
+Why did you use TypeScript?
+How did that work?
+What would you do differently?
+Okay, let's try a coding problem.
+We're running short, so quick question...
+Alright, that's our time. Thanks for coming in.
+- Get to know them, ask about resume
+- Ask technical questions based on their skills
+- Give them a coding problem to solve
+- Wrap up, ask if they have questions
+interviewer
+Interviewer
+Candidate
+Could you please repeat that?
+)}] ${a.role===
+overallScore
+communication
+technicalCompetence
+problemSolving
+confidenceUnderPressure
+timeManagement
+decision
+Strong Hire
+Borderline
+No-Hire
+strengths
+What you did really well (with specific example)
+Another strength
+blockingGaps
+Skill gap holding you back (with why it matters)
+Another critical gap
+improvementRoadmap
+immediate
+Concrete action you can take this week
+Another quick win
+shortTerm
+30-day practice goal with resources
+Another 30-day goal
+longTerm
+90-day mastery goal
+Another long-term goal
+detailedFeedback
+comparisonToHiringBar
+nextSteps
+Specific resource or practice action
+Another actionable step
+One more concrete next step
+Need stronger grasp of recursion - practice 10 easy problems on LeetCode
+We didn't get to see your full technical abilities in this session
+Not enough data
+Interview ended early - couldn't assess [X]
+Tell me about yourself
+Ask hard, expect precision
+Medium-Hard DSA
+Practical scenario
+No Gemini API keys found. Using mock resume validation for local demo.
+Valid resume detected (Local Mock Bypass).
+isResume
+confidence
+reason
+Brief explanation
+${t.text.slice(0,5e3)}
+No document provided.
+Failed to validate document.
+Invalid input. Please upload a valid resume of a student or professional.
+Valid resume detected.
+Failed to validate document. Please try again.
+Junior
+No Gemini API keys found. Using mock profile analysis for local demo.
+ and companies: 
+top companies
+ (Local Mock Mode).`,skills:[{name:
+,category:
+,status:
+},{name:
+}],strengths:[
+Good Problem Solving
+Quick Learner
+Lacks production DevOps experience
+No prior backend role
+Needs system design depth
+John Doe
++1 234 567 890
+New York, USA
+ and target companies: 
+Tier 1 Tech Companies
+Improved X by Y%
+Google Search Result
+github.com
+linkedin.com
+leetcode.com
+${t.text.slice(0,3e4)}
+No resume input provided
+technical
+domain
+missing
+in-progress
+readinessScore
+summary
+skills
+weaknesses
+No response from AI
+Failed to parse AI response. Please try again.
+No Gemini API keys found. Using mock resume optimization for local demo.
+Original resume content summary.
+Quantification
+Add metrics to show impact.
+Built React features.
+Built React features, improving page load speed by 25% for 10k users.
+}],missingKeywordsAdded:[
+Lack of metrics
+Review LaTeX format
+Download PDF
+Built REST APIs
+B.E. - Information Technology | GLWEC | 2021-2025 | CGPA: 8.14
+originalContent
+summary (max 300 chars)
+optimizedContent
+full markdown resume
+atsScore
+before
+after
+breakdown
+keywordMatch
+quantification
+actionVerbs
+formatting
+relevance
+keyImprovements
+category
+Impact|Keywords|Formatting|Clarity|Quantification
+suggestion
+what changed
+originalSnippet
+before (max 80 chars)
+improvedSnippet
+after (max 120 chars)
+impact
+high|medium|low
+missingKeywordsAdded
+keyword1
+weaknessesAddressed
+weakness fixed
+action item
+No resume provided.
+Impact
+Keywords
+Formatting
+Clarity
+medium
+]}},required:[
+No Gemini API keys found. Using mock LaTeX data generation for local demo.
+johndoe@example.com
+Experienced software engineer specializing in frontend development.
+JavaScript
+Python
+TailwindCSS
+VS Code
+Tech Corp
+2023 - Present
+]}],education:[{degree:
+,university:
+,location:
+,dates:
+,gpa:
+}],projects:[{name:
+,technologies:
+,date:
+,bullets:[
+]}],certifications:[{name:
+,issuer:
+}],achievements:[{title:
+${t.slice(0,3e4)}
+education
+degree
+B.E. - Information Technology
+university
+Gokaraju Lailavathi Women's Engineering College
+location
+Hyderabad
+dates
+2021 - 2025
+8.14 CGPA
+achievements
+Winner, Google Developer Groups Agentathon 2025
+Built AI-driven career platform
+certifications
+Advanced Data Science Program
+issuer
+Innomatics Research Labs
+CGPA: 8.14
+Winner
+Finalist
+Award
+Reward
+Place
+ (e.g., 
+Top 1%
+Medal
+Scholarship
+Grant
+Patent
+Hackathon
+Coding Contest
+Olympiad
+Dean's List
+Best Paper
+Published
+CareerPilot (Winner)
+Winner, CareerPilot Hackathon
+Secured Gold Medal
+Honors & Awards
+Winner, Smart India Hackathon (2023)
+Dummani Leena Varma
++91 9390780317
+fullName
+languages
+technologies
+tools
+company
+bullets
+personalInfo
+experience
+){var Xb={hostname:
+)}},navigator:{userAgent:
+,onLine:!0},document:{createElement:function(){return{}},location:Xb,referrer:
+,p)}function f(p){Kb(l,n,a,c,f,
+Super expression must either be null or a function
+[native code]
+&&t.constructor===Symbol?
+:typeof t}function VE(t,i){if(t){if(typeof t==
+&&t.constructor&&(s=t.constructor.name),s===
+||s===
+&&t[Symbol.iterator]||t[
+Generator is already executing.
+Object is not iterable.
+Symbol.iterator is not defined.
+:i,s)},qt=(function(t){return t[t.Document=0]=
+,t[t.DocumentType=1]=
+,t[t.Element=2]=
+,t[t.Text=3]=
+,t[t.CDATA=4]=
+,t[t.Comment=5]=
+,t})(qt||{}),Wb={Node:[
+parentNode
+parentElement
+textContent
+styleSheets
+shadowRoot
+querySelector
+querySelectorAll
+getRootNode
+getSelection
+constructor
+?i[s]:(Uh[n]=l,l.bind(i))}function ZE(t){return ia(
+childNodes
+in t)?null:ia(
+)}function aA(t){return t.styleSheets}function sA(t){return!t||!(
+Element
+MutationObserver
+in t&&
+[object ShadowRoot]
++JSON.stringify(t.href)+
+?s.push(
+):t.layerName&&s.push(
++t.layerName+
+),t.supportsText&&s.push(
++t.supportsText+
+),t.media.length&&s.push(t.media.mediaText),s.join(
+$1\\$2
+styleSheet
+selectorText
+idNodeMap
+nodeMetaMap
+.repeat(f.length)),f}function za(t){return t.toLowerCase()}var t0=
+data-rr-is-password
+password
+)>-1?i=t.split(
+).slice(0,3).join(
+):i=t.split(
+)[0],i=i.split(
+).replace(bA,function(s,n,a,l,c,f){var p=a||c||f,m=n||l||
++m+p+m+
+)return
++m+(yA(i)+p)+m+
+),g=p.split(
+&&(x===
+?v.pop():v.push(x))}return
++m+v.join(
+&&n[p-1].textContent!==
+[^a-z0-9-_:]
+?i:fm(t,i)}function kA(t){return!!(t.tagName===
+),n0.set(t,s)),!i)i=
+)||i.startsWith(
+,i),s.href}function KS(t,i,s,n){return n&&(s===
+&&!(i===
+&&n[0]===
+)||s===
+&&n[0]!==
+&&(i===
+||i===
+)?Ds(t,n):s===
+?RA(t,n):s===
+?Pc(n,fm(t)):i===
+&&s===
+?Ds(t,n):n)}function QS(t,i,s){return(t===
+||t===
+)&&i===
+}function IA(t,i,s){try{if(typeof i==
+complete
+)return setTimeout(i,0),t.addEventListener(
+CSS1Compat
+,m=f===
+?!0:void 0,v=f===
+)),{type:qt.Text,textContent:p||
+dialog:modal
+modal
+non-modal
+canvas
+in t)){var ge=t.toDataURL(v.type,v.quality),Ce=s.createElement(
+&&g){Os||(Os=s.createElement(
+),r0=Os.getContext(
+<unknown-src>
+! Error: 
+,q)}if(R===
+||R===
+played
+,rr_height:
+}}R===
+&&(t.attributes.rel===
+&&t.attributes.as===
+||t.attributes.rel===
+)||t.tagName===
+&&t.attributes.rel===
+&&typeof t.attributes.href==
+&&XS(t.attributes.href)===
+||t.tagName===
+application-name
+||ct(t.attributes.rel)===
+pinterest
+robots
+googlebot
+bingbot
+author
+generator
+framework
+publisher
+progid
+google-site-verification
+yandex-verification
+csrf-token
+p:domain_verify
+verify-v1
+verification
+shopify-checkout-api-token
+not serialized
+&&typeof Ae.attributes.rel==
+&&(Ae.attributes.rel===
+||Ae.attributes.rel===
+&&typeof Ae.attributes.href==
+&&XS(Ae.attributes.href)===
+rr-block
+rr-mask
+datetime-local
+__esModule
+Module
+CssSyntaxError
+&&typeof l<
+&&(typeof a==
+,this.message+=this.file?this.file:
+,typeof this.line<
+&&(this.message+=
++this.line+
++this.column),this.message+=
++M).slice(-v)+
+)}return
+,commentLeft:
+,commentRight:
+,emptyBody:
+,indent:
++n.name,c=n.params?this.rawValue(n,
+?l+=n.raws.afterName:c&&(l+=
+)+(a?
+?l=this.raw(n,null,
+):n.type===
+):a===
+):l=this.raw(n,null,
+indent
+between
+beforeOpen
+start
+emptyBody
+commentLeft
+right
+commentRight
++a+n.text+l+
+,n)},i.decl=function(n,a){var l=this.raw(n,
+colon
+ !important
+&&(!f||f.type===
+&&f.first===n||f&&f.type===
+))return
+||l===
+)return!1}),typeof c>
+)),!1}),typeof l>
+?l=this.raw(a,null,
+&&(a=l.raws.between,typeof a<
+&&(a=l.raws.semicolon,typeof a<
+selector
+)},i.stringify=function(n,a){if(!this[n.type])throw new Error(
++n.type+
+proxyCache
+parent
+nodes
++a.input.from+
++a.start.line+
++a.start.column+
+proxyOf
+document
+&&typeof s.value!=
+&&(s=Xe({},s,{value:String(s.value)})),n=t.call(this,s)||this,n.type=
+,n}return er(i,[{key:
+,get:function(){return this.prop.startsWith(
+)||this.prop[0]===
+base64
+data:
+Unsupported source map encoding 
+).trim()},i.isMap=function(n){return(typeof n>
+utf-8
+Unable to load previous source map: 
+Unsupported previous source map format: 
+fromOffsetCache
+||(typeof s>
+PostCSS received 
+ instead of CSS string
+\uFEFF
+<input css 
+file:
+file: protocol is not available in this PostCSS build
+hasBOM
+comment
+# sourceMappingURL=
+<no source>
+||g.type===
+to.css
+`map.absolute` option is not available in this PostCSS build
+||typeof c==
+&&c.startsWith(
+every
+?function(){return l.root().toProxy()}:c===
+?l.nodes.map(function(f){return f.toProxy()}):c===
+||c===
+?l[c].toProxy():l[c]:l[c]},set:function(l,c,f){return l[c]===f||(l[c]=f,(c===
+)&&l.markDirty()),!0}}},s.index=function(a){return typeof a==
+prepend
+ignore
+&&this.type!==
+)throw new Error(
+Unknown node type in node creation
+&&l&&typeof l.raws.before<
+atrule
+&&a.test(c.prop))return l(c,f)}):this.walk(function(c,f){if(c.type===
+&&c.prop===a)return l(c,f)}):(l=a,this.walk(function(c,f){if(c.type===
+&&a.test(c.selector))return l(c,f)}):this.walk(function(c,f){if(c.type===
+&&c.selector===a)return l(c,f)}):(l=a,this.walk(function(c,f){if(c.type===
+)return l(c,f)}))},er(i,[{key:
+,get:function(){if(this.proxyOf.nodes)return this.proxyOf.nodes[0]}},{key:
+?Object.setPrototypeOf(t,pm.prototype):t.type===
+?Object.setPrototypeOf(t,u_.prototype):t.type===
+?Object.setPrototypeOf(t,c_.prototype):t.type===
+warning
+Unclosed 
+space
+,w=n.charCodeAt(E+1),b===
+,n.slice(E,c+1),E,c],E=c}else c=n.indexOf(
+,E+1),p=n.slice(E,c+1),c===-1||TN.test(p)?x=[
+,E]:(x=[
+at-word
+,E+2)+1,c===0&&(a||ne?c=n.length:j(
+)),x=[
+],!0)},space:function(i){var s=[
+,c=!1,f=0,p=!1,m=
+?v=!0:p?w===m&&(p=!1):w==='
+?(p=!0,m=w):w===
+?f+=1:w===
+?f>0&&(f-=1):f===0&&s.includes(w)&&(c=!0),c?(l!==
+&&a.push(l.trim()),l=
+,c=!1):l+=w}return(n||l!==
+,n.nodes||(n.nodes=[]),n}return er(i,[{key:
++this.raw(
+?g.push(l===
+):l===
+&&g.length>0?g.push(
+):l===g[g.length-1]&&g.pop(),g.length===0)if(l===
+params
+)):(a.raws.afterName=
+,a.params=
+Missed semicolon
+&&(a+=1),c===
+&&(a-=1),a===0&&c===
+&&f[1]===
+,a.raws.left=l,a.raws.right=
+||f===
+||l.prop[0]===
+!important
+)===0&&E!==
+)===0&&(l.important=!0,l.raws.important=x,n=w)}if(p[0]!==
+&&p[0]!==
+)break}var N=n.some(function(R){return R[0]!==
+&&R[0]!==
+),m=[]),this.raw(l,
+,m.concat(n),a),l.value.includes(
+Double colon
+,a.raws.between=
+)+this.spaces,this.spaces=
+&&!a.raws.ownSemicolon&&(a.raws.ownSemicolon=this.spaces,this.spaces=
+,n.type!==
+)f||(f=g),p.push(l===
+)f||(f=g),p.push(
+&&x===m-1&&!c?g=!1:p===
+?(w=l[x-1]?l[x-1][0]:
+,b=l[x+1]?l[x+1][0]:
+,!v0[w]&&!v0[b]?v.slice(-1)===
+&&a!==
+Unclosed block
+Unclosed bracket
+Unexpected }
+Unknown word
+At-rule without name
+AtRule
+Comment
+Declaration
+Document
+,rule:
+?i=t.prop.toLowerCase():t.type===
+&&(i=t.name.toLowerCase()),i&&t.append?[s,s+
++i,Gs,s+
+Exit-
++i,s+
+]:[s,s+
+DocumentExit
+RootExit
+||n.type===
+Use process(css).then(cb) to work with async plugins
+Unknown event 
++f.postcssPlugin+
++this.processor.version+
+)for(var m in f[p])m===
+?a(f,p,f[p][m]):a(f,p+
+&&a.type!==
+&&l.type!==
+,get:function(){return this.stringify().css}},{key:
+,get:function(){return this.stringify().map}},{key:
+,get:function(){return this.sync().messages}},{key:
+,get:function(){return this.result.opts}},{key:
+,get:function(){return this.result.processor}},{key:
+LazyResult
+,get:function(){return this.result.css}},{key:
+,get:function(){return this.result.map}},{key:
+,get:function(){return[]}},{key:
+NoWorkResult
+8.4.38
+ is not a PostCSS plugin
+inputs
+inputId
+postcss
+?Object.setPrototypeOf(t,Cm.prototype):t.type===
+?Object.setPrototypeOf(t,q_.prototype):t.type===
+?Object.setPrototypeOf(t,$_.prototype):t.type===
+,E+1),p=n.slice(E,c+1),c===-1||bT.test(p)?x=[
+,!M0[w]&&!M0[b]?v.slice(-1)===
++i,Hs,s+
+ownerDocument
+firstChild
+lastChild
+previousSibling
+nextSibling
+ELEMENT_NODE
+TEXT_NODE
+nodeType
+nodeName
+RRNodeType
+)},i.insertBefore=function(n,a){throw new Error(
+)},i.removeChild=function(n){throw new Error(
+)},i.toString=function(){return
+},er(t,[{key:
+?i[s]:(Xh[n]=l,l.bind(i))}function _R(t){return oa(
+in t)?null:oa(
+)}function OR(t){return t.styleSheets}function TR(t){return!t||!(
+TITLE
+NodeList
+DOMTokenList
+IFRAME
+&&t.nodeType===t.ELEMENT_NODE&&t.getAttribute&&t.getAttribute(
+,1),ae(this,
+,new WeakMap),ae(this,
+DomContentLoaded
+,t[t.FullSnapshot=2]=
+,t[t.IncrementalSnapshot=3]=
+,t[t.Meta=4]=
+,t[t.Custom=5]=
+,t[t.Plugin=6]=
+,t})(He||{}),Ne=(function(t){return t[t.Mutation=0]=
+,t[t.MouseMove=1]=
+,t[t.MouseInteraction=2]=
+,t[t.Scroll=3]=
+,t[t.ViewportResize=4]=
+,t[t.Input=5]=
+,t[t.TouchMove=6]=
+,t[t.MediaInteraction=7]=
+,t[t.StyleSheetRule=8]=
+,t[t.CanvasMutation=9]=
+,t[t.Font=10]=
+,t[t.Log=11]=
+,t[t.Drag=12]=
+,t[t.StyleDeclaration=13]=
+,t[t.Selection=14]=
+,t[t.AdoptedStyleSheet=15]=
+,t[t.CustomElement=16]=
+,t})(Ne||{}),Ar=(function(t){return t[t.MouseUp=0]=
+,t[t.MouseDown=1]=
+,t[t.Click=2]=
+,t[t.ContextMenu=3]=
+,t[t.DblClick=4]=
+,t[t.Focus=5]=
+,t[t.Blur=6]=
+,t[t.TouchStart=7]=
+,t[t.TouchMove_Departed=8]=
+,t[t.TouchEnd=9]=
+,t[t.TouchCancel=10]=
+,t})(Ar||{}),ii=(function(t){return t[t.Mouse=0]=
+,t[t.Pen=1]=
+,t[t.Touch=2]=
+,t})(ii||{}),Vs=(function(t){return t[t[
+]=0]=
+,t[t.WebGL=1]=
+,t[t.WebGL2=2]=
+,t})(Vs||{}),Is=(function(t){return t[t.Play=0]=
+,t[t.Pause=1]=
+,t[t.Seeked=2]=
+,t[t.VolumeChange=3]=
+,t[t.RateChange=4]=
+,t})(Is||{}),xx=(function(t){return t[t.Document=0]=
+in t}var LR=(function(){function t(){ae(this,
+,0),ae(this,
+,null),ae(this,
+Position outside of list range
+,!1),ae(this,
+,[]),ae(this,
+,{}),ae(this,
+,new Set),ae(this,
+),ae(this,
+,function(n){n.forEach(s.processMutation),s.emit()}),ae(this,
+TEXTAREA
+).length===ge.style.split(
+genTextAreaValueMutation
+}).join(
+processMutation
+characterData
+&&!s.keepIframeSrcFn(f))if(!l.contentDocument)c=
+&&l.tagName===
+&&(n.oldValue||
+).toLowerCase()===
+&&l.setAttribute(
+),!QS(l.tagName,c))if(m.attributes[c]=KS(s.doc,za(l.tagName),za(c),f),c===
+&&(m.styleDiff[R]=!1)}}else c===
+&&(l.matches(
+)?m.attributes.rr_open_mode=
+:m.attributes.rr_open_mode=
+genAdds
+mutationCb
+blockClass
+blockSelector
+maskTextClass
+maskTextSelector
+inlineStylesheet
+maskInputOptions
+maskTextFn
+maskInputFn
+keepIframeSrcFn
+recordCanvas
+inlineImages
+slimDOMOptions
+dataURLOptions
+mirror
+iframeManager
+stylesheetManager
+shadowDomManager
+canvasManager
+processedNodeManager
+composedPath
+pointerType
+touch
+:Ar[g]===Ar.MouseUp&&(A=
+)&&x===ii.Touch||A.startsWith(
+_Departed
+scroll
+resize
+SELECT
+OPTION
+||ie===
+'+he+'
+selectedIndex
+CSSGroupingRule
+CSSMediaRule
+CSSSupportsRule
+CSSConditionRule
+#document
+adoptedStyleSheets
+,f(Is.Play),c),hr(
+,f(Is.Pause),c),hr(
+,f(Is.Seeked),c),hr(
+,f(Is.VolumeChange),c),hr(
+define
+Custom element callback failed for 
+}function bc(t){return!!(typeof window[t]<
+&&window[t].prototype&&
+in window[t].prototype&&
+in window[t].prototype)}var H0=(function(){function t(s){ae(this,
+iframes
+crossOriginIframeMap
+crossOriginIframeMirror
+crossOriginIframeStyleMirror
+crossOriginIframeRootIdMap
+wrappedEmit
+loadListener
+recordCrossOriginIframes
+message
+rrweb
+parentId
+previousId
+nextId
+])}),a.data.attributes.forEach(function(p){l.replaceIds(p,n,[
+])}),a.data.texts.forEach(function(p){l.replaceIds(p,n,[
+]),this.replaceStyleIds(a.data,n,[
+]),(c=a.data.styles)==null||c.forEach(function(p){l.replaceStyleIds(p,n,[
+rootId
+shadowDoms
+scrollCb
+bypassOptions
+restoreHandlers
+attachShadow
+:a%3===1&&(l=l.substring(0,l.length-2)+
+HTMLImageElement
+WebGLActiveInfo
+WebGLBuffer
+WebGLFramebuffer
+WebGLProgram
+WebGLRenderbuffer
+WebGLShader
+WebGLShaderPrecisionFormat
+WebGLTexture
+WebGLUniformLocation
+WebGLVertexArrayObject
+WebGLVertexArrayObjectOES
+continue
+experimental-webgl
+webgl
+getContext
+__context
+webgl2
+failed to patch HTMLCanvasElement.prototype.getContext
+isContextLost
+drawingBufferWidth
+drawingBufferHeight
+tagName
+&&window.Blob&&new Blob([ck(Rx)],{type:
+pendingCanvasMutations
+rafStamps
+resetObservers
+frozen
+locked
+&&this.initCanvasMutationObserver(c,f,p),m&&typeof l==
+],commands:[{property:
+,args:[0,0,W,de]},{property:
+,args:[{rr_type:
+,data:[{rr_type:
+trackedLinkElements
+adoptedStyleSheetCb
+styleMirror
+_cssText
+nodeMap
+active
+Unable to override Array.from
+rr-ignore
+DOMContentLoaded
+emit function is required
+,headMetaDescKeywords:j===
+,headTitleMutations:j===
+Failed to snapshot the document
+interactive
+,function(){At({type:He.Load,data:{}}),we===
+cross-origin
+please add custom event after start recording
+please take full snapshot after start recording
+NotStarted
+Running
+Stopped
+fileName
+functionName
+lineNumber
+columnNumber
+,this.functionName=s.functionName||
+,a=this.columnNumber||
++this.fileName+
+:this.fileName+
+||typeof i[
+[console-record-plugin]: Failed to parse error object:
+(eval 
+)||void 0,m=[
+<anonymous>
+ > eval
+)),n.indexOf(
+)===-1&&n.indexOf(
+),l=this.extractLocation(a.pop()),c=a.shift()||
++a.indexOf(t)+
+),i=s+(i?
+),t=n}return i}function Yp(t){return Object.prototype.toString.call(t)===
+[Circular ~]
+[Circular ~.
++p.slice(0,s.stringLengthLimit)+
+),p}}var Q0={level:[
+clear
+count
+countReset
+debug
+dirxml
+group
+groupCollapsed
+groupEnd
+table
+timeEnd
+timeLog
+trace
+],lengthThreshold:1e3,logger:
+Uncaught (in promise) 
++E.message,n.stringifyOptions)]):(E=new Error,N=[Rs(
+unhandledrejection
+assert
+,trace:[],payload:[Rs(
+)]})}catch(ie){R.apply(void 0,[].concat([
+,ie],P))}finally{f=!1}}}}):function(){}}}var xk=
+Promise-chain cycle
+Not a function
+Not a promise
+__NPO__
+resolve
+reject
+?s.reject(TypeError(
+)):i.length===0?s.resolve([]):new s(function(a,l){if(typeof a!=
+||typeof l!=
+)throw TypeError(
+)):new s(function(a,l){if(typeof a!=
+&&Promise.toString().indexOf(
+Mixpanel warning:
+Mixpanel error:
+Implementation error. Please turn on debug and contact support@mixpanel.com.
+[object Array]
+callee
+[object String]
+[object Date]
+[object Number]
++s:s}return t.getUTCFullYear()+
++i(t.getUTCMonth()+1)+
++i(t.getUTCDate())+
++i(t.getUTCHours())+
++i(t.getUTCMinutes())+
+':'\\
++f.charCodeAt(0).toString(16)).slice(-4)})+'
+'+a+'
+,p=0,m=
+&&typeof x.toJSON==
+&&(x=x.toJSON(a)),typeof x){case
+:return isFinite(x)?String(x):
+:if(!x)return
++w.join(
+,c=b,v}for(m in x)Cf.call(x,m)&&(v=n(m,x),v&&w.push(s(m)+(c?
+Expected '
+' instead of '
+),i=n.charAt(t),t+=1,i},c=function(){var w,x=
+&&(x=
+&&i<=
+)for(x+=
+)for(x+=i,l(),(i===
+)if(l(),i===
+Bad string
+:return l(
+),null}a('Unexpected 
+){if(l(
+),p(),i===
+)return l(
+),p()}}a(
+),Object.hasOwnProperty.call(x,w)&&a('Duplicate key 
+'),x[w]=v(),p(),i===
+,x=v(),p(),i&&a(
+,s,n,a,l,c,f,p,m,v=0,g=0,b=
+),t.length%3){case 1:b=b.slice(0,-2)+
+,_.map(t,function(n){return n.toString(16)}).join(
+ahrefssiteaudit
+amazonbot
+baiduspider
+bingpreview
+chrome-lighthouse
+facebookexternal
+petalbot
+screaming frog
+yahoo! slurp
+yandex
+adsbot-google
+apis-google
+duplexweb-google
+feedfetcher-google
+google favicon
+google web preview
+google-read-aloud
+googleweblight
+mediapartners-google
+storebot-google
+=([^&#]*)
+,s=Oe.cookie.split(
++g.toGMTString()}l&&(a=!0,m=
+),a&&(m+=
+),Oe.cookie=t+
++encodeURIComponent(i)+p+
++f+m},set:function(t,i,s,n,a,l,c){var f=
++Dm(8),n=
+ error: 
+ unsupported
+localStorage
+sessionStorage
+No valid element provided to register_event
+?([^\\]
++a.className+
+).replace(i,
+),c.indexOf(
+)>-1){f=c.split(
+:H=function(ne){return ne.getAttribute(P).match(new RegExp(
+utm_source
+utm_medium
+utm_campaign
+utm_content
+utm_term
+utm_id
+utm_source_platform
+utm_campaign_id
+utm_creative_format
+utm_marketing_tactic
+dclid
+fbclid
+gclid
+ko_click_id
+li_fat_id
+msclkid
+sccid
+ttclid
+twclid
+wbraid
+google
+:t.search(
+)===0?
+:null},searchInfo:function(t){var i=_.info.searchEngine(t),s=i!=
+,s||_.includes(t,
+)?_.includes(t,
+Opera Mini
+Opera
+BlackBerry
+IEMobile
+WPDesktop
+Internet Explorer Mobile
+Samsung Internet
+)||_.includes(t,
+Microsoft Edge
+FBIOS
+Facebook Mobile
+Whale Browser
+Chrome
+CriOS
+Chrome iOS
+UCWEB
+UCBrowser
+UC Browser
+FxiOS
+Firefox iOS
+Apple
+Mobile
+Mobile Safari
+Safari
+Android
+Android Mobile
+Konqueror
+Firefox
+Internet Explorer
+Gecko
+Mozilla
+},browserVersion:function(t,i,s){var n=_.info.browser(t,i,s),a={
+Windows Phone
+Windows
+},referringDomain:function(t){var i=t.split(
+).substring(0,16),s=
+||n===
+mixpanelBrowserDb
+mixpanelRecordingEvents
+mixpanelRecordingRegistry
+indexedDB is not supported in this browser
+InvalidStateError
+readwrite
+readonly
+__mp_opt_in_out_
+}function qx(t,i){if(Yk(i))return Le.warn('This browser has 
+Do Not Track
+ignore_dnt: true
+],a)&&(n=!0)}),n}function Hx(t,i,s){if(!_.isString(i)||!i.length){Le.error(
+optIn
+optOut
+ called with an invalid token
+$opt_in
+token
+ignore_dnt
+opt_out_tracking_persistence_type
+opt_out_tracking_cookie_prefix
+window
+Unexpected error when checking tracking opt-out status: 
+,b=f+
+,w=f+
+,x=function(M){if(new Date().getTime()-c>m){Xk.error(
+localStorage support dropped while acquiring lock
+localStorage support check failed
+batch
+Error initializing queue persistence. Disabling persistence
+Error enqueueing items
+Error acquiring storage lock
+Item not removed from storage
+Error removing items
+Error clearing queue
+Error updating items
+Invalid storage entry:
+Error retrieving queue
+Error saving queue
+Flush: Request already in progress
+[dupe] item ID sent too many times, not sending
+[dupe] found item with no ID
+[dupe] item ID sent too many times
+[dupe] found item with no ID while removing
+timeout
+Error handling API response
+sendBeacon
+MIXPANEL REQUEST:
+Error flushing request queue
+recorder
+disable_persistence
+__mprec_
++this.getConfig(
+$device_id
+$user_id
+Error initializing IndexedDB storage for unloading persisted data.
+rrweb record function not provided. 
+Recording already in progress, skipping startRecording.
+record_max_ms
+record_max_ms cannot be greater than 
+ms. Capping value.
+record_idle_timeout_ms
+record_block_selector
+record_block_class
+record_collect_fonts
+record_mask_text_class
+record_mask_text_selector
+record_canvas
+record_console
+Unexpected error when starting rrweb recording.
+rrweb failed to start, skipping this recording.
+Error with rrweb stopRecording
+Tracking has been opted out, stopping recording.
+Error getting tab ID for serialization 
+record
+api_host
+).record+
++new URLSearchParams(i),{method:
+,headers:{Authorization:
++btoa(this.getConfig(
+Content-Type
+First batch does not contain a full snapshot. Aborting recording.
+,this._sendRequest(a,v,x,s)}.bind(this))}else v.format=
+error_reporter
+record_min_ms
+record_min_ms cannot be greater than 
+IndexedDB error: 
+No tab ID is set, cannot persist recording metadata.
+Idle timeout reached, restarting recording.
+Max recording length reached, stopping recording.
+No resumable recording found.
+replayId
+hashchange
+mp_locationchange
+scrollend
+visibilitychange
+clientX
+clientY
+offsetX
+offsetY
+pageX
+pageY
+screenX
+screenY
+],dS=[
+],Zp=[
+],hS=Zp.concat([
+]),aI=[
+aria-labelledby
+aria-describedby
+onclick
+onmousedown
+onmouseup
+onpointerdown
+onpointerup
+ontouchend
+ontouchstart
+autocapture
+class
+$attr-
+&&(E=P.getAttribute(
+$el_attr__
+)||Dn(a,
+)||a.getAttribute&&a.getAttribute(
+Error while checking element in allowElementCallback
+Error while checking selector: 
+Error while checking element in blockElementCallback
+}function mI(t,i){if(!t||Dn(t,
+:return[
+contenteditable
+)switch(p.toLowerCase()){case
+:return!1}var m=t.name||t.id||
+onscrollend
+details
+&&t.hasAttribute(
+)||t.hasAttribute(
+Error while observing shadow root
+Shadow DOM observation unavailable: WeakSet not supported
+Error while disconnecting shadow DOM observer
+visibility
+Error while setting up mutation observer
+Error while setting up shadow DOM observer
+Error while removing event listener
+Error while disconnecting mutation observer
+Error while stopping shadow DOM observer
+track_pageview
+full-url
+url-with-path-and-query-string
+url-with-path
+allow_element_callback
+allow_selectors
+allow_url_regexes
+block_attrs
+block_element_callback
+block_selectors
+block_url_regexes
+capture_extra_attrs
+capture_text_content
+scroll_capture_all
+scroll_depth_percent_checkpoints
+dead_click
+pageview
+rage_click
+page_leave
+$mp_click
+$mp_dead_click
+$mp_input_change
+$mp_rage_click
+$mp_scroll
+$mp_submit
+$mp_page_leave
+Autocapture unavailable: missing required DOM APIs
+Error while checking block URL regex: 
+record_heatmap_data
+Initializing scroll depth tracking
+Initializing click tracking
+Initializing dead click tracking
+Initializing input tracking
+Initializing pageview tracking
+)[0].split(
+)[0]!==t.split(
+Path change: re-initializing scroll depth checkpoints
+Initializing rage click tracking
+Initializing scroll tracking
+Error while calculating scroll percentage
+Initializing submit tracking
+Initializing page visibility tracking.
+flags
+context
+Feature Flags unavailable: missing minimum required APIs
+Feature Flags not enabled, cannot update context
+Feature Flags not enabled
+distinct_id
+Fetching flags for distinct ID: 
+mp_lib
+),a.set(
++btoa(this.getMpConfig(
+No flags in API response
+Fetch in progress started time not set, cannot mark fetch complete
+Feature Flags not initialized
+Flags not loaded yet
+'+t+'
+Experiment name
+Variant name
+feature_flag
+Variant fetch start time
+Variant fetch complete time
+Variant fetch latency (ms)
+Variant fetch traceparent
+$experiment_started
+&&typeof Map<
+&&typeof Set<
+The DOM query (
+) returned 0 elements
+track_links_timeout
+$set_once
+$unset
+$append
+$union
+$remove
+$delete
+groups
++this._get_config(
+$group_key
+$group_id
+.group.
+save_referrer
+Invalid increment value passed to mixpanel.people.increment - must be a number
+mixpanel.people.track_charge() is deprecated and no longer has any effect.
+$transactions
+mixpanel.people.delete_user() requires you to call identify() first
+.people
+$had_persisted_distinct_id
+people
+verbose
+Invalid call to _enqueue():
+$distinct_id
+$token
+__mps
+__mpso
+__mpus
+__mpa
+__mpap
+__mpr
+__mpu
+$people_distinct_id
+__alias
+__timers
++t.persistence_name:this.name=
++t.token+
+&&i!==
+&&(Le.critical(
+cookie
+&&(i=
+),this.expire_days=typeof s>
+$direct
+MIXPANEL PEOPLE REQUEST (QUEUED, PENDING IDENTIFY):
+Invalid queue:
+ not available in this build.
+mixpanel
+$device:
+withCredentials
+)===-1&&Mn.indexOf(
+,api_transport:
+,api_payload_format:bw,app_host:
+,autocapture:!1,cdn:
+,cookie_domain:
+,cookie_name:
+^(mp-block|fs-exclude|amp-block|rr-block|ph-no-capture)$
+img, video, audio
+^(mp-mask|fs-mask|amp-mask|rr-mask|ph-mask)$
+,record_max_ms:sl,record_min_ms:0,record_sessions_percent:0,recorder_src:
+You have already initialized 
+skip_first_touch_marketing
+initial_
+snippet
+$mp_sdk_to_extension_event
+You must name your new library: init(token, config, name)
+api_payload_format
+._jsc
+batch_requests
+Clearing batch queue 
+pagehide
+),this.flags=new Ue({getFullApiRoute:_.bind(function(){return this.get_api_host(
++this.get_config(
+Tab ID initialization skipped due to disable_persistence config
+mp_tab_id_
+mp_gen_new_tab_id_
+$tab-
+),this.tab_id=_.sessionStorage.get(i),te.addEventListener(
+,function(){_.sessionStorage.remove(s)})}catch(n){this.report_error(
+,n)}else this.report_error(
+Load recorder check skipped due to disable_persistence config
+Error checking recording registry
+recorder_src
+record_sessions_percent
+loaded
+store_google
+stop_utm_persistence
+))return this.report_error(
++Math.floor(Math.random()*1e8),l=this.get_config(
+api_method
+api_transport
+,p=ff&&f&&s.transport.toLowerCase()===
+)&&(i.test=1),m&&(i.verbose=1),this.get_config(
+)&&(i.img=1),Bs||(n?i.callback=n:(m||this.get_config(
+))&&(i.callback=
+)),i.ip=this.get_config(
+)?1:0,i._=new Date().getTime().toString(),f&&(c=
++encodeURIComponent(i.data),delete i.data),_.extend(i,this.get_config(
+)),t+=
+in i){var g=Oe.createElement(
+xhr_headers
+Bad HTTP status: 
+alias
+track
+__mpq_
+events
+},people:{type:
+,api_name:
+,queue_key:t+
+},groups:{type:
+api_routes
+before_send_
+batch_autostart
+before_track
+No event name provided to mixpanel.track
+track_marketing
+mp_loader
+property_blacklist
+Invalid value for property_blacklist config: 
+$mp_web_page_view
+No event name provided to mixpanel.time_event
+before_register
+before_register_once
+before_unregister
+before_identify
+distinct_id cannot have $device: prefix
+$identify
+Attempting to create alias for existing People user - aborting.
+$create_alias
+alias matches current distinct_id - skipping api call.
+mp_name_tag
+persistence_name
+Invalid hook added. Hook is not a function
+?(this.report_error(t+
+api_hosts
+opt_out_tracking_by_default
+mp_optout
+opt_out_persistence_by_default
+cookie_expiration
+cross_site_cookie
+cross_subdomain_cookie
+cookie_domain
+secure_cookie
+remove_hook failed. Matching hook was not found
+?t():Oe.addEventListener(
+&&(v.charAt(m+p.length)!==
+||v.charAt(m-1)===
+)!==-1}var a=
+eventCategory
+eventAction
+eventLabel
+eventValue
+hitType
+&&K[Symbol.iterator]!=null||K[
+Object
+||O===
+&&K[Symbol.iterator]||K[
+Cannot call a class as a function
+prototype
+@@toPrimitive must return a primitive value.
+reset
+_gtag
+_loadGA
+||typeof document>
+)&&!z._hasLoadedGA){var Q=document.createElement(
+.concat(q,
+).concat(O),I&&Q.setAttribute(
+_toGtagOptions
+cookie_update
+cookie_expires
+cookie_flags
+user_id
+client_id
+anonymize_ip
+content_group1
+content_group2
+content_group3
+content_group4
+content_group5
+allow_google_signals
+allow_ad_personalization_signals
+non_interaction
+page_path
+event_callback
+initialize
+Require GA_MEASUREMENT_ID
+config
+&&(z._isQueuing=!0)}}}),ne(this,
+,function(O){if(!O){console.warn(
+){console.warn(
+),z._gaCommand(
+,O)}),ne(this,
+,function(O,I,q,Q,le){z._gtag(
+_gaCommandSendEventParameters
+_gaCommandSendTiming
+event
+timing_complete
+_gaCommandSendPageview
+page_view
+_gaCommandSendPageviewParameters
+_gaCommandSend
+timing
+screenview
+transaction
+:console.warn(
+.concat(Q))}}),ne(this,
+,z._toGtagOptions(I[0]))}),ne(this,
+.concat(O))}}),ne(this,
+,z._currentMeasurementId,
+clientId
+trackingId
+apiVersion
+args.category AND args.action are required in event()
+&&(typeof we!=
+?console.warn(
+):_e.eventValue=we),typeof be<
+&&(typeof be!=
+):_e.nonInteraction=be),typeof me<
+&&(typeof me!=
+beacon
+image
+`args.transport` must be either one of these values: `beacon`, `xhr` or `image`
+,_e)}}),ne(this,
+,function(O){z._gaCommand(
+,O)}),this.reset()}return H(K,[{key:
+a1e5d4cd5e76200b2a4c941f6522598f
+G-RZKRGC744B
+))try{Ki.init(JI,{debug:!1,track_pageview:!0,persistence:
+}),xc&&cp.event({category:s?.category||
+Page View
+,EMAIL:
+,TARGET_ROLE:
+,EXPERIENCE_LEVEL:
+,GRADUATION_YEAR:
+,TARGET_COMPANIES:
+,LAST_ACTIVE:
+,READINESS_SCORE:
+,SKILLS_ACQUIRED:
+,SKILLS_MISSING:
+},CS=
+,om={
+:{title:
+,canonicalPath:
+,keywords:
+Login | CareerPilot AI
+,noindex:!0},
+)&&(i=i.slice(0,-1)),i.startsWith(
+)||(i=
+,canonicalPath:i||
+canonical
+),n.rel=
+keywords
+noindex, nofollow
+index, follow
+og:url
+og:title
+og:description
+twitter:title
+twitter:description
+mc_cid
+mc_eid
+||L===
+?ee=se.LANDING:L.startsWith(
+)?ee=se.ONBOARDING:L.startsWith(
+)?ee=se.DASHBOARD:L.startsWith(
+)?ee=se.PLAN:L.startsWith(
+)?ee=se.PROJECTS:L.startsWith(
+)?ee=se.RESUME:L.startsWith(
+)?ee=se.INTERVIEW:(L.startsWith(
+)||L.startsWith(
+))&&(ee=se.JOBS),t!==ee&&i(ee)},[n.pathname]),re.useEffect(()=>{let L=
+),[b,w]=re.useState(
+profile
+),[Ae,Ht]=re.useState(
+),[Yt,or]=re.useState(1),[en,Br]=re.useState(
+),[lr,Or]=re.useState(
+careerPilot_session_uid
+careerPilot_session_email
+careerPilot_last_view
+Beginner
+].includes(L)?kr(
+):kr(
+)||L.message?.includes(
+Unknown error
+The document does not appear to be a valid resume.
+ML Matcher skipped (backend not reachable):
+Resume analysis failed
+ML Matcher hydration skipped (backend not reachable):
+),localStorage.removeItem(
+),sessionStorage.removeItem(
+),ne({name:
+,resumeText:
+,resumeFile:void 0,experienceLevel:
+,graduationYear:
+,targetCompanies:
+Failed to reset data. Please try again.
+This will start a new career track but keep your resume. Are you sure?
+File size too large. Please upload a PDF smaller than 2MB.
+Failed to read file. Please try again.
+Failed to upload file. Please try again.
+Analysis failed
+${H.targetRole||
+.`,skills:[{name:
+Demo User
+The AI failed to generate a high-quality roadmap. Please try again.
+Failed to generate plan
+Please upload a valid PDF file.
+Failed to parse PDF. Please ensure it is a valid text-based PDF.
+Manually added task
+?Nt:nn,V=await $b(H.targetRole,L,H.targetCompanies||
+Failed to generate projects
+Please ensure you have a resume and target role set.
+Unknown
+),V.personalInfo.phone=oe(V.personalInfo.phone,H.mobileNumber||
+),V.personalInfo.location=oe(V.personalInfo.location,H.location||
+),V.personalInfo.linkedin=H.linkedinProfile||
+,V.personalInfo.website=H.githubProfile||
+,V.experience&&V.experience.forEach(ue=>{ue.location=oe(ue.location,
+)}),V.education&&V.education.forEach(ue=>{ue.location=oe(ue.location,
+),ue.gpa&&ue.gpa.includes(
+).trim())}),V.projects&&V.projects.forEach(ue=>{ue.date=oe(ue.date,
+)}),V.certifications&&V.certifications.forEach(ue=>{(!ue.date||ue.date===
+||ue.date===
+||ue.date.trim()===
+)&&(ue.date=
+Failed to optimize resume
+Saved
+Please define a target role first.
+guest
+You have reached your interview limit. Upgrade to Pro for unlimited interviews!
+Entry-level candidate
+Resume projects
+)[0]?.trim()||
+,companyType:
+,experienceLevel:H.experienceLevel||
+model
+Failed to start interview
+,totalDuration:35,candidateProfile:{resume:H.resumeText||ie?.summary||
+,skills:ie?.skills?.filter(oe=>oe.status===
+Evaluation Complete
+Continue practicing
+)[0]||
+Failed to generate feedback
+,skills:ie?.skills?.filter(Be=>Be.status===
+no-speech
+not-allowed
+Microphone access blocked. Please enable permissions in your browser settings.
+Could not start voice input.
+,children:y.jsx(Ms,{className:
+})})}),y.jsx(wE,{onGetStarted:()=>{a?i(ie?se.DASHBOARD:se.ONBOARDING):(m(
+),f(!0))},onLogin:()=>{a?i(ie?se.DASHBOARD:se.ONBOARDING):(m(
+})}),children:y.jsxs(y.Fragment,{children:[on&&y.jsx(
+})})}),y.jsxs(
+})]}),a&&y.jsxs(
+,children:y.jsx(kS,{className:
+,children:[H.streak||1,
+})]})})]}),y.jsx(
+,{onClick:()=>A(!0),className:
+,children:H.name?.[0]?.toUpperCase()||
+anonymous@user.com
