@@ -6,6 +6,7 @@ console.log("✅ index.js started");
 
 const uploadRoutes = require("./routes/uploadRoutes");
 const jobMatchRoutes = require("./routes/jobMatchRoutes");
+const interviewRoutes = require("./routes/interviewRoutes");
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json({ limit: "5mb" }));
 
 app.use("/api/upload", uploadRoutes);
 app.use("/api/job-match", jobMatchRoutes);
+app.use("/api/interview", interviewRoutes);
 
 app.use((error, req, res, next) => {
   console.error("Request failed:", error);
@@ -23,7 +25,7 @@ app.use((error, req, res, next) => {
     message:
       error.code === "LIMIT_FILE_SIZE"
         ? "PDF files must be 10 MB or smaller."
-        : error.message || "The resume could not be processed.",
+        : error.message || "The request could not be processed.",
   });
 });
 

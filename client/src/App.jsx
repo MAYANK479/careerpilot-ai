@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 import Upload from "./pages/Upload";
 import Dashboard from "./pages/Dashboard";
 import JobMatch from "./pages/JobMatch";
+import CoverLetter from "./pages/CoverLetter";
+import Interview from "./pages/Interview";
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <Route path="/upload" element={<Upload />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/job-match" element={<JobMatch />} />
+      <Route path="/cover-letter" element={<CoverLetter />} />
+      <Route path="/interview" element={<Interview />} />
     </Routes>
   );
 }
