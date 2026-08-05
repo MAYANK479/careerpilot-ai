@@ -1,19 +1,18 @@
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import {
-  ArrowLeft,
   Briefcase,
   Loader2,
   Target,
-  CheckCircle,
-  XCircle,
   TrendingUp,
   Lightbulb,
   BarChart3,
   Upload,
 } from "lucide-react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 import AtsScoreGauge from "../components/dashboard/AtsScoreGauge";
 import SkillChips from "../components/dashboard/SkillChips";
@@ -74,44 +73,29 @@ function JobMatch() {
     : null;
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
 
-      {/* Header */}
-      <nav className="flex items-center justify-between px-8 py-5 border-b border-slate-800/50">
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-slate-400 hover:text-white transition"
-        >
-          <ArrowLeft size={18} />
-          <span className="text-sm font-medium">Back</span>
-        </button>
-        <h1 className="text-lg font-bold text-blue-400">Job Match</h1>
-        <Link
-          to="/upload"
-          className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition px-3 py-2 rounded-lg hover:bg-slate-800"
-        >
-          <Upload size={16} />
-          Upload
-        </Link>
-      </nav>
+      <Navbar />
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <main className="flex-1 max-w-6xl mx-auto w-full px-6 py-12">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
-          <h1 className="text-4xl font-extrabold tracking-tight">
-            Compare Your Resume to a{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <span className="text-xs font-semibold text-blue-400 uppercase tracking-widest">
+            Keyword & Skill Gap Analysis
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mt-2">
+            Compare Resume to{" "}
+            <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
               Job Description
             </span>
           </h1>
-          <p className="text-slate-400 mt-3 max-w-xl mx-auto">
-            Paste a job posting below and see how well your resume matches —
-            with AI-powered keyword analysis and recommendations.
+          <p className="text-slate-400 mt-4 text-base md:text-lg max-w-xl mx-auto">
+            Paste a job posting below to see your match score, missing skills, keyword coverage, and shortlist probability.
           </p>
         </motion.div>
 
@@ -120,41 +104,41 @@ function JobMatch() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8"
         >
           {/* Resume Text */}
-          <div className="glass rounded-2xl p-6">
-            <label className="flex items-center gap-2 text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">
-              <Target size={16} className="text-blue-400" />
-              Your Resume
+          <div className="glass-strong rounded-3xl p-8 border border-slate-800 shadow-xl">
+            <label className="flex items-center gap-2 text-sm font-bold text-slate-300 uppercase tracking-wider mb-4">
+              <Target size={18} className="text-blue-400" />
+              Your Resume Text
             </label>
             <textarea
               value={resumeText}
               onChange={(e) => setResumeText(e.target.value)}
               placeholder="Paste your resume text here, or upload a resume first to auto-fill..."
-              className="w-full h-56 bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-300 placeholder-slate-600 resize-none focus:outline-none focus:border-blue-500/50 transition"
+              className="w-full h-64 bg-slate-950/60 border border-slate-800 rounded-2xl p-5 text-sm text-slate-200 placeholder-slate-600 resize-none focus:outline-none focus:border-blue-500/50 transition font-sans leading-relaxed"
             />
             {resumeText && (
-              <p className="text-xs text-slate-600 mt-2">
+              <p className="text-xs text-slate-500 mt-3 font-mono">
                 {resumeText.length.toLocaleString()} characters
               </p>
             )}
           </div>
 
           {/* Job Description */}
-          <div className="glass rounded-2xl p-6">
-            <label className="flex items-center gap-2 text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">
-              <Briefcase size={16} className="text-purple-400" />
+          <div className="glass-strong rounded-3xl p-8 border border-slate-800 shadow-xl">
+            <label className="flex items-center gap-2 text-sm font-bold text-slate-300 uppercase tracking-wider mb-4">
+              <Briefcase size={18} className="text-purple-400" />
               Job Description
             </label>
             <textarea
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
               placeholder="Paste the full job description here..."
-              className="w-full h-56 bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-300 placeholder-slate-600 resize-none focus:outline-none focus:border-purple-500/50 transition"
+              className="w-full h-64 bg-slate-950/60 border border-slate-800 rounded-2xl p-5 text-sm text-slate-200 placeholder-slate-600 resize-none focus:outline-none focus:border-purple-500/50 transition font-sans leading-relaxed"
             />
             {jobDescription && (
-              <p className="text-xs text-slate-600 mt-2">
+              <p className="text-xs text-slate-500 mt-3 font-mono">
                 {jobDescription.length.toLocaleString()} characters
               </p>
             )}
@@ -173,16 +157,16 @@ function JobMatch() {
             whileTap={{ scale: 0.98 }}
             onClick={handleCompare}
             disabled={loading || !resumeText.trim() || !jobDescription.trim()}
-            className="flex items-center gap-2 px-10 py-4 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-lg shadow-blue-500/15"
+            className="flex items-center gap-3 px-12 py-5 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-500 hover:to-pink-500 disabled:opacity-40 transition-all shadow-xl shadow-purple-500/20"
           >
             {loading ? (
               <>
-                <Loader2 size={20} className="animate-spin" />
-                Comparing...
+                <Loader2 size={22} className="animate-spin" />
+                Comparing Resume & Job...
               </>
             ) : (
               <>
-                <BarChart3 size={20} />
+                <BarChart3 size={22} />
                 Compare Resume
               </>
             )}
@@ -197,53 +181,50 @@ function JobMatch() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 30 }}
               transition={{ duration: 0.5 }}
+              className="space-y-8"
             >
               {/* Top Row: Match Score + Shortlist Probability + Keyword Coverage */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <AtsScoreGauge
                   score={result.matchScore}
                   rating={`${result.matchScore}% Match`}
                 />
 
                 {/* Shortlist Probability */}
-                <div className="glass rounded-2xl p-8 flex flex-col items-center justify-center glow-hover">
-                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
+                <div className="glass-strong rounded-3xl p-8 border border-slate-800 flex flex-col items-center justify-center text-center">
+                  <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
                     Shortlist Probability
                   </h3>
-                  <div
-                    className={`text-3xl font-extrabold ${prob.color} mb-3`}
-                  >
+                  <div className={`text-4xl font-extrabold ${prob.color} mb-3`}>
                     {result.shortlistProbability}
                   </div>
                   <span
-                    className={`text-xs font-medium px-4 py-1.5 rounded-full border ${prob.bg} ${prob.border} ${prob.color}`}
+                    className={`text-xs font-bold px-4 py-1.5 rounded-full border ${prob.bg} ${prob.border} ${prob.color}`}
                   >
                     {result.matchScore >= 70
-                      ? "Strong candidate"
+                      ? "Strong Candidate"
                       : result.matchScore >= 40
-                      ? "Competitive with improvements"
-                      : "Significant gaps to address"}
+                      ? "Competitive Match"
+                      : "Significant Skill Gaps"}
                   </span>
                 </div>
 
                 {/* Keyword Coverage */}
-                <div className="glass rounded-2xl p-8 flex flex-col items-center justify-center glow-hover">
-                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
+                <div className="glass-strong rounded-3xl p-8 border border-slate-800 flex flex-col items-center justify-center">
+                  <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">
                     Keyword Coverage
                   </h3>
-                  <div className="w-full max-w-[200px]">
-                    <div className="flex justify-between text-sm mb-2">
+                  <div className="w-full max-w-[220px]">
+                    <div className="flex justify-between text-sm mb-2 font-bold">
                       <span className="text-slate-400">Coverage</span>
-                      <span className="text-blue-400 font-bold">
-                        {result.keywordCoverage}%
-                      </span>
+                      <span className="text-blue-400">{result.keywordCoverage}%</span>
                     </div>
-                    <div className="w-full h-3 bg-slate-800 rounded-full overflow-hidden">
+                    <div className="w-full h-3 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
                       <motion.div
-                        className="h-full rounded-full bg-gradient-to-r from-blue-500 to-cyan-400"
+                        className="h-full rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-purple-500"
                         initial={{ width: 0 }}
                         animate={{ width: `${result.keywordCoverage}%` }}
-                        transition={{ duration: 1, delay: 0.3 }}
+                        transition={{ duration: 1 }}
                       />
                     </div>
                   </div>
@@ -251,7 +232,7 @@ function JobMatch() {
               </div>
 
               {/* Skills Comparison */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <SkillChips
                   title="Matching Skills"
                   items={result.matchingSkills}
@@ -273,25 +254,25 @@ function JobMatch() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="glass rounded-2xl p-6 mb-8 glow-hover"
+                  className="glass-strong rounded-3xl p-8 border border-slate-800"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Lightbulb size={20} className="text-amber-400" />
-                    <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                      Recommendations
+                  <div className="flex items-center gap-3 mb-6">
+                    <Lightbulb size={22} className="text-amber-400" />
+                    <h3 className="text-base font-bold text-slate-300 uppercase tracking-wider">
+                      Tailored Recommendations
                     </h3>
                   </div>
-                  <ul className="space-y-3">
+                  <ul className="space-y-4">
                     {result.recommendations.map((rec, i) => (
                       <motion.li
                         key={i}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.05 }}
-                        className="flex items-start gap-3 text-sm text-slate-300"
+                        className="flex items-start gap-3 text-sm text-slate-200 leading-relaxed"
                       >
                         <TrendingUp
-                          size={14}
+                          size={16}
                           className="text-blue-400 mt-0.5 shrink-0"
                         />
                         <span>{rec}</span>
@@ -302,20 +283,20 @@ function JobMatch() {
               )}
 
               {/* Action Bar */}
-              <div className="flex flex-wrap gap-4 justify-center pb-10">
-                <Link
-                  to="/upload"
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 transition font-medium"
+              <div className="flex flex-wrap gap-4 justify-center pt-6">
+                <button
+                  onClick={() => navigate("/upload")}
+                  className="flex items-center gap-2 px-8 py-4 rounded-2xl bg-blue-600 hover:bg-blue-500 font-bold transition shadow-xl shadow-blue-500/20"
                 >
                   <Upload size={18} />
                   Upload New Resume
-                </Link>
+                </button>
                 <button
                   onClick={() => {
                     setResult(null);
                     setJobDescription("");
                   }}
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-700 hover:bg-slate-800 transition font-medium"
+                  className="flex items-center gap-2 px-8 py-4 rounded-2xl border border-slate-800 bg-slate-900 hover:bg-slate-800 font-bold transition"
                 >
                   <BarChart3 size={18} />
                   Compare Another Job
@@ -324,7 +305,9 @@ function JobMatch() {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }

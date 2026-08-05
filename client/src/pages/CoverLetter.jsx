@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import {
-  ArrowLeft,
   FileEdit,
   Loader2,
   Copy,
@@ -11,6 +10,8 @@ import {
   Download,
   Sparkles,
 } from "lucide-react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5002";
@@ -82,99 +83,91 @@ function CoverLetter() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-between">
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
 
-      {/* Header */}
-      <nav className="flex items-center justify-between px-8 py-5 border-b border-slate-800/50">
-        <Link
-          to="/"
-          className="flex items-center gap-2 text-slate-400 hover:text-white transition"
-        >
-          <ArrowLeft size={18} />
-          <span className="text-sm font-medium">Home</span>
-        </Link>
-        <h1 className="text-lg font-bold text-blue-400">Cover Letter</h1>
-        <div className="w-20" />
-      </nav>
+      <Navbar />
 
-      <div className="max-w-6xl mx-auto px-6 py-10">
+      <main className="flex-1 max-w-6xl mx-auto w-full px-6 py-12">
         {/* Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
-          <h1 className="text-4xl font-extrabold">
+          <span className="text-xs font-semibold text-blue-400 uppercase tracking-widest">
+            Tailored AI Generator
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold mt-2">
             Generate a{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent">
               Cover Letter
             </span>
           </h1>
-          <p className="text-slate-400 mt-3 max-w-lg mx-auto">
-            Paste your resume and a job description — AI will craft a tailored
-            cover letter in seconds.
+          <p className="text-slate-400 mt-4 max-w-xl mx-auto text-base md:text-lg">
+            Paste your resume and a job description — AI will craft a tailored,
+            professional cover letter in seconds.
           </p>
         </motion.div>
 
         {/* Inputs */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <div className="glass rounded-2xl p-6">
-            <label className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3 block">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <div className="glass-strong rounded-3xl p-8 border border-slate-800 shadow-xl">
+            <label className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4 block">
               Your Resume
             </label>
             <textarea
               value={resumeText}
               onChange={(e) => setResumeText(e.target.value)}
               placeholder="Paste your resume text or upload a resume first..."
-              className="w-full h-44 bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-300 placeholder-slate-600 resize-none focus:outline-none focus:border-blue-500/50 transition"
+              className="w-full h-56 bg-slate-950/60 border border-slate-800 rounded-2xl p-4 text-sm text-slate-300 placeholder-slate-600 resize-none focus:outline-none focus:border-blue-500/50 transition font-sans leading-relaxed"
             />
           </div>
 
-          <div className="glass rounded-2xl p-6">
-            <label className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3 block">
+          <div className="glass-strong rounded-3xl p-8 border border-slate-800 shadow-xl">
+            <label className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-4 block">
               Job Description
             </label>
             <textarea
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}
               placeholder="Paste the full job description..."
-              className="w-full h-44 bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-300 placeholder-slate-600 resize-none focus:outline-none focus:border-purple-500/50 transition"
+              className="w-full h-56 bg-slate-950/60 border border-slate-800 rounded-2xl p-4 text-sm text-slate-300 placeholder-slate-600 resize-none focus:outline-none focus:border-purple-500/50 transition font-sans leading-relaxed"
             />
           </div>
         </div>
 
         {/* Company Name */}
-        <div className="glass rounded-2xl p-6 mb-6">
-          <label className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3 block">
-            Company Name (optional)
+        <div className="glass-strong rounded-3xl p-8 mb-8 border border-slate-800 shadow-xl">
+          <label className="text-sm font-bold text-slate-300 uppercase tracking-wider mb-3 block">
+            Company Name (Optional)
           </label>
           <input
             type="text"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
             placeholder="e.g. Google, Amazon, Flipkart..."
-            className="w-full bg-slate-950/50 border border-slate-800 rounded-xl px-4 py-3 text-sm text-slate-300 placeholder-slate-600 focus:outline-none focus:border-blue-500/50 transition"
+            className="w-full bg-slate-950/60 border border-slate-800 rounded-2xl px-5 py-4 text-base text-slate-200 placeholder-slate-600 focus:outline-none focus:border-blue-500/50 transition"
           />
         </div>
 
         {/* Generate Button */}
-        <div className="flex justify-center mb-10">
+        <div className="flex justify-center mb-12">
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={handleGenerate}
             disabled={loading || !resumeText.trim() || !jobDescription.trim()}
-            className="flex items-center gap-2 px-10 py-4 rounded-xl font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-lg shadow-blue-500/15"
+            className="flex items-center gap-3 px-12 py-5 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-blue-600 via-blue-500 to-purple-600 hover:from-blue-500 hover:to-purple-500 disabled:opacity-40 transition-all shadow-xl shadow-blue-500/25"
           >
             {loading ? (
               <>
-                <Loader2 size={20} className="animate-spin" />
-                Generating...
+                <Loader2 size={22} className="animate-spin" />
+                Generating Cover Letter...
               </>
             ) : (
               <>
-                <Sparkles size={20} />
+                <Sparkles size={22} />
                 Generate Cover Letter
               </>
             )}
@@ -188,50 +181,50 @@ function CoverLetter() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 20 }}
-              className="glass rounded-2xl p-6"
+              className="glass-strong rounded-3xl p-8 border border-slate-800 shadow-2xl"
             >
-              {/* Top bar */}
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
-                    <FileEdit size={16} className="text-white" />
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                    <FileEdit size={20} className="text-white" />
                   </div>
-                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                    Your Cover Letter
+                  <h3 className="text-base font-bold text-slate-300 uppercase tracking-wider">
+                    Your Tailored Cover Letter
                   </h3>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition px-3 py-2 rounded-lg hover:bg-slate-800"
+                    className="flex items-center gap-2 text-sm text-slate-300 hover:text-white transition px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700"
                   >
                     {copied ? (
-                      <Check size={14} className="text-emerald-400" />
+                      <Check size={16} className="text-emerald-400" />
                     ) : (
-                      <Copy size={14} />
+                      <Copy size={16} />
                     )}
                     {copied ? "Copied" : "Copy"}
                   </button>
                   <button
                     onClick={handleDownload}
-                    className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition px-3 py-2 rounded-lg hover:bg-slate-800"
+                    className="flex items-center gap-2 text-sm text-slate-300 hover:text-white transition px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-800 hover:border-slate-700"
                   >
-                    <Download size={14} />
+                    <Download size={16} />
                     Download
                   </button>
                 </div>
               </div>
 
-              {/* Letter content */}
-              <div className="bg-slate-950/50 rounded-xl p-6">
-                <pre className="whitespace-pre-wrap text-sm text-slate-300 leading-relaxed font-sans">
+              <div className="bg-slate-950/70 rounded-2xl p-8 border border-slate-800/80">
+                <pre className="whitespace-pre-wrap text-base text-slate-200 leading-relaxed font-sans">
                   {letter}
                 </pre>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </main>
+
+      <Footer />
     </div>
   );
 }
