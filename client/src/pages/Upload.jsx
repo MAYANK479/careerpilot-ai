@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5002";
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 function formatBytes(bytes) {
   if (bytes < 1024) return bytes + " B";

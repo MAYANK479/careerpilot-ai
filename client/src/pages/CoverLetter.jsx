@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5002";
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 function CoverLetter() {
   const location = useLocation();

@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5002";
+const API_URL = import.meta.env.VITE_API_URL || "";
 
 const roles = [
   { id: "fullstack", title: "Full-Stack Developer", icon: Code2, desc: "React, Node.js, SQL, System Architecture" },
