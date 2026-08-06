@@ -45,6 +45,7 @@ function Interview() {
   const [role, setRole] = useState("Full-Stack Developer");
   const [difficulty, setDifficulty] = useState("Mid-Level");
   const [questionCount, setQuestionCount] = useState(3);
+  const [interviewMode, setInterviewMode] = useState("select");
 
   const [questions, setQuestions] = useState([]);
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -213,103 +214,183 @@ function Interview() {
       {step === "setup" && (
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <div className="section-header">
-            <h1 className="section-title">AI Voice Mock Interview Simulator</h1>
+            <div>
+              <h1 className="section-title">AI Mock Interview</h1>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '0.35rem' }}>
+                Master your interview skills with real-time AI feedback.
+              </p>
+            </div>
           </div>
-          <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
-            Practice technical & behavioral questions with real-time speech recognition, audio playback, and score analytics.
-          </p>
 
-          <div className="stat-card" style={{ maxWidth: '900px', margin: '0 auto' }}>
-            {/* Role Picker */}
-            <div style={{ marginBottom: '2rem' }}>
-              <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>
-                1. Choose Target Career Role
-              </label>
-              <div className="dashboard-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
-                {roles.map((r) => {
-                  const Icon = r.icon;
-                  const active = role === r.title;
-                  return (
-                    <button
-                      key={r.id}
-                      onClick={() => setRole(r.title)}
-                      style={{
-                        padding: '1.25rem',
-                        borderRadius: 'var(--radius-sm)',
-                        background: active ? 'rgba(99, 102, 241, 0.1)' : 'var(--input-bg)',
-                        border: `1px solid ${active ? 'var(--primary)' : 'var(--input-border)'}`,
-                        textAlign: 'left',
-                        cursor: 'pointer',
-                        transition: 'var(--transition)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '0.5rem'
-                      }}
-                    >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: active ? 'var(--primary)' : 'rgba(100, 116, 139, 0.2)', color: active ? 'var(--primary-text)' : 'var(--text-light)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                          <Icon size={20} />
+          {interviewMode === "select" ? (
+            <div className="stat-card" style={{ maxWidth: '900px', margin: '2rem auto', textAlign: 'center', padding: '3rem 2rem' }}>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '0.5rem' }}>
+                Choose Interview Type
+              </h2>
+              <p style={{ color: 'var(--text-muted)', fontSize: '0.88rem', marginBottom: '2.5rem' }}>
+                Select how you want to prepare for your next big opportunity
+              </p>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+                {/* Resume Based Card */}
+                <div style={{
+                  padding: '2.5rem 1.5rem',
+                  borderRadius: 'var(--radius-card)',
+                  background: 'var(--card-bg-light)',
+                  border: '1px solid var(--input-border)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  transition: 'var(--transition)'
+                }}>
+                  <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.75rem', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}>
+                    📄
+                  </div>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--text-main)' }}>Resume Based</h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.5', minHeight: '48px' }}>
+                    AI scans your uploaded resume and asks relevant questions based on your actual skills and experience.
+                  </p>
+                  <button
+                    onClick={() => { setRole("Full-Stack Developer"); handleStart(); }}
+                    className="btn-primary"
+                    style={{ width: 'auto', padding: '0.6rem 1.5rem', marginTop: '0.5rem' }}
+                  >
+                    Start Prep →
+                  </button>
+                </div>
+
+                {/* Topic Based Card */}
+                <div style={{
+                  padding: '2.5rem 1.5rem',
+                  borderRadius: 'var(--radius-card)',
+                  background: 'var(--card-bg-light)',
+                  border: '1px solid var(--input-border)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '1rem',
+                  transition: 'var(--transition)'
+                }}>
+                  <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.75rem', boxShadow: '0 4px 10px rgba(0,0,0,0.1)' }}>
+                    💡
+                  </div>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', color: 'var(--text-main)' }}>Topic Based</h3>
+                  <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.5', minHeight: '48px' }}>
+                    Choose specific topics (e.g., React, Node.js, System Design, AI) to practice focused questions.
+                  </p>
+                  <button
+                    onClick={() => setInterviewMode("configure")}
+                    className="btn-primary"
+                    style={{ width: 'auto', padding: '0.6rem 1.5rem', marginTop: '0.5rem', background: 'var(--secondary)' }}
+                  >
+                    Configure Prep →
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="stat-card" style={{ maxWidth: '900px', margin: '0 auto' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+                <button
+                  onClick={() => setInterviewMode("select")}
+                  style={{ background: 'none', border: 'none', color: 'var(--primary-light)', cursor: 'pointer', fontWeight: 'bold', fontSize: '0.85rem' }}
+                >
+                  ← Back to Selection
+                </button>
+              </div>
+
+              {/* Role Picker */}
+              <div style={{ marginBottom: '2rem' }}>
+                <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>
+                  1. Choose Target Career Topic / Role
+                </label>
+                <div className="dashboard-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+                  {roles.map((r) => {
+                    const Icon = r.icon;
+                    const active = role === r.title;
+                    return (
+                      <button
+                        key={r.id}
+                        onClick={() => setRole(r.title)}
+                        style={{
+                          padding: '1.25rem',
+                          borderRadius: 'var(--radius-sm)',
+                          background: active ? 'rgba(99, 102, 241, 0.1)' : 'var(--input-bg)',
+                          border: `1px solid ${active ? 'var(--primary)' : 'var(--input-border)'}`,
+                          textAlign: 'left',
+                          cursor: 'pointer',
+                          transition: 'var(--transition)',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '0.5rem'
+                        }}
+                      >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: active ? 'var(--primary)' : 'rgba(100, 116, 139, 0.2)', color: active ? 'var(--primary-text)' : 'var(--text-light)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Icon size={20} />
+                          </div>
+                          {active && <CheckCircle size={18} color="var(--primary)" />}
                         </div>
-                        {active && <CheckCircle size={18} color="var(--primary)" />}
-                      </div>
-                      <span style={{ fontSize: '0.9rem', fontWeight: 'bold', color: active ? 'var(--text-main)' : 'var(--text-light)' }}>{r.title}</span>
-                    </button>
-                  );
-                })}
+                        <span style={{ fontSize: '0.9rem', fontWeight: 'bold', color: active ? 'var(--text-main)' : 'var(--text-light)' }}>{r.title}</span>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
 
-            {/* Experience Level */}
-            <div style={{ marginBottom: '2rem' }}>
-              <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>
-                2. Select Experience Level
-              </label>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                {difficulties.map((d) => {
-                  const active = difficulty === d.level;
-                  return (
-                    <button
-                      key={d.level}
-                      onClick={() => setDifficulty(d.level)}
-                      style={{
-                        flex: '1',
-                        minWidth: '150px',
-                        padding: '1rem',
-                        borderRadius: 'var(--radius-sm)',
-                        background: active ? 'rgba(99, 102, 241, 0.1)' : 'var(--input-bg)',
-                        border: `1px solid ${active ? 'var(--primary)' : 'var(--input-border)'}`,
-                        textAlign: 'center',
-                        cursor: 'pointer',
-                        transition: 'var(--transition)'
-                      }}
-                    >
-                      <div style={{ fontWeight: 'bold', color: active ? 'var(--text-main)' : 'var(--text-light)' }}>{d.level}</div>
-                      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{d.label}</div>
-                    </button>
-                  );
-                })}
+              {/* Experience Level */}
+              <div style={{ marginBottom: '2rem' }}>
+                <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>
+                  2. Select Experience Level
+                </label>
+                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                  {difficulties.map((d) => {
+                    const active = difficulty === d.level;
+                    return (
+                      <button
+                        key={d.level}
+                        onClick={() => setDifficulty(d.level)}
+                        style={{
+                          flex: '1',
+                          minWidth: '150px',
+                          padding: '1rem',
+                          borderRadius: 'var(--radius-sm)',
+                          background: active ? 'rgba(99, 102, 241, 0.1)' : 'var(--input-bg)',
+                          border: `1px solid ${active ? 'var(--primary)' : 'var(--input-border)'}`,
+                          textAlign: 'center',
+                          cursor: 'pointer',
+                          transition: 'var(--transition)'
+                        }}
+                      >
+                        <div style={{ fontWeight: 'bold', color: active ? 'var(--text-main)' : 'var(--text-light)' }}>{d.level}</div>
+                        <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{d.label}</div>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
 
-            <button
-              onClick={handleStart}
-              disabled={loading}
-              className="btn-primary"
-              style={{ width: '100%', height: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontSize: '1rem' }}
-            >
-              {loading ? (
-                <>
-                  <Loader2 size={20} className="animate-spin" />
-                  Generating Role Questions...
-                </>
-              ) : (
-                <>
-                  <Play size={20} />
-                  Start AI Voice Interview
-                </>
-              )}
-            </button>
-          </div>
+              <button
+                onClick={handleStart}
+                disabled={loading}
+                className="btn-primary"
+                style={{ width: '100%', height: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontSize: '1rem' }}
+              >
+                {loading ? (
+                  <>
+                    <Loader2 size={20} className="animate-spin" />
+                    Generating Questions...
+                  </>
+                ) : (
+                  <>
+                    <Play size={20} />
+                    Start AI Mock Interview
+                  </>
+                )}
+              </button>
+            </div>
+          )}
         </motion.div>
       )}
 

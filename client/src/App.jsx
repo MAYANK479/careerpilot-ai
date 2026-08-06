@@ -12,6 +12,8 @@ import CoverLetter from "./pages/CoverLetter";
 import Interview from "./pages/Interview";
 import Roadmap from "./pages/Roadmap";
 import Portfolio from "./pages/Portfolio";
+import ScheduledInterviews from "./pages/ScheduledInterviews";
+import Invitations from "./pages/Invitations";
 import Home from "./pages/Home";
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
           <Route path="/job-match" element={<JobMatch />} />
           <Route path="/cover-letter" element={<CoverLetter />} />
           <Route path="/interview" element={<Interview />} />
+          <Route path="/scheduled-interviews" element={<ScheduledInterviews />} />
+          <Route path="/invitations" element={<Invitations />} />
           <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/portfolio" element={<Portfolio />} />
         </Route>

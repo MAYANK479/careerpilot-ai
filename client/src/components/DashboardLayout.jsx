@@ -85,6 +85,14 @@ export default function DashboardLayout() {
             <span className="nav-icon">🗣️</span>
             Mock Interviews
           </NavLink>
+          <NavLink to="/scheduled-interviews" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+            <span className="nav-icon">📅</span>
+            Scheduled Interviews
+          </NavLink>
+          <NavLink to="/invitations" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+            <span className="nav-icon">📩</span>
+            Invitations
+          </NavLink>
           <NavLink to="/cover-letter" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
             <span className="nav-icon">📝</span>
             Cover Letters
