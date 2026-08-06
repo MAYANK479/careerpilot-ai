@@ -102,7 +102,7 @@ function Upload() {
       setStage("");
       toast.error(
         err.response?.data?.message ||
-          "Could not connect to server. Ensure port 5002 is active."
+          "Could not connect to server. Please try again."
       );
     } finally {
       setLoading(false);
