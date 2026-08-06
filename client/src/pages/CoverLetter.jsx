@@ -81,6 +81,49 @@ function CoverLetter() {
     toast.success("Cover letter downloaded!");
   };
 
+  const handleDownloadPDF = () => {
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) {
+      toast.error("Please allow popups to export PDF.");
+      return;
+    }
+    const cleanLetter = letter.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Cover Letter - ${companyName || "CareerPilot AI"}</title>
+          <style>
+            body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 50px; color: #1e293b; line-height: 1.7; font-size: 15px; }
+            .header { margin-bottom: 30px; border-bottom: 2px solid #6366f1; padding-bottom: 15px; }
+            .title { font-size: 24px; font-weight: bold; color: #4f46e5; }
+            .subtitle { font-size: 13px; color: #64748b; margin-top: 4px; }
+            .content { white-space: pre-wrap; font-family: inherit; }
+            @media print {
+              body { padding: 0; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="title">Cover Letter</div>
+            <div class="subtitle">Generated via CareerPilot AI for ${companyName || "Target Role"}</div>
+          </div>
+          <div class="content">${cleanLetter}</div>
+          <script>
+            window.onload = function() {
+              setTimeout(function() {
+                window.print();
+              }, 300);
+            };
+          </script>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+    toast.success("Opening PDF Export print window!");
+  };
+
   return (
     <div>
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
@@ -172,7 +215,7 @@ function CoverLetter() {
                   Generated Cover Letter
                 </h3>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
                 <button
                   onClick={handleCopy}
                   style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-main)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-pill)', background: 'var(--card-bg-light)', border: '1px solid var(--input-border)', cursor: 'pointer' }}
@@ -185,7 +228,15 @@ function CoverLetter() {
                   style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-main)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-pill)', background: 'var(--card-bg-light)', border: '1px solid var(--input-border)', cursor: 'pointer' }}
                 >
                   <Download size={14} />
-                  Download
+                  TXT
+                </button>
+                <button
+                  onClick={handleDownloadPDF}
+                  className="btn-primary"
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', padding: '0.5rem 1.25rem', width: 'auto' }}
+                >
+                  <Download size={14} />
+                  Export PDF
                 </button>
               </div>
             </div>

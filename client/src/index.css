@@ -33,6 +33,26 @@
   --transition: 200ms ease;
 }
 
+[data-theme="light"] {
+  --bg-page: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%);
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-text: #ffffff;
+  --primary-light: #3730a3;
+  --secondary: #7c3aed;
+  --secondary-hover: #6d28d9;
+  --accent: #db2777;
+  --text-main: #0f172a;
+  --text-muted: #334155;
+  --text-light: #64748b;
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-bg-light: #ffffff;
+  --shadow-card: 0 20px 40px -10px rgba(79, 70, 229, 0.1);
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { color-scheme: dark; }
