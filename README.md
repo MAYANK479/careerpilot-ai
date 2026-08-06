@@ -1,7 +1,6 @@
 # 🚀 CareerPilot AI — Full-Stack AI Career Platform & Co-Pilot
 
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20Frontend-black?style=for-the-badge&logo=vercel)](https://careerpilot-ai.vercel.app)
-[![Render Backend](https://img.shields.io/badge/Render-Active%20API-informational?style=for-the-badge&logo=render)](https://careerpilot-ai-5yi4.onrender.com)
+[![Vercel Live Demo](https://img.shields.io/badge/Vercel-Live%20Demo-black?style=for-the-badge&logo=vercel)](https://careerpilot-ai-two-ebon.vercel.app/)
 [![Tech Stack](https://img.shields.io/badge/React_19-Vite_8-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
 [![Node.js](https://img.shields.io/badge/Node.js-Express_5-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org)
 [![Groq LLaMA 3.3](https://img.shields.io/badge/AI-Groq%20LLaMA%203.3%20%2F%20Ollama-f34f29?style=for-the-badge)](https://groq.com)
@@ -10,10 +9,9 @@
 
 ---
 
-## 🌐 Live Demo & Deployment
+## 🌐 Live Demo
 
-- **Frontend (Vercel)**: [careerpilot-ai.vercel.app](https://careerpilot-ai.vercel.app)
-- **Backend API (Render)**: [careerpilot-ai-5yi4.onrender.com](https://careerpilot-ai-5yi4.onrender.com)
+🚀 **[https://careerpilot-ai-two-ebon.vercel.app](https://careerpilot-ai-two-ebon.vercel.app/)**
 
 ---
 
