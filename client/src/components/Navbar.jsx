@@ -17,29 +17,29 @@ function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full glass-navbar">
-      <div className="max-w-[1400px] mx-auto w-full flex items-center justify-between px-6 py-4">
+    <header className="navbar">
+      <div className="navbar-inner">
         {/* Brand Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-blue-400 flex items-center justify-center text-white shadow-lg shadow-blue-500/20 group-hover:scale-105 transition-transform duration-300">
+        <Link to="/" className="navbar-brand">
+          <div className="brand-icon">
             <Compass size={22} className="stroke-[2.2]" />
           </div>
-          <div className="flex flex-col justify-center">
+          <div className="navbar-brand-text">
             <span className="text-xl font-bold tracking-tight text-white leading-none">
               CareerPilot <span className="text-blue-500">AI</span>
             </span>
           </div>
         </Link>
 
-        {/* Desktop Nav Items */}
-        <nav className="hidden lg:flex items-center gap-8">
+        {/* Desktop Nav Items - refined spacing and larger touch targets */}
+        <nav className="navbar-list">
           {navItems.map((item) => {
             if (item.href) {
               return (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-base font-semibold text-slate-300 hover:text-white transition-colors"
+                  className="nav-link"
                 >
                   {item.label}
                 </a>
@@ -49,11 +49,7 @@ function Navbar() {
               <Link
                 key={item.label}
                 to={item.to}
-                className={`text-base font-semibold transition-colors ${
-                  location.pathname === item.to
-                    ? "text-blue-400"
-                    : "text-slate-300 hover:text-white"
-                }`}
+                className={`nav-link ${location.pathname===item.to ? 'active' : ''}`}
               >
                 {item.label}
               </Link>
@@ -62,10 +58,10 @@ function Navbar() {
         </nav>
 
         {/* Action Button */}
-        <div className="hidden lg:flex items-center gap-4">
+        <div className="nav-action">
           <Link
             to="/upload"
-            className="group flex items-center gap-2 text-sm font-bold px-6 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 transform hover:-translate-y-0.5 border border-blue-500/50"
+            className="nav-action-link"
           >
             <Sparkles size={16} />
             Get Started
@@ -76,7 +72,7 @@ function Navbar() {
         {/* Mobile Hamburger */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="lg:hidden text-slate-300 hover:text-white p-2 rounded-xl bg-slate-900 border border-slate-800"
+          className="mobile-toggle"
           aria-label="Toggle Navigation"
         >
           {mobileOpen ? <X size={22} /> : <Menu size={22} />}
@@ -90,7 +86,7 @@ function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-white/5 bg-[#050816] overflow-hidden"
+            className="mobile-menu"
           >
             <div className="px-6 py-6 space-y-4">
               {navItems.map((item) => (
@@ -99,7 +95,7 @@ function Navbar() {
                     <a
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
-                      className="block text-lg font-semibold text-slate-300 hover:text-white"
+                      className="mobile-menu-link"
                     >
                       {item.label}
                     </a>
@@ -118,7 +114,7 @@ function Navbar() {
                 <Link
                   to="/upload"
                   onClick={() => setMobileOpen(false)}
-                  className="w-full flex items-center justify-center gap-2 text-base font-bold px-6 py-3.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-500/25"
+                  className="mobile-action"
                 >
                   <Sparkles size={16} />
                   Get Started Free

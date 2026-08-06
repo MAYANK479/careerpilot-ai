@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { Map, Sparkles, CheckCircle, Clock } from "lucide-react";
 
@@ -50,44 +48,37 @@ function Roadmap() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050816] text-white font-sans selection:bg-blue-500 selection:text-white">
-      <Navbar />
+    <div>
+      <div className="section-header">
+        <h1 className="section-title">Personalized Career Learning Plans</h1>
+      </div>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
+        Select your target career path to generate a week-by-week structured learning roadmap.
+      </p>
 
-      <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-12">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block mb-4">
-            Skill Roadmap Generator
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
-            Personalized Career Learning Plans
-          </h1>
-          <p className="text-[#94A3B8] mt-4 text-base sm:text-lg">
-            Select your target career path to generate a week-by-week structured learning roadmap.
-          </p>
-        </div>
-
-        {/* Input Card */}
-        <div className="saas-card p-8 mb-12 bg-[#0E1424] border border-slate-800 rounded-[24px]">
-          <form onSubmit={handleGenerate} className="flex flex-col sm:flex-row gap-4 items-center">
-            <div className="w-full sm:w-1/2">
-              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+      {/* Input Card */}
+      <div className="stat-card" style={{ marginBottom: '3rem' }}>
+        <form onSubmit={handleGenerate} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div className="dashboard-grid two-columns" style={{ gap: '1rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase' }}>
                 Target Role
               </label>
               <select
                 value={selectedRole}
                 onChange={(e) => setSelectedRole(e.target.value)}
-                className="w-full px-4 py-3.5 rounded-xl border border-slate-800 bg-[#1E293B]/60 text-sm font-semibold text-white focus:outline-none focus:border-blue-500"
+                className="form-input"
               >
-                <option value="Frontend Engineer" className="bg-[#0E1424]">Frontend Engineer</option>
-                <option value="Backend / Node.js Developer" className="bg-[#0E1424]">Backend / Node.js Developer</option>
-                <option value="AI / Machine Learning Engineer" className="bg-[#0E1424]">AI / Machine Learning Engineer</option>
-                <option value="Custom Role" className="bg-[#0E1424]">Custom Role...</option>
+                <option value="Frontend Engineer">Frontend Engineer</option>
+                <option value="Backend / Node.js Developer">Backend / Node.js Developer</option>
+                <option value="AI / Machine Learning Engineer">AI / Machine Learning Engineer</option>
+                <option value="Custom Role">Custom Role...</option>
               </select>
             </div>
 
             {selectedRole === "Custom Role" && (
-              <div className="w-full sm:w-1/2">
-                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase' }}>
                   Enter Role Name
                 </label>
                 <input
@@ -95,70 +86,69 @@ function Roadmap() {
                   placeholder="e.g. Cloud DevOps Engineer"
                   value={customRole}
                   onChange={(e) => setCustomRole(e.target.value)}
-                  className="w-full px-4 py-3.5 rounded-xl border border-slate-800 bg-[#1E293B]/60 text-sm font-semibold text-white focus:outline-none focus:border-blue-500"
+                  className="form-input"
                 />
               </div>
             )}
-
-            <div className="w-full sm:w-auto sm:self-end">
-              <button
-                type="submit"
-                disabled={generating}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold shadow-lg shadow-blue-600/30 transition-all"
-              >
-                <Sparkles size={18} />
-                {generating ? "Generating..." : "Generate Roadmap"}
-              </button>
-            </div>
-          </form>
-        </div>
-
-        {/* Roadmap Display */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-white flex items-center gap-3">
-              <Map className="text-blue-400" size={24} />
-              8-Week Learning Track: <span className="text-blue-400">{selectedRole === "Custom Role" ? customRole || "Custom Track" : selectedRole}</span>
-            </h2>
-            <span className="text-xs font-bold px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-              Structured Timeline
-            </span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {activePlan.map((step, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-extrabold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20 flex items-center gap-1.5">
-                    <Clock size={14} />
-                    {step.week}
-                  </span>
-                  <span className="text-xs font-bold text-[#94A3B8]">Module {idx + 1} of 4</span>
-                </div>
-
-                <h3 className="text-lg font-bold text-white mb-4">{step.title}</h3>
-
-                <ul className="space-y-2.5">
-                  {step.topics.map((topic, i) => (
-                    <li key={i} className="flex items-center gap-2.5 text-sm text-slate-200">
-                      <CheckCircle size={16} className="text-emerald-400 shrink-0" />
-                      {topic}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+          <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+            <button
+              type="submit"
+              disabled={generating}
+              className="btn-primary"
+              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', width: 'auto' }}
+            >
+              <Sparkles size={18} />
+              {generating ? "Generating..." : "Generate Roadmap"}
+            </button>
           </div>
-        </div>
-      </main>
+        </form>
+      </div>
 
-      <Footer />
+      {/* Roadmap Display */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--text-main)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Map color="var(--primary)" size={24} />
+            8-Week Learning Track: <span style={{ color: 'var(--primary)', marginLeft: '0.5rem' }}>{selectedRole === "Custom Role" ? customRole || "Custom Track" : selectedRole}</span>
+          </h2>
+          <span className="brand-badge" style={{ marginBottom: 0 }}>
+            Structured Timeline
+          </span>
+        </div>
+
+        <div className="dashboard-grid two-columns">
+          {activePlan.map((step, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.1 }}
+              className="stat-card"
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                <span className="brand-badge" style={{ marginBottom: 0, display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                  <Clock size={14} />
+                  {step.week}
+                </span>
+                <span style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-muted)' }}>Module {idx + 1} of 4</span>
+              </div>
+
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '1rem' }}>{step.title}</h3>
+
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', padding: 0, margin: 0, listStyle: 'none' }}>
+                {step.topics.map((topic, i) => (
+                  <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-light)' }}>
+                    <CheckCircle size={16} color="var(--success)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    {topic}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

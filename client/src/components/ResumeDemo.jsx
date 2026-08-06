@@ -1,24 +1,24 @@
 import React from "react";
-import { motion } from "framer-motion";
-import { FileText, CheckCircle2, AlertTriangle, Sparkles, XCircle } from "lucide-react";
 import { useCountUp } from "../hooks/useCountUp";
 
 function ProgressBar({ label, value, delay = 0 }) {
   const { count, ref } = useCountUp(value, 2000, 0);
 
   return (
-    <div className="space-y-2" ref={ref}>
-      <div className="flex justify-between text-sm font-semibold text-slate-300">
+    <div style={{ marginBottom: '1rem' }} ref={ref}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', fontWeight: '500', color: 'var(--text-main)', marginBottom: '0.4rem' }}>
         <span>{label}</span>
         <span>{count}%</span>
       </div>
-      <div className="w-full h-2 rounded-full bg-[#111B2E] overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${value}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5, delay, ease: "easeOut" }}
-          className="h-full bg-blue-500 rounded-full"
+      <div style={{ width: '100%', height: '8px', borderRadius: '4px', background: 'var(--input-bg)', overflow: 'hidden' }}>
+        <div
+          style={{
+            height: '100%',
+            width: `${value}%`,
+            background: 'var(--primary)',
+            transition: 'width 1.5s ease-out',
+            transitionDelay: `${delay}s`
+          }}
         />
       </div>
     </div>
@@ -29,151 +29,103 @@ function ResumeDemo() {
   const { count: atsScore, ref: atsRef } = useCountUp(92, 2000, 0);
 
   return (
-    <section className="py-36 bg-[#050816] relative overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center max-w-3xl mx-auto mb-20"
-        >
-          <h2 className="text-4xl sm:text-5xl lg:text-[56px] font-bold text-white leading-[1.1] tracking-tight">
-            See How AI Scans & Scores <br className="hidden sm:block" /> Your Resume Live
-          </h2>
-          <p className="text-lg text-[#94A3B8] mt-6 leading-relaxed font-normal">
-            Real-time keyword matching, formatting evaluation, and automated bullet point optimization.
-          </p>
-        </motion.div>
+    <div>
+      <div className="section-header">
+        <h1 className="section-title">See How AI Scans & Scores Your Resume Live</h1>
+      </div>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
+        Real-time keyword matching, formatting evaluation, and automated bullet point optimization.
+      </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Column: Fake Resume (7 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-7 saas-card p-6 sm:p-8 bg-[#0E1424] relative overflow-hidden h-full min-h-[600px]"
-          >
-            {/* Animated Scanning Beam Line */}
-            <div className="absolute left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-blue-500 to-transparent shadow-[0_0_20px_#3b82f6] z-20 animate-scan pointer-events-none" />
-            <div className="absolute left-0 right-0 h-32 bg-gradient-to-b from-transparent to-blue-500/10 z-10 animate-scan pointer-events-none transform -translate-y-full" />
-
-            <div className="border-b border-white/10 pb-5 mb-6 flex flex-wrap justify-between items-center gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold border border-blue-500/20">
-                  <FileText size={24} />
-                </div>
-                <div>
-                  <p className="text-lg font-bold text-white">Alex_Rivera_Resume_2026.pdf</p>
-                  <p className="text-sm text-[#94A3B8] font-medium">Senior Full Stack Developer Candidate</p>
-                </div>
+      <div className="dashboard-grid two-columns" style={{ gridTemplateColumns: '1.5fr 1fr' }}>
+        {/* Left Column: Fake Resume */}
+        <div className="stat-card" style={{ position: 'relative', overflow: 'hidden' }}>
+          <div style={{ borderBottom: '1px solid var(--input-border)', paddingBottom: '1rem', marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+              <div style={{ width: '48px', height: '48px', borderRadius: '12px', background: 'rgba(99, 102, 241, 0.1)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
+                📄
               </div>
-              <span className="text-xs font-bold px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                Scanning Active
-              </span>
-            </div>
-
-            <div className="space-y-6 font-mono text-sm text-slate-300 leading-relaxed">
-              <div className="p-5 rounded-2xl bg-[#111B2E] border border-white/5">
-                <p className="text-blue-400 font-bold mb-2 text-xs tracking-widest uppercase">Summary</p>
-                <p className="text-[#94A3B8]">
-                  Passionate Senior Software Engineer with 6+ years building distributed React and Node.js microservices serving 2M+ monthly active users.
-                </p>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-[#111B2E] border border-white/5">
-                <p className="text-blue-400 font-bold mb-3 text-xs tracking-widest uppercase">Experience</p>
-                <ul className="space-y-3 text-[#94A3B8]">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">›</span>
-                    Engineered real-time WebSocket dashboard handling 10,000 req/sec with &lt;40ms latency.
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-500 mt-0.5">›</span>
-                    Architected PostgreSQL database migrations reducing query execution times by 45%.
-                  </li>
-                </ul>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-[#111B2E] border border-white/5 relative overflow-hidden">
-                <p className="text-blue-400 font-bold mb-2 text-xs tracking-widest uppercase">Core Skills</p>
-                <p className="text-slate-300 font-sans font-semibold">
-                  React 19, TypeScript, Node.js, Express, PostgreSQL, GraphQL, Tailwind CSS
-                </p>
-                {/* Simulated highlight on skills */}
-                <motion.div
-                  initial={{ opacity: 0, width: "0%" }}
-                  whileInView={{ opacity: 1, width: "100%" }}
-                  transition={{ duration: 1, delay: 1.5 }}
-                  className="absolute inset-0 bg-blue-500/10 pointer-events-none"
-                />
+              <div>
+                <p style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-main)' }}>Alex_Rivera_Resume_2026.pdf</p>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Senior Full Stack Developer Candidate</p>
               </div>
             </div>
-          </motion.div>
+            <span className="brand-badge" style={{ background: 'rgba(74, 222, 128, 0.1)', color: 'var(--success)', border: '1px solid rgba(74, 222, 128, 0.2)', marginBottom: 0 }}>
+              ● Scanning Active
+            </span>
+          </div>
 
-          {/* Right Column: Metrics (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-5 space-y-6"
-          >
-            {/* ATS Score Card */}
-            <div className="saas-card p-6 bg-[#0E1424]">
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-sm font-bold text-[#94A3B8] uppercase tracking-wider">Computed ATS Match</span>
-                <span className="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
-                  Top 2% Candidate
-                </span>
-              </div>
-
-              <div className="flex items-center gap-6 mb-8" ref={atsRef}>
-                <div className="text-[72px] font-black text-white tracking-tighter leading-none">
-                  {atsScore}
-                  <span className="text-2xl text-slate-500 font-bold ml-1">/100</span>
-                </div>
-              </div>
-
-              <div className="space-y-5">
-                <ProgressBar label="Keyword Match" value={92} delay={0.2} />
-                <ProgressBar label="Format Score" value={88} delay={0.4} />
-                <ProgressBar label="Readability" value={95} delay={0.6} />
-                <ProgressBar label="Grammar & Spelling" value={97} delay={0.8} />
-              </div>
+          <div style={{ fontFamily: 'monospace', fontSize: '0.85rem', color: 'var(--text-light)', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div style={{ padding: '1rem', borderRadius: 'var(--radius-sm)', background: 'var(--input-bg)', border: '1px solid var(--input-border)' }}>
+              <p style={{ color: 'var(--primary-light)', fontWeight: 'bold', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.5rem' }}>Summary</p>
+              <p>Passionate Senior Software Engineer with 6+ years building distributed React and Node.js microservices serving 2M+ monthly active users.</p>
             </div>
 
-            {/* Strengths & Weaknesses */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="saas-card p-5 bg-[#0E1424]">
-                <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                  <CheckCircle2 size={16} className="text-emerald-400" />
-                  Strengths
-                </h3>
-                <ul className="space-y-3 text-sm text-[#94A3B8] font-medium">
-                  <li>Quantified impact in 80% of bullets</li>
-                  <li>Clean PDF text structure</li>
-                  <li>Action verbs used consistently</li>
-                </ul>
-              </div>
+            <div style={{ padding: '1rem', borderRadius: 'var(--radius-sm)', background: 'var(--input-bg)', border: '1px solid var(--input-border)' }}>
+              <p style={{ color: 'var(--primary-light)', fontWeight: 'bold', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.5rem' }}>Experience</p>
+              <ul style={{ paddingLeft: '1rem', margin: 0 }}>
+                <li style={{ marginBottom: '0.5rem' }}>› Engineered real-time WebSocket dashboard handling 10,000 req/sec with &lt;40ms latency.</li>
+                <li>› Architected PostgreSQL database migrations reducing query execution times by 45%.</li>
+              </ul>
+            </div>
 
-              <div className="saas-card p-5 bg-[#0E1424]">
-                <h3 className="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                  <AlertTriangle size={16} className="text-amber-400" />
-                  Missing Skills
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {["Docker", "AWS", "Redis"].map((skill) => (
-                    <span key={skill} className="px-2.5 py-1 rounded-md text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">
-                      {skill}
-                    </span>
-                  ))}
-                </div>
+            <div style={{ padding: '1rem', borderRadius: 'var(--radius-sm)', background: 'var(--input-bg)', border: '1px solid var(--input-border)' }}>
+              <p style={{ color: 'var(--primary-light)', fontWeight: 'bold', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '0.5rem' }}>Core Skills</p>
+              <p style={{ fontFamily: 'var(--font-family)', fontWeight: '600', color: 'var(--text-main)' }}>React 19, TypeScript, Node.js, Express, PostgreSQL, GraphQL</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Metrics */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          {/* ATS Score Card */}
+          <div className="stat-card">
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-muted)', textTransform: 'uppercase' }}>Computed ATS Match</span>
+              <span className="brand-badge" style={{ background: 'rgba(74, 222, 128, 0.1)', color: 'var(--success)', border: '1px solid rgba(74, 222, 128, 0.2)', marginBottom: 0 }}>Top 2%</span>
+            </div>
+
+            <div ref={atsRef} style={{ fontSize: '4rem', fontWeight: '900', color: 'var(--text-main)', lineHeight: '1', marginBottom: '2rem' }}>
+              {atsScore}
+              <span style={{ fontSize: '1.5rem', color: 'var(--text-muted)' }}>/100</span>
+            </div>
+
+            <div>
+              <ProgressBar label="Keyword Match" value={92} delay={0.2} />
+              <ProgressBar label="Format Score" value={88} delay={0.4} />
+              <ProgressBar label="Readability" value={95} delay={0.6} />
+              <ProgressBar label="Grammar & Spelling" value={97} delay={0.8} />
+            </div>
+          </div>
+
+          <div className="dashboard-grid two-columns">
+            <div className="stat-card">
+              <h3 style={{ fontSize: '0.9rem', color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ color: 'var(--success)' }}>✓</span> Strengths
+              </h3>
+              <ul style={{ paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0 }}>
+                <li style={{ marginBottom: '0.5rem' }}>Quantified impact</li>
+                <li style={{ marginBottom: '0.5rem' }}>Clean PDF text</li>
+                <li>Action verbs</li>
+              </ul>
+            </div>
+
+            <div className="stat-card">
+              <h3 style={{ fontSize: '0.9rem', color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ color: 'var(--danger)' }}>⚠️</span> Missing Skills
+              </h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {["Docker", "AWS", "Redis"].map((skill) => (
+                  <span key={skill} style={{ fontSize: '0.75rem', fontWeight: 'bold', padding: '0.25rem 0.5rem', borderRadius: '4px', background: 'rgba(248, 113, 113, 0.1)', color: 'var(--danger)', border: '1px solid rgba(248, 113, 113, 0.2)' }}>
+                    {skill}
+                  </span>
+                ))}
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

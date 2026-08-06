@@ -1,31 +1,15 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import {
-  Target,
-  CheckCircle2,
-  AlertTriangle,
-  ArrowRight,
-  Map,
-  FolderGit2,
-  FileText,
-  Mic,
-  Briefcase,
-  TrendingUp,
-  Sparkles,
-} from "lucide-react";
 
 function Dashboard() {
   const [targetRole, setTargetRole] = useState("Full Stack Engineer");
 
   const skillMastery = [
-    { name: "React 19 / Modern Frontend Architecture", progress: 92, status: "Mastered", color: "bg-blue-500" },
-    { name: "Node.js & Express REST Microservices", progress: 88, status: "Proficient", color: "bg-indigo-500" },
-    { name: "System Design & Distributed Systems", progress: 65, status: "In Progress", color: "bg-amber-500" },
-    { name: "PostgreSQL & Query Optimization", progress: 80, status: "Proficient", color: "bg-emerald-500" },
-    { name: "CI/CD & Docker Containerization", progress: 55, status: "Skill Gap", color: "bg-rose-500" },
+    { name: "React 19 / Modern Frontend", progress: 92, status: "Mastered" },
+    { name: "Node.js Microservices", progress: 88, status: "Proficient" },
+    { name: "System Design", progress: 65, status: "In Progress" },
+    { name: "PostgreSQL Optimization", progress: 80, status: "Proficient" },
+    { name: "CI/CD & Docker", progress: 55, status: "Skill Gap" },
   ];
 
   const criticalGaps = [
@@ -35,208 +19,116 @@ function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050816] text-white font-sans selection:bg-blue-500 selection:text-white">
-      <Navbar />
+    <div>
+      <div className="section-header">
+        <h1 className="section-title">Candidate Readiness Command Center</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Target Role:</span>
+          <select
+            value={targetRole}
+            onChange={(e) => setTargetRole(e.target.value)}
+            className="form-input"
+            style={{ width: 'auto', padding: '0.4rem 1rem', background: 'var(--card-bg-light)' }}
+          >
+            <option value="Full Stack Engineer">Full Stack Engineer</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="AI / ML Engineer">AI / ML Engineer</option>
+            <option value="DevOps & Cloud Engineer">DevOps & Cloud Engineer</option>
+          </select>
+        </div>
+      </div>
 
-      <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-10">
-        {/* Header Title Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-10">
+      {/* Top Grid: Score & Summary Metrics */}
+      <div className="dashboard-grid">
+        {/* Readiness Score Card */}
+        <div className="stat-card">
+          <span className="overlay-subtitle" style={{ color: 'var(--success)', fontWeight: 'bold' }}>Top 2% Candidate</span>
+          <h3 className="stat-value" style={{ color: 'var(--primary-light)' }}>91<span style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>/100</span></h3>
+          <span className="stat-label">Readiness Score</span>
+          <p style={{ fontSize: '0.75rem', color: 'var(--text-light)', marginTop: '0.5rem' }}>Ready for senior technical interviews.</p>
+        </div>
+
+        {/* Acquired Skills Count */}
+        <div className="stat-card">
+          <span className="overlay-subtitle" style={{ color: 'var(--text-muted)', fontWeight: 'bold' }}>Skills Acquired</span>
+          <h3 className="stat-value">14 <span style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>/ 17</span></h3>
+          <span className="stat-label" style={{ color: 'var(--success)' }}>82% role coverage</span>
+        </div>
+
+        {/* Skill Gaps Count */}
+        <div className="stat-card">
+          <span className="overlay-subtitle" style={{ color: 'var(--text-muted)', fontWeight: 'bold' }}>Skill Gaps to Close</span>
+          <h3 className="stat-value">3 <span style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>Topics</span></h3>
+          <span className="stat-label" style={{ color: 'var(--danger)' }}>AWS, Redis & GraphQL</span>
+        </div>
+      </div>
+
+      <div className="dashboard-grid two-columns" style={{ gridTemplateColumns: '2fr 1fr' }}>
+        {/* Skills Mastery Progress */}
+        <div className="stat-card">
+          <h3 className="section-title" style={{ fontSize: '1.1rem', marginBottom: '1.5rem' }}>Skills Mastery & Role Alignment</h3>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            {skillMastery.map((item) => (
+              <div key={item.name}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginBottom: '0.4rem' }}>
+                  <span style={{ fontWeight: '500', color: 'var(--text-main)' }}>{item.name}</span>
+                  <span style={{ color: 'var(--text-muted)' }}>{item.progress}% ({item.status})</span>
+                </div>
+                <div style={{ width: '100%', height: '8px', background: 'var(--input-bg)', borderRadius: '4px', overflow: 'hidden' }}>
+                  <div
+                    style={{ 
+                      height: '100%', 
+                      width: `${item.progress}%`, 
+                      background: item.progress > 80 ? 'var(--success)' : item.progress > 60 ? 'var(--primary)' : 'var(--danger)',
+                      borderRadius: '4px'
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Critical Skill Gaps Card */}
+        <div className="stat-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">
-                Career Readiness Hub
-              </span>
-            </div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-white mt-2 tracking-tight">
-              Candidate Readiness Command Center
-            </h1>
-          </div>
-
-          {/* Role Picker */}
-          <div className="flex items-center gap-3 bg-[#0E1424] px-4 py-2.5 rounded-[16px] border border-slate-800 shadow-sm">
-            <Target size={18} className="text-blue-400 shrink-0" />
-            <span className="text-xs font-bold text-[#94A3B8]">Target Role:</span>
-            <select
-              value={targetRole}
-              onChange={(e) => setTargetRole(e.target.value)}
-              className="bg-transparent text-xs font-bold text-white focus:outline-none cursor-pointer"
-            >
-              <option value="Full Stack Engineer" className="bg-[#0E1424]">Full Stack Engineer</option>
-              <option value="Frontend Developer" className="bg-[#0E1424]">Frontend Developer</option>
-              <option value="Backend Developer" className="bg-[#0E1424]">Backend Developer</option>
-              <option value="AI / ML Engineer" className="bg-[#0E1424]">AI / ML Engineer</option>
-              <option value="DevOps & Cloud Engineer" className="bg-[#0E1424]">DevOps & Cloud Engineer</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Top Grid: Score & Summary Metrics */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          {/* Readiness Score Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex items-center gap-6"
-          >
-            <div className="relative w-24 h-24 shrink-0">
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="42" fill="none" stroke="#1e293b" strokeWidth="9" />
-                <circle
-                  cx="50" cy="50" r="42" fill="none"
-                  stroke="#3B82F6"
-                  strokeWidth="9"
-                  strokeLinecap="round"
-                  strokeDasharray={264}
-                  strokeDashoffset={264 - (91 / 100) * 264}
-                />
-              </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-2xl font-black text-white">91</span>
-                <span className="text-[10px] font-bold text-slate-400">/ 100</span>
-              </div>
-            </div>
-
-            <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">
-                Top 2% Candidate
-              </span>
-              <h3 className="text-lg font-bold text-white mt-2">Readiness Score</h3>
-              <p className="text-xs text-[#94A3B8] mt-1">Ready for senior technical interviews.</p>
-            </div>
-          </motion.div>
-
-          {/* Acquired Skills Count */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col justify-between"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-[#94A3B8] uppercase tracking-wider">Skills Acquired</span>
-              <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
-                <CheckCircle2 size={18} />
-              </div>
-            </div>
-            <div>
-              <p className="text-4xl font-black text-white">14 / 17</p>
-              <p className="text-xs text-emerald-400 font-semibold mt-1">82% role coverage achieved</p>
-            </div>
-          </motion.div>
-
-          {/* Skill Gaps Count */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col justify-between"
-          >
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-[#94A3B8] uppercase tracking-wider">Skill Gaps to Close</span>
-              <div className="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center border border-amber-500/20">
-                <AlertTriangle size={18} />
-              </div>
-            </div>
-            <div>
-              <p className="text-4xl font-black text-white">3 Topics</p>
-              <p className="text-xs text-amber-400 font-semibold mt-1">AWS, Redis & GraphQL remaining</p>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Middle Section: Skills Breakdown & Critical Gaps */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
-          {/* Skills Mastery Progress */}
-          <div className="lg:col-span-2 saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
-            <h3 className="text-lg font-bold text-white mb-6 flex items-center justify-between">
-              <span>Skills Mastery & Role Alignment</span>
-              <span className="text-xs font-semibold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">{targetRole}</span>
-            </h3>
-
-            <div className="space-y-5">
-              {skillMastery.map((item) => (
-                <div key={item.name}>
-                  <div className="flex justify-between text-xs font-bold text-slate-200 mb-2">
-                    <span>{item.name}</span>
-                    <span className="text-[#94A3B8]">{item.progress}% ({item.status})</span>
-                  </div>
-                  <div className="w-full h-2.5 rounded-full bg-[#1E293B] overflow-hidden">
-                    <div
-                      className={`h-full rounded-full ${item.color} transition-all duration-1000`}
-                      style={{ width: `${item.progress}%` }}
-                    />
-                  </div>
+            <h3 className="section-title" style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--danger)' }}>Critical Skill Gaps</h3>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+              Close these gaps to reach top percentiles for {targetRole} postings.
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {criticalGaps.map((gap, i) => (
+                <div key={i} style={{ padding: '0.75rem', background: 'var(--card-bg)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--input-border)', fontSize: '0.85rem' }}>
+                  ⚠️ {gap}
                 </div>
               ))}
             </div>
           </div>
+          <Link to="/roadmap" className="btn-primary" style={{ marginTop: '2rem', textAlign: 'center', display: 'block', textDecoration: 'none' }}>
+            Generate Learning Roadmap
+          </Link>
+        </div>
+      </div>
 
-          {/* Critical Skill Gaps Card */}
-          <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col justify-between">
-            <div>
-              <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                <AlertTriangle size={20} className="text-amber-400" />
-                Critical Skill Gaps
-              </h3>
-              <p className="text-xs text-[#94A3B8] leading-relaxed mb-6">
-                Close these gaps to reach top candidate percentiles for {targetRole} postings.
-              </p>
-
-              <div className="space-y-3">
-                {criticalGaps.map((gap, i) => (
-                  <div key={i} className="flex items-start gap-3 p-3.5 rounded-xl bg-[#1E293B]/60 border border-slate-800 text-xs font-semibold text-slate-200">
-                    <span className="w-2 h-2 rounded-full bg-amber-400 mt-1.5 shrink-0" />
-                    {gap}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <Link
-              to="/roadmap"
-              className="mt-8 w-full flex items-center justify-center gap-2 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold shadow-lg shadow-blue-600/30 transition-all"
-            >
-              Generate Learning Roadmap
-              <ArrowRight size={16} />
+      {/* Bottom Section: Quick Launch Action Suite */}
+      <div style={{ marginTop: '2rem' }}>
+        <h2 className="section-title">Career Pilot Tool Suite</h2>
+        <div className="dashboard-grid">
+          {[
+            { title: "Learning Plan", desc: "Week-by-week track for skill gaps", icon: "🗺️", link: "/roadmap" },
+            { title: "Build Portfolio", desc: "Project ideas & architecture", icon: "📁", link: "/portfolio" },
+            { title: "Resume Architect", desc: "ATS match score & AI rewriter", icon: "📄", link: "/upload" },
+            { title: "Interview Prep", desc: "Voice mock interviews", icon: "🗣️", link: "/interview" },
+          ].map((tool) => (
+            <Link key={tool.title} to={tool.link} className="stat-card" style={{ textDecoration: 'none', transition: 'var(--transition)' }}>
+              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{tool.icon}</div>
+              <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', marginBottom: '0.5rem' }}>{tool.title}</h3>
+              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{tool.desc}</p>
             </Link>
-          </div>
+          ))}
         </div>
-
-        {/* Bottom Section: Quick Launch Action Suite */}
-        <div>
-          <h2 className="text-xl font-bold text-white mb-6">
-            Career Pilot Tool Suite
-          </h2>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Learning Plan", desc: "Week-by-week track for skill gaps", icon: Map, link: "/roadmap" },
-              { title: "Build Portfolio", desc: "Project ideas with architecture & resume bullets", icon: FolderGit2, link: "/portfolio" },
-              { title: "Resume Architect", desc: "ATS match score & AI rewriter", icon: FileText, link: "/upload" },
-              { title: "Interview Prep", desc: "Voice mock interviews & speech score", icon: Mic, link: "/interview" },
-            ].map((tool) => (
-              <Link
-                key={tool.title}
-                to={tool.link}
-                className="saas-card-interactive p-6 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center mb-4 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                    <tool.icon size={20} />
-                  </div>
-                  <h3 className="text-base font-bold text-white mb-1">{tool.title}</h3>
-                  <p className="text-xs text-[#94A3B8] leading-relaxed mb-6">{tool.desc}</p>
-                </div>
-                <span className="inline-flex items-center gap-1 text-xs font-bold text-blue-400 group-hover:translate-x-1 transition-transform">
-                  Launch Tool <ArrowRight size={14} />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </main>
-
-      <Footer />
+      </div>
     </div>
   );
 }

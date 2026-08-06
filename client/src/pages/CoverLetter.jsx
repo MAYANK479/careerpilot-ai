@@ -10,8 +10,6 @@ import {
   Download,
   Sparkles,
 } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5002";
@@ -84,129 +82,122 @@ function CoverLetter() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050816] text-white flex flex-col justify-between font-sans selection:bg-blue-500 selection:text-white">
+    <div>
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
-      <Navbar />
 
-      <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-12">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block mb-4">
-            AI Cover Letter Writer
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
-            Tailored Cover Letter Generator
-          </h1>
-          <p className="text-[#94A3B8] mt-4 text-base sm:text-lg">
-            Paste your resume and job description to generate a highly tailored, professional cover letter in seconds.
-          </p>
-        </div>
+      <div className="section-header">
+        <h1 className="section-title">Tailored Cover Letter Generator</h1>
+      </div>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
+        Paste your resume and job description to generate a highly tailored, professional cover letter in seconds.
+      </p>
 
-        {/* Inputs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
-            <label className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-4 block">
-              Your Resume Text
-            </label>
-            <textarea
-              value={resumeText}
-              onChange={(e) => setResumeText(e.target.value)}
-              placeholder="Paste your resume text..."
-              className="w-full h-56 p-5 rounded-2xl bg-[#050816] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
-            />
-          </div>
-
-          <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
-            <label className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-4 block">
-              Target Job Description
-            </label>
-            <textarea
-              value={jobDescription}
-              onChange={(e) => setJobDescription(e.target.value)}
-              placeholder="Paste the target job posting..."
-              className="w-full h-56 p-5 rounded-2xl bg-[#050816] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
-            />
-          </div>
-        </div>
-
-        <div className="saas-card p-8 mb-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
-          <label className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3 block">
-            Company Name (Optional)
+      {/* Inputs */}
+      <div className="dashboard-grid two-columns" style={{ marginBottom: '1.5rem' }}>
+        <div className="stat-card">
+          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: '1rem' }}>
+            Your Resume Text
           </label>
-          <input
-            type="text"
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-            placeholder="e.g. Google, Stripe, Amazon..."
-            className="w-full bg-[#050816] border border-slate-800 rounded-2xl px-5 py-4 text-sm font-semibold text-white focus:outline-none focus:border-blue-500"
+          <textarea
+            value={resumeText}
+            onChange={(e) => setResumeText(e.target.value)}
+            placeholder="Paste your resume text..."
+            className="form-input"
+            style={{ minHeight: '300px', resize: 'vertical' }}
           />
         </div>
 
-        <div className="flex justify-center mb-12">
-          <button
-            onClick={handleGenerate}
-            disabled={loading || !resumeText.trim() || !jobDescription.trim()}
-            className="px-8 py-4 rounded-full font-bold text-base bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-600/30 flex items-center gap-2 disabled:opacity-40 transition-all"
-          >
-            {loading ? (
-              <>
-                <Loader2 size={20} className="animate-spin" />
-                Generating Cover Letter...
-              </>
-            ) : (
-              <>
-                <Sparkles size={20} />
-                Generate Cover Letter
-              </>
-            )}
-          </button>
+        <div className="stat-card">
+          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: '1rem' }}>
+            Target Job Description
+          </label>
+          <textarea
+            value={jobDescription}
+            onChange={(e) => setJobDescription(e.target.value)}
+            placeholder="Paste the target job posting..."
+            className="form-input"
+            style={{ minHeight: '300px', resize: 'vertical' }}
+          />
         </div>
+      </div>
 
-        <AnimatePresence>
-          {letter && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 20 }}
-              className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]"
-            >
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/20">
-                    <FileEdit size={20} />
-                  </div>
-                  <h3 className="text-base font-bold text-white">
-                    Generated Cover Letter
-                  </h3>
-                </div>
-                <div className="flex items-center gap-3">
-                  <button
-                    onClick={handleCopy}
-                    className="flex items-center gap-2 text-xs font-bold text-slate-300 hover:text-white px-4 py-2 rounded-full bg-[#1E293B] border border-slate-700/80"
-                  >
-                    {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
-                    {copied ? "Copied" : "Copy"}
-                  </button>
-                  <button
-                    onClick={handleDownload}
-                    className="flex items-center gap-2 text-xs font-bold text-slate-300 hover:text-white px-4 py-2 rounded-full bg-[#1E293B] border border-slate-700/80"
-                  >
-                    <Download size={14} />
-                    Download
-                  </button>
-                </div>
-              </div>
+      <div className="stat-card" style={{ marginBottom: '2rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase' }}>
+          Company Name (Optional)
+        </label>
+        <input
+          type="text"
+          value={companyName}
+          onChange={(e) => setCompanyName(e.target.value)}
+          placeholder="e.g. Google, Stripe, Amazon..."
+          className="form-input"
+        />
+      </div>
 
-              <div className="bg-[#050816] rounded-2xl p-8 border border-slate-800">
-                <pre className="whitespace-pre-wrap text-sm text-slate-200 leading-relaxed font-sans">
-                  {letter}
-                </pre>
-              </div>
-            </motion.div>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3rem' }}>
+        <button
+          onClick={handleGenerate}
+          disabled={loading || !resumeText.trim() || !jobDescription.trim()}
+          className="btn-primary"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', width: 'auto', padding: '1rem 2rem', fontSize: '1rem' }}
+        >
+          {loading ? (
+            <>
+              <Loader2 size={20} className="animate-spin" />
+              Generating Cover Letter...
+            </>
+          ) : (
+            <>
+              <Sparkles size={20} />
+              Generate Cover Letter
+            </>
           )}
-        </AnimatePresence>
-      </main>
+        </button>
+      </div>
 
-      <Footer />
+      <AnimatePresence>
+        {letter && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            className="stat-card"
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(99, 102, 241, 0.1)', color: 'var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <FileEdit size={20} />
+                </div>
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-main)' }}>
+                  Generated Cover Letter
+                </h3>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <button
+                  onClick={handleCopy}
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-main)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-pill)', background: 'var(--card-bg-light)', border: '1px solid var(--input-border)', cursor: 'pointer' }}
+                >
+                  {copied ? <Check size={14} color="var(--success)" /> : <Copy size={14} />}
+                  {copied ? "Copied" : "Copy"}
+                </button>
+                <button
+                  onClick={handleDownload}
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-main)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-pill)', background: 'var(--card-bg-light)', border: '1px solid var(--input-border)', cursor: 'pointer' }}
+                >
+                  <Download size={14} />
+                  Download
+                </button>
+              </div>
+            </div>
+
+            <div style={{ background: 'var(--card-bg-light)', borderRadius: 'var(--radius-sm)', padding: '2rem', border: '1px solid var(--input-border)' }}>
+              <pre style={{ whiteSpace: 'pre-wrap', fontSize: '0.9rem', color: 'var(--text-main)', lineHeight: '1.6', fontFamily: 'var(--font-family)' }}>
+                {letter}
+              </pre>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

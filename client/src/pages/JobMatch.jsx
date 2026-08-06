@@ -8,8 +8,6 @@ import {
   Target,
   BarChart3,
 } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5002";
@@ -54,94 +52,88 @@ function JobMatch() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050816] text-white flex flex-col justify-between font-sans selection:bg-blue-500 selection:text-white">
+    <div>
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
-      <Navbar />
 
-      <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-12">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block mb-4">
-            Job Board & Matcher
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
-            Job Description Matcher
-          </h1>
-          <p className="text-[#94A3B8] mt-4 text-base sm:text-lg">
-            Compare your resume against any job posting to calculate match percentage, missing requirements, and tailored cover letters.
-          </p>
+      <div className="section-header">
+        <h1 className="section-title">Job Description Matcher</h1>
+      </div>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
+        Compare your resume against any job posting to calculate match percentage, missing requirements, and tailored cover letters.
+      </p>
+
+      {/* Inputs */}
+      <div className="dashboard-grid two-columns">
+        <div className="stat-card">
+          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: '1rem' }}>
+            <Target size={18} color="var(--primary)" />
+            Your Resume Text
+          </label>
+          <textarea
+            value={resumeText}
+            onChange={(e) => setResumeText(e.target.value)}
+            placeholder="Paste resume text or upload a PDF first..."
+            className="form-input"
+            style={{ minHeight: '300px', resize: 'vertical' }}
+          />
         </div>
 
-        {/* Inputs */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-          <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
-            <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider mb-4">
-              <Target size={18} className="text-blue-400" />
-              Your Resume Text
-            </label>
-            <textarea
-              value={resumeText}
-              onChange={(e) => setResumeText(e.target.value)}
-              placeholder="Paste resume text or upload a PDF first..."
-              className="w-full h-56 p-5 rounded-2xl bg-[#050816] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
-            />
-          </div>
-
-          <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]">
-            <label className="flex items-center gap-2 text-xs font-bold text-slate-300 uppercase tracking-wider mb-4">
-              <Briefcase size={18} className="text-purple-400" />
-              Target Job Description
-            </label>
-            <textarea
-              value={jobDescription}
-              onChange={(e) => setJobDescription(e.target.value)}
-              placeholder="Paste full job posting requirements here..."
-              className="w-full h-56 p-5 rounded-2xl bg-[#050816] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
-            />
-          </div>
+        <div className="stat-card">
+          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: '1rem' }}>
+            <Briefcase size={18} color="var(--secondary)" />
+            Target Job Description
+          </label>
+          <textarea
+            value={jobDescription}
+            onChange={(e) => setJobDescription(e.target.value)}
+            placeholder="Paste full job posting requirements here..."
+            className="form-input"
+            style={{ minHeight: '300px', resize: 'vertical' }}
+          />
         </div>
+      </div>
 
-        <div className="flex justify-center mb-12">
-          <button
-            onClick={handleCompare}
-            disabled={loading || !resumeText.trim() || !jobDescription.trim()}
-            className="px-8 py-4 rounded-full font-bold text-base bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-600/30 flex items-center gap-2 disabled:opacity-40 transition-all"
-          >
-            {loading ? (
-              <>
-                <Loader2 size={20} className="animate-spin" />
-                Comparing Resume & Job...
-              </>
-            ) : (
-              <>
-                <BarChart3 size={20} />
-                Calculate Match Score
-              </>
-            )}
-          </button>
-        </div>
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: '2rem', marginBottom: '3rem' }}>
+        <button
+          onClick={handleCompare}
+          disabled={loading || !resumeText.trim() || !jobDescription.trim()}
+          className="btn-primary"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', width: 'auto', padding: '1rem 2rem', fontSize: '1rem' }}
+        >
+          {loading ? (
+            <>
+              <Loader2 size={20} className="animate-spin" />
+              Comparing Resume & Job...
+            </>
+          ) : (
+            <>
+              <BarChart3 size={20} />
+              Calculate Match Score
+            </>
+          )}
+        </button>
+      </div>
 
-        {/* Results Card */}
-        {result && (
-          <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
-            <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col sm:flex-row justify-between items-center gap-6">
-              <div>
-                <span className="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Shortlist Rating</span>
-                <h2 className="text-3xl font-black text-white mt-3">Match Score: {result.matchScore}%</h2>
-                <p className="text-sm text-[#94A3B8] mt-1">Shortlist Probability: {result.shortlistProbability}</p>
-              </div>
-
-              <button
-                onClick={() => navigate("/cover-letter", { state: { resumeText, jobDescription } })}
-                className="px-6 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-md"
-              >
-                Generate Cover Letter
-              </button>
+      {/* Results Card */}
+      {result && (
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="stat-card" style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <span className="brand-badge" style={{ background: 'rgba(74, 222, 128, 0.1)', color: 'var(--success)', border: '1px solid rgba(74, 222, 128, 0.2)' }}>Shortlist Rating</span>
+              <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--text-main)', marginTop: '0.5rem' }}>Match Score: {result.matchScore}%</h2>
+              <p style={{ color: 'var(--text-muted)' }}>Shortlist Probability: <strong style={{ color: 'var(--text-main)' }}>{result.shortlistProbability}</strong></p>
             </div>
-          </motion.div>
-        )}
-      </main>
 
-      <Footer />
+            <button
+              onClick={() => navigate("/cover-letter", { state: { resumeText, jobDescription } })}
+              className="btn-primary"
+              style={{ width: 'auto' }}
+            >
+              Generate Cover Letter
+            </button>
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }

@@ -161,23 +161,23 @@ function HeroDashboardMockup() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden pt-20 pb-16 lg:pt-0 lg:pb-0">
+    <section className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-24 lg:pt-32 lg:pb-32">
       {/* Animated Backgrounds */}
       <div className="bg-aurora" />
-      <div className="absolute inset-0 bg-dot-grid opacity-50" />
+      <div className="absolute inset-0 bg-dot-grid opacity-40" />
       <div className="bg-noise" />
-      
+
       <div className="max-w-[1400px] mx-auto px-6 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 lg:gap-12 items-center">
           {/* Left Column (7 cols) */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-7 space-y-8"
+            className="lg:col-span-7 space-y-10"
           >
             {/* Pill Tag */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#111B2E] border border-white/10 shadow-sm backdrop-blur-md">
+            <div className="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#111B2E] border border-white/10 shadow-sm backdrop-blur-md">
               <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
               <span className="text-sm font-semibold text-slate-300">
                 AI-Powered Career Platform

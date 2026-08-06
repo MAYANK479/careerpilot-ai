@@ -5,7 +5,6 @@ import {
   Mic,
   MicOff,
   Volume2,
-  VolumeX,
   Play,
   CheckCircle,
   Loader2,
@@ -19,20 +18,18 @@ import {
   Cloud,
   Brain,
 } from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5002";
 
 const roles = [
   { id: "fullstack", title: "Full-Stack Developer", icon: Code2, desc: "React, Node.js, SQL, System Architecture" },
-  { id: "frontend", title: "Frontend Engineer", icon: Layers, desc: "React 19, TypeScript, CSS Architecture, Web Performance" },
-  { id: "backend", title: "Backend Engineer", icon: Terminal, desc: "Node.js, Python, Databases, REST & GraphQL APIs" },
-  { id: "aiml", title: "AI / ML Engineer", icon: Brain, desc: "Python, PyTorch, Transformers, LLMs, Computer Vision" },
-  { id: "data", title: "Data Analyst", icon: Database, desc: "SQL, Python, Data Visualization, A/B Testing" },
-  { id: "pm", title: "Product Manager", icon: Cpu, desc: "Product Strategy, Metrics, Specs, User Analytics" },
-  { id: "devops", title: "DevOps Engineer", icon: Cloud, desc: "Docker, Kubernetes, CI/CD Pipelines, AWS & Cloud" },
+  { id: "frontend", title: "Frontend Engineer", icon: Layers, desc: "React 19, TypeScript, CSS Architecture" },
+  { id: "backend", title: "Backend Engineer", icon: Terminal, desc: "Node.js, Python, Databases, REST APIs" },
+  { id: "aiml", title: "AI / ML Engineer", icon: Brain, desc: "Python, PyTorch, Transformers, LLMs" },
+  { id: "data", title: "Data Analyst", icon: Database, desc: "SQL, Python, Data Visualization" },
+  { id: "pm", title: "Product Manager", icon: Cpu, desc: "Product Strategy, Metrics, User Analytics" },
+  { id: "devops", title: "DevOps Engineer", icon: Cloud, desc: "Docker, Kubernetes, CI/CD, AWS" },
 ];
 
 const difficulties = [
@@ -210,181 +207,223 @@ function Interview() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050816] text-white flex flex-col justify-between font-sans selection:bg-blue-500 selection:text-white">
+    <div>
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
-      <Navbar />
+      
+      {step === "setup" && (
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
+          <div className="section-header">
+            <h1 className="section-title">AI Voice Mock Interview Simulator</h1>
+          </div>
+          <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
+            Practice technical & behavioral questions with real-time speech recognition, audio playback, and score analytics.
+          </p>
 
-      <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-12 flex flex-col justify-center">
-        {step === "setup" && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block mb-4">
-                Voice AI Interviewer
-              </span>
-              <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
-                AI Voice Mock Interview Simulator
-              </h1>
-              <p className="text-[#94A3B8] mt-4 text-base sm:text-lg">
-                Practice technical & behavioral questions with real-time speech recognition, audio playback, and score analytics.
-              </p>
-            </div>
-
-            <div className="saas-card p-8 sm:p-10 bg-[#0E1424] border border-slate-800 rounded-[24px] space-y-8">
-              {/* Role Picker */}
-              <div>
-                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-4">
-                  1. Choose Target Career Role
-                </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  {roles.map((r) => {
-                    const Icon = r.icon;
-                    const active = role === r.title;
-                    return (
-                      <button
-                        key={r.id}
-                        onClick={() => setRole(r.title)}
-                        className={`p-5 rounded-[20px] text-left border transition-all ${
-                          active
-                            ? "border-blue-500 bg-blue-500/10 text-white font-bold"
-                            : "border-slate-800 bg-[#1E293B]/40 text-[#94A3B8] hover:bg-[#1E293B]"
-                        }`}
-                      >
-                        <div className="flex items-center justify-between mb-3">
-                          <div className={`w-9 h-9 rounded-xl flex items-center justify-center ${active ? "bg-blue-600 text-white" : "bg-slate-800 text-slate-300"}`}>
-                            <Icon size={20} />
-                          </div>
-                          {active && <CheckCircle size={18} className="text-blue-400" />}
+          <div className="stat-card" style={{ maxWidth: '900px', margin: '0 auto' }}>
+            {/* Role Picker */}
+            <div style={{ marginBottom: '2rem' }}>
+              <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>
+                1. Choose Target Career Role
+              </label>
+              <div className="dashboard-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+                {roles.map((r) => {
+                  const Icon = r.icon;
+                  const active = role === r.title;
+                  return (
+                    <button
+                      key={r.id}
+                      onClick={() => setRole(r.title)}
+                      style={{
+                        padding: '1.25rem',
+                        borderRadius: 'var(--radius-sm)',
+                        background: active ? 'rgba(99, 102, 241, 0.1)' : 'var(--input-bg)',
+                        border: `1px solid ${active ? 'var(--primary)' : 'var(--input-border)'}`,
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        transition: 'var(--transition)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '0.5rem'
+                      }}
+                    >
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div style={{ width: '36px', height: '36px', borderRadius: '8px', background: active ? 'var(--primary)' : 'rgba(100, 116, 139, 0.2)', color: active ? 'var(--primary-text)' : 'var(--text-light)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                          <Icon size={20} />
                         </div>
-                        <span className="text-sm font-bold block text-white">{r.title}</span>
-                        <span className="text-xs text-[#94A3B8] block mt-1">{r.desc}</span>
-                      </button>
-                    );
-                  })}
-                </div>
+                        {active && <CheckCircle size={18} color="var(--primary)" />}
+                      </div>
+                      <span style={{ fontSize: '0.9rem', fontWeight: 'bold', color: active ? 'var(--text-main)' : 'var(--text-light)' }}>{r.title}</span>
+                    </button>
+                  );
+                })}
               </div>
+            </div>
 
-              {/* Experience Level */}
-              <div>
-                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider block mb-4">
-                  2. Select Experience Level
-                </label>
-                <div className="grid grid-cols-3 gap-4">
-                  {difficulties.map((d) => {
-                    const active = difficulty === d.level;
-                    return (
-                      <button
-                        key={d.level}
-                        onClick={() => setDifficulty(d.level)}
-                        className={`p-4 rounded-[20px] text-center border text-sm font-bold transition-all ${
-                          active
-                            ? "border-blue-500 bg-blue-500/10 text-white"
-                            : "border-slate-800 bg-[#1E293B]/40 text-[#94A3B8] hover:bg-[#1E293B]"
-                        }`}
-                      >
-                        <div>{d.level}</div>
-                        <div className="text-xs font-normal text-[#94A3B8] mt-0.5">{d.label}</div>
-                      </button>
-                    );
-                  })}
-                </div>
+            {/* Experience Level */}
+            <div style={{ marginBottom: '2rem' }}>
+              <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', display: 'block', marginBottom: '1rem' }}>
+                2. Select Experience Level
+              </label>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                {difficulties.map((d) => {
+                  const active = difficulty === d.level;
+                  return (
+                    <button
+                      key={d.level}
+                      onClick={() => setDifficulty(d.level)}
+                      style={{
+                        flex: '1',
+                        minWidth: '150px',
+                        padding: '1rem',
+                        borderRadius: 'var(--radius-sm)',
+                        background: active ? 'rgba(99, 102, 241, 0.1)' : 'var(--input-bg)',
+                        border: `1px solid ${active ? 'var(--primary)' : 'var(--input-border)'}`,
+                        textAlign: 'center',
+                        cursor: 'pointer',
+                        transition: 'var(--transition)'
+                      }}
+                    >
+                      <div style={{ fontWeight: 'bold', color: active ? 'var(--text-main)' : 'var(--text-light)' }}>{d.level}</div>
+                      <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{d.label}</div>
+                    </button>
+                  );
+                })}
               </div>
+            </div>
 
+            <button
+              onClick={handleStart}
+              disabled={loading}
+              className="btn-primary"
+              style={{ width: '100%', height: '3.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', fontSize: '1rem' }}
+            >
+              {loading ? (
+                <>
+                  <Loader2 size={20} className="animate-spin" />
+                  Generating Role Questions...
+                </>
+              ) : (
+                <>
+                  <Play size={20} />
+                  Start AI Voice Interview
+                </>
+              )}
+            </button>
+          </div>
+        </motion.div>
+      )}
+
+      {/* Active Interview */}
+      {step === "interview" && questions.length > 0 && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: '800px', margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <span style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-muted)' }}>Question {currentIdx + 1} of {questions.length}</span>
+            <span className="brand-badge" style={{ marginBottom: 0 }}>
+              {questions[currentIdx]?.category}
+            </span>
+          </div>
+
+          <div className="stat-card" style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--text-main)', lineHeight: '1.4' }}>
+              {questions[currentIdx]?.question}
+            </h2>
+            <button
+              onClick={() => speakQuestion(questions[currentIdx]?.question)}
+              style={{ padding: '0.75rem', borderRadius: 'var(--radius-sm)', background: 'var(--input-bg)', color: 'var(--text-light)', border: 'none', cursor: 'pointer', flexShrink: 0 }}
+            >
+              <Volume2 size={20} />
+            </button>
+          </div>
+
+          <div className="stat-card" style={{ marginBottom: '1.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <label style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase' }}>Your Speech Transcript</label>
               <button
-                onClick={handleStart}
-                disabled={loading}
-                className="w-full py-4 rounded-full font-bold text-base bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-600/30 flex items-center justify-center gap-2"
+                onClick={toggleRecording}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem', borderRadius: 'var(--radius-pill)', fontSize: '0.85rem', fontWeight: 'bold', cursor: 'pointer', border: 'none',
+                  background: isRecording ? 'var(--danger)' : 'var(--input-bg)',
+                  color: isRecording ? '#fff' : 'var(--text-main)',
+                  animation: isRecording ? 'pulse 2s infinite' : 'none'
+                }}
               >
-                {loading ? (
-                  <>
-                    <Loader2 size={20} className="animate-spin" />
-                    Generating Role Questions...
-                  </>
-                ) : (
-                  <>
-                    <Play size={20} />
-                    Start AI Voice Interview
-                  </>
-                )}
+                {isRecording ? <MicOff size={16} /> : <Mic size={16} />}
+                {isRecording ? "Stop Recording" : "Record Voice Answer"}
               </button>
             </div>
-          </motion.div>
-        )}
+            <textarea
+              value={currentAnswer}
+              onChange={(e) => setCurrentAnswer(e.target.value)}
+              placeholder="Speak into microphone or type your response here..."
+              className="form-input"
+              style={{ minHeight: '150px', resize: 'vertical' }}
+            />
+          </div>
 
-        {/* Active Interview */}
-        {step === "interview" && questions.length > 0 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-4xl mx-auto w-full">
-            <div className="flex justify-between items-center text-xs font-bold text-[#94A3B8] mb-3">
-              <span>Question {currentIdx + 1} of {questions.length}</span>
-              <span className="text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">
-                {questions[currentIdx]?.category}
-              </span>
-            </div>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <button onClick={handleNext} className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', width: 'auto' }}>
+              {currentIdx + 1 === questions.length ? "Submit Interview" : "Next Question"}
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        </motion.div>
+      )}
 
-            <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] mb-6">
-              <div className="flex justify-between items-start gap-4">
-                <h2 className="text-xl font-bold text-white">
-                  {questions[currentIdx]?.question}
-                </h2>
-                <button
-                  onClick={() => speakQuestion(questions[currentIdx]?.question)}
-                  className="p-3 rounded-xl bg-[#1E293B] text-slate-300 hover:bg-slate-700 shrink-0"
-                >
-                  <Volume2 size={20} />
-                </button>
-              </div>
-            </div>
+      {/* Evaluating State */}
+      {step === "evaluating" && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="stat-card" style={{ maxWidth: '600px', margin: '4rem auto', textAlign: 'center', padding: '3rem 2rem' }}>
+          <Loader2 size={48} color="var(--primary)" style={{ margin: '0 auto 1.5rem auto', animation: 'spin 1s linear infinite' }} />
+          <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '0.5rem' }}>Evaluating your responses...</h2>
+          <p style={{ color: 'var(--text-muted)' }}>Our AI is scoring your answers against top-tier expectations for {role}.</p>
+        </motion.div>
+      )}
 
-            <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] mb-6">
-              <div className="flex justify-between items-center mb-4">
-                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">Your Speech Transcript</label>
-                <button
-                  onClick={toggleRecording}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all ${
-                    isRecording ? "bg-rose-500 text-white animate-pulse" : "bg-[#1E293B] text-white hover:bg-slate-700"
-                  }`}
-                >
-                  {isRecording ? <MicOff size={16} /> : <Mic size={16} />}
-                  {isRecording ? "Stop Recording" : "Record Voice Answer"}
-                </button>
-              </div>
-              <textarea
-                value={currentAnswer}
-                onChange={(e) => setCurrentAnswer(e.target.value)}
-                placeholder="Speak into microphone or type your response here..."
-                className="w-full h-48 p-5 rounded-2xl bg-[#050816] border border-slate-800 text-sm font-medium text-white focus:outline-none focus:border-blue-500"
-              />
-            </div>
-
-            <div className="flex justify-end">
-              <button onClick={handleNext} className="px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-xl shadow-blue-600/30 flex items-center gap-2">
-                {currentIdx + 1 === questions.length ? "Submit Interview" : "Next Question"}
-                <ChevronRight size={18} />
-              </button>
-            </div>
-          </motion.div>
-        )}
-
-        {/* Results */}
-        {step === "results" && evaluation && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-            <div className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px] flex flex-col sm:flex-row items-center justify-between gap-6">
+      {/* Results */}
+      {step === "results" && evaluation && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <div className="stat-card" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
               <div>
-                <span className="text-xs font-bold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Evaluation Scorecard</span>
-                <h2 className="text-3xl font-black text-white mt-3">Overall Score: {evaluation.overallScore}/100</h2>
-                <p className="text-sm text-[#94A3B8] mt-2 leading-relaxed">{evaluation.summary}</p>
+                <span className="brand-badge">Evaluation Scorecard</span>
+                <h2 style={{ fontSize: '2rem', fontWeight: '900', color: 'var(--text-main)', marginTop: '0.5rem' }}>Overall Score: {evaluation.overallScore}/100</h2>
               </div>
               <button
                 onClick={() => setStep("setup")}
-                className="px-6 py-3.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shrink-0 flex items-center gap-2"
+                className="btn-primary"
+                style={{ width: 'auto', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
               >
                 <RotateCcw size={16} /> Practice Again
               </button>
             </div>
-          </motion.div>
-        )}
-      </main>
-
-      <Footer />
+            
+            <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>{evaluation.summary}</p>
+            
+            <div style={{ marginTop: '2rem' }}>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '1rem' }}>Question Feedback</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                {evaluation.qaFeedback?.map((feedback, idx) => (
+                  <div key={idx} style={{ padding: '1.5rem', background: 'var(--card-bg-light)', borderRadius: 'var(--radius-sm)', border: '1px solid var(--input-border)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
+                      <h4 style={{ fontWeight: 'bold', color: 'var(--text-main)' }}>Q{idx + 1}: {feedback.question}</h4>
+                      <span style={{ fontWeight: 'bold', color: feedback.score >= 80 ? 'var(--success)' : feedback.score >= 60 ? 'var(--primary)' : 'var(--danger)' }}>
+                        {feedback.score}/100
+                      </span>
+                    </div>
+                    <div style={{ marginBottom: '1rem' }}>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--text-light)', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '0.25rem' }}>Your Answer:</p>
+                      <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>"{feedback.answer}"</p>
+                    </div>
+                    <div>
+                      <p style={{ fontSize: '0.85rem', color: 'var(--text-light)', fontWeight: 'bold', textTransform: 'uppercase', marginBottom: '0.25rem' }}>Feedback:</p>
+                      <p style={{ fontSize: '0.95rem', color: 'var(--text-main)' }}>{feedback.feedback}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }

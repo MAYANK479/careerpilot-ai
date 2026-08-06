@@ -13,6 +13,24 @@ const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "qwen3";
  * Uses the /api/generate endpoint with stream: false for simplicity.
  */
 async function callOllama(prompt, options = {}) {
+  // If OpenAI / Groq / Gemini is configured, use it instead of local Ollama
+  if ((process.env.AI_PROVIDER || "").toLowerCase() === "openai" || process.env.OPENAI_API_KEY) {
+    const OpenAI = require("openai");
+    const clientOpts = { apiKey: process.env.OPENAI_API_KEY };
+    if (process.env.OPENAI_BASE_URL) {
+      clientOpts.baseURL = process.env.OPENAI_BASE_URL;
+    }
+    const client = new OpenAI(clientOpts);
+
+    const completion = await client.chat.completions.create({
+      model: process.env.OPENAI_MODEL || "gpt-4o-mini",
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0.3,
+    });
+
+    return completion.choices[0]?.message?.content || "";
+  }
+
   const { timeoutMs = 120000 } = options;
 
   const controller = new AbortController();

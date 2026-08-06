@@ -40,32 +40,44 @@ const analysisSchema = {
 };
 
 async function analyzeResumeWithOpenAI(resumeText) {
-  // Only require OpenAI when actually needed
   const OpenAI = require("openai");
 
   if (!process.env.OPENAI_API_KEY) return null;
 
-  const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  const response = await client.responses.create({
+  const clientOpts = { apiKey: process.env.OPENAI_API_KEY };
+  if (process.env.OPENAI_BASE_URL) {
+    clientOpts.baseURL = process.env.OPENAI_BASE_URL;
+  }
+  const client = new OpenAI(clientOpts);
+
+  const prompt = `You are an experienced ATS recruiter. Analyze the following resume factually and constructively. Do not invent experience or qualifications.
+
+Return ONLY valid JSON with this exact structure:
+${JSON.stringify(analysisSchema, null, 2)}
+
+RESUME:
+${resumeText.slice(0, 30000)}`;
+
+  const completion = await client.chat.completions.create({
     model: process.env.OPENAI_MODEL || "gpt-4o-mini",
-    instructions:
-      "You are an experienced ATS recruiter. Analyze the resume factually and constructively. Do not invent experience, qualifications, or achievements. Return only the requested JSON.",
-    input: `Analyze this resume:\n\n${resumeText.slice(0, 30000)}`,
-    text: {
-      format: {
-        type: "json_schema",
-        name: "resume_analysis",
-        strict: true,
-        schema: analysisSchema,
-      },
-    },
+    messages: [
+      { role: "system", content: "You are an ATS recruiter analyzer. Return strictly valid JSON." },
+      { role: "user", content: prompt }
+    ],
+    temperature: 0.3,
   });
 
-  if (!response.output_text) {
-    throw new Error("The AI service returned no analysis.");
+  const content = completion.choices[0]?.message?.content || "";
+  let jsonStr = content.trim();
+  const fenceMatch = jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (fenceMatch) jsonStr = fenceMatch[1].trim();
+  const braceStart = jsonStr.indexOf("{");
+  const braceEnd = jsonStr.lastIndexOf("}");
+  if (braceStart !== -1 && braceEnd > braceStart) {
+    jsonStr = jsonStr.slice(braceStart, braceEnd + 1);
   }
 
-  return JSON.parse(response.output_text);
+  return JSON.parse(jsonStr);
 }
 
 /**

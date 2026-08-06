@@ -53,7 +53,7 @@ function Footer() {
             <p className="text-xl text-slate-400 font-medium mb-12 max-w-2xl mx-auto">
               Join 25,000+ engineers who used AI to bypass the ATS and ace their technical interviews.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="cta-flex">
               <Link
                 to="/upload"
                 className="group flex items-center gap-2 px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg shadow-xl shadow-blue-500/25 transition-all duration-300 transform hover:-translate-y-0.5"
@@ -63,7 +63,7 @@ function Footer() {
               </Link>
               <a
                 href="#pricing"
-                className="flex items-center gap-2 px-8 py-4 rounded-full bg-[#111B2E] hover:bg-[#1e293b] text-white font-bold text-lg border border-white/10 transition-all duration-300"
+                className="footer-link"
               >
                 View Pricing
               </a>
@@ -75,7 +75,7 @@ function Footer() {
       {/* Footer */}
       <footer className="border-t border-white/5 bg-[#050816] pt-20 pb-10 relative z-10">
         <div className="max-w-[1400px] mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-16">
+          <div className="footer-grid">
             {/* Brand Column */}
             <div className="md:col-span-2 space-y-6">
               <Link to="/" className="flex items-center gap-3">

@@ -3,15 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
-import {
-  Upload as UploadIcon,
-  FileText,
-  Loader2,
-  CheckCircle2,
-  Sparkles,
-} from "lucide-react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5002";
@@ -125,42 +116,33 @@ function Upload() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050816] text-white font-sans selection:bg-blue-500 selection:text-white">
+    <div>
       <ToastContainer toasts={toast.toasts} onDismiss={toast.dismissToast} />
-      <Navbar />
+      
+      <div className="section-header">
+        <h1 className="section-title">Resume Architect & ATS Analyzer</h1>
+      </div>
+      
+      <div className="dashboard-grid two-columns" style={{ gridTemplateColumns: '1fr' }}>
+        <div className="stat-card" style={{ maxWidth: '800px', margin: '0 auto', width: '100%' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <span className="brand-badge" style={{ marginBottom: '1rem' }}>Upload & Analyze</span>
+            <p style={{ color: 'var(--text-muted)' }}>
+              Upload your PDF resume to compute instant ATS match scores, missing keywords, and section improvements.
+            </p>
+          </div>
 
-      <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-16 flex flex-col items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center max-w-2xl mb-12"
-        >
-          <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block mb-4">
-            Resume Architect
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
-            ATS Score & Keyword Optimizer
-          </h1>
-          <p className="text-[#94A3B8] mt-4 text-base sm:text-lg leading-relaxed font-normal">
-            Upload your PDF resume to compute instant ATS match scores, missing keywords, and section improvements.
-          </p>
-        </motion.div>
-
-        {/* Dropzone Card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="w-full max-w-xl"
-        >
           <div
             {...getRootProps()}
-            className={`saas-card p-12 text-center cursor-pointer transition-all duration-300 border-2 border-dashed rounded-[24px] ${
-              isDragActive
-                ? "border-blue-500 bg-blue-500/10"
-                : file
-                ? "border-emerald-500 bg-emerald-500/10"
-                : "border-slate-800 hover:border-slate-700 bg-[#0E1424]"
-            }`}
+            style={{
+              border: `2px dashed ${isDragActive ? 'var(--primary)' : 'var(--input-border)'}`,
+              borderRadius: 'var(--radius-card)',
+              padding: '3rem 2rem',
+              textAlign: 'center',
+              cursor: 'pointer',
+              background: isDragActive ? 'rgba(99, 102, 241, 0.1)' : file ? 'rgba(74, 222, 128, 0.1)' : 'var(--input-bg)',
+              transition: 'var(--transition)'
+            }}
           >
             <input {...getInputProps()} />
 
@@ -170,21 +152,19 @@ function Upload() {
                   key="file-selected"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="flex flex-col items-center gap-3"
+                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
-                    <FileText size={28} />
-                  </div>
+                  <div style={{ fontSize: '3rem' }}>📄</div>
                   <div>
-                    <p className="text-base font-bold text-white">{file.name}</p>
-                    <p className="text-xs text-[#94A3B8] mt-0.5">{formatBytes(file.size)} · PDF</p>
+                    <p style={{ fontWeight: '600', color: 'var(--text-main)', fontSize: '1.1rem' }}>{file.name}</p>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{formatBytes(file.size)} · PDF</p>
                   </div>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       removeFile();
                     }}
-                    className="text-xs font-semibold text-rose-400 hover:underline mt-1"
+                    style={{ background: 'transparent', border: 'none', color: 'var(--danger)', fontSize: '0.85rem', cursor: 'pointer', textDecoration: 'underline' }}
                   >
                     Change File
                   </button>
@@ -194,16 +174,14 @@ function Upload() {
                   key="no-file"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="flex flex-col items-center gap-3"
+                  style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem' }}
                 >
-                  <div className="w-14 h-14 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/20">
-                    <UploadIcon size={28} />
-                  </div>
+                  <div style={{ fontSize: '3rem' }}>📁</div>
                   <div>
-                    <p className="text-base font-bold text-white">
+                    <p style={{ fontWeight: '600', color: 'var(--text-main)', fontSize: '1.1rem' }}>
                       {isDragActive ? "Drop PDF here" : "Click or drag PDF resume here"}
                     </p>
-                    <p className="text-xs text-[#94A3B8] mt-1">Accepts PDF up to 10 MB</p>
+                    <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Accepts PDF up to 10 MB</p>
                   </div>
                 </motion.div>
               )}
@@ -212,15 +190,19 @@ function Upload() {
 
           {/* Progress Indicator */}
           {loading && (
-            <div className="mt-6">
-              <div className="flex justify-between text-xs font-bold text-[#94A3B8] mb-2">
+            <div style={{ marginTop: '2rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>
                 <span>{stage}</span>
                 <span>{progress}%</span>
               </div>
-              <div className="w-full h-2 rounded-full bg-[#1E293B] overflow-hidden">
+              <div style={{ width: '100%', height: '8px', borderRadius: '4px', background: 'var(--input-bg)', overflow: 'hidden' }}>
                 <div
-                  className="h-full rounded-full bg-blue-500 transition-all duration-300"
-                  style={{ width: `${progress}%` }}
+                  style={{
+                    height: '100%',
+                    width: `${progress}%`,
+                    background: 'var(--primary)',
+                    transition: 'width 0.3s ease'
+                  }}
                 />
               </div>
             </div>
@@ -229,40 +211,19 @@ function Upload() {
           <button
             onClick={handleUpload}
             disabled={!file || loading}
-            className="mt-8 w-full py-4 rounded-full font-bold text-base bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-600/30 flex items-center justify-center gap-2 disabled:opacity-40 transition-all"
+            className="btn-primary"
+            style={{ marginTop: '2rem', height: '3rem' }}
           >
-            {loading ? (
-              <>
-                <Loader2 size={20} className="animate-spin" />
-                Analyzing Resume...
-              </>
-            ) : (
-              <>
-                <Sparkles size={20} />
-                Analyze Resume Now
-              </>
-            )}
+            {loading ? 'Analyzing Resume...' : 'Analyze Resume Now'}
           </button>
-        </motion.div>
-
-        {/* Feature Badges */}
-        <div className="mt-12 flex flex-wrap justify-center items-center gap-8 text-sm font-semibold text-[#94A3B8]">
-          <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-emerald-400" />
-            <span>Instant ATS Match</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-emerald-400" />
-            <span>Keyword Gap Analysis</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <CheckCircle2 size={16} className="text-emerald-400" />
-            <span>AI Bullet Rewriter</span>
+          
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '2rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><span style={{ color: 'var(--success)' }}>✓</span> Instant ATS Match</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><span style={{ color: 'var(--success)' }}>✓</span> Keyword Gap Analysis</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}><span style={{ color: 'var(--success)' }}>✓</span> AI Bullet Rewriter</span>
           </div>
         </div>
-      </main>
-
-      <Footer />
+      </div>
     </div>
   );
 }

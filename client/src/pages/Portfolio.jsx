@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
@@ -9,7 +7,7 @@ const projectBlueprints = [
     title: "AI-Powered PDF Resume Screener",
     category: "Full Stack / AI",
     complexity: "Advanced",
-    techStack: ["React 19", "Node.js", "Express", "Google Gemini API", "Tailwind CSS"],
+    techStack: ["React 19", "Node.js", "Express", "Google Gemini API"],
     description: "An end-to-end web application that parses PDF resumes, computes ATS keyword matches, and provides structured feedback.",
     features: [
       "PDF parsing using pdf-parse & multi-part file uploads",
@@ -26,7 +24,7 @@ const projectBlueprints = [
     title: "Real-Time Collaborative Code Editor",
     category: "Frontend / WebSockets",
     complexity: "Intermediate",
-    techStack: ["React", "TypeScript", "Socket.io", "Monaco Editor", "Tailwind"],
+    techStack: ["React", "TypeScript", "Socket.io", "Monaco Editor"],
     description: "Multi-user live collaborative text and code editor with syntax highlighting, cursor sharing, and execution sandboxes.",
     features: [
       "Operational transformation & conflict resolution via Socket.io",
@@ -66,71 +64,71 @@ function Portfolio() {
     : projectBlueprints.filter(p => p.category.includes(filter));
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#050816] text-white font-sans selection:bg-blue-500 selection:text-white">
-      <Navbar />
+    <div>
+      <div className="section-header">
+        <h1 className="section-title">High-Impact Project Blueprints</h1>
+      </div>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
+        Stand out to recruiters with resume-boosting portfolio projects complete with architecture specs and copyable bullet points.
+      </p>
 
-      <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-12">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-bold text-blue-400 uppercase tracking-widest px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block mb-4">
-            Portfolio Generator
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white tracking-tight">
-            High-Impact Project Blueprints
-          </h1>
-          <p className="text-[#94A3B8] mt-4 text-base sm:text-lg">
-            Stand out to recruiters with resume-boosting portfolio projects complete with architecture specs and copyable bullet points.
-          </p>
-        </div>
+      {/* Filter Bar */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '3rem', flexWrap: 'wrap' }}>
+        {["All", "Full Stack", "Frontend", "Backend"].map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setFilter(cat)}
+            style={{
+              padding: '0.75rem 1.5rem',
+              borderRadius: 'var(--radius-pill)',
+              fontSize: '0.85rem',
+              fontWeight: 'bold',
+              transition: 'var(--transition)',
+              cursor: 'pointer',
+              border: filter === cat ? 'none' : '1px solid var(--input-border)',
+              background: filter === cat ? 'var(--primary)' : 'var(--card-bg)',
+              color: filter === cat ? 'var(--primary-text)' : 'var(--text-light)',
+              boxShadow: filter === cat ? '0 4px 14px rgba(99, 102, 241, 0.4)' : 'none'
+            }}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
 
-        {/* Filter Bar */}
-        <div className="flex justify-center gap-3 mb-10">
-          {["All", "Full Stack", "Frontend", "Backend"].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setFilter(cat)}
-              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
-                filter === cat
-                  ? "bg-blue-600 text-white shadow-lg shadow-blue-600/30"
-                  : "bg-[#0E1424] text-slate-300 hover:text-white border border-slate-800"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        {/* Project Cards */}
-        <div className="space-y-8">
-          {filteredProjects.map((project, idx) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              className="saas-card p-8 bg-[#0E1424] border border-slate-800 rounded-[24px]"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-6">
-                <div>
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20 mr-3">
-                    {project.category}
-                  </span>
-                  <span className="text-xs font-bold uppercase tracking-wider text-slate-400 bg-slate-800 px-3 py-1 rounded-full">
-                    {project.complexity}
-                  </span>
-                  <h2 className="text-2xl font-bold text-white mt-3">{project.title}</h2>
-                </div>
+      {/* Project Cards */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        {filteredProjects.map((project, idx) => (
+          <motion.div
+            key={project.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: idx * 0.1 }}
+            className="stat-card"
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', borderBottom: '1px solid var(--input-border)', paddingBottom: '1.5rem', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                <span className="brand-badge" style={{ marginBottom: 0 }}>
+                  {project.category}
+                </span>
+                <span style={{ fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', padding: '0.25rem 0.75rem', borderRadius: 'var(--radius-pill)', background: 'var(--input-bg)', color: 'var(--text-muted)' }}>
+                  {project.complexity}
+                </span>
               </div>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: 'var(--text-main)' }}>{project.title}</h2>
+            </div>
 
-              <p className="text-sm text-[#94A3B8] leading-relaxed mb-6 font-normal">
-                {project.description}
-              </p>
+            <p style={{ fontSize: '0.95rem', color: 'var(--text-muted)', lineHeight: '1.6', marginBottom: '2rem' }}>
+              {project.description}
+            </p>
 
+            <div className="dashboard-grid two-columns" style={{ marginBottom: '2rem' }}>
               {/* Tech Stack Chips */}
-              <div className="mb-6">
-                <p className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Recommended Tech Stack</p>
-                <div className="flex flex-wrap gap-2">
+              <div>
+                <p style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: '1rem' }}>Recommended Tech Stack</p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                   {project.techStack.map((tech) => (
-                    <span key={tech} className="text-xs font-semibold px-3 py-1 rounded-lg bg-[#1E293B] text-slate-200 border border-slate-700/80">
+                    <span key={tech} style={{ fontSize: '0.8rem', fontWeight: '600', padding: '0.4rem 0.75rem', borderRadius: 'var(--radius-sm)', background: 'var(--card-bg-light)', color: 'var(--text-light)', border: '1px solid var(--input-border)' }}>
                       {tech}
                     </span>
                   ))}
@@ -138,36 +136,34 @@ function Portfolio() {
               </div>
 
               {/* Core Features */}
-              <div className="mb-6">
-                <p className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-3">Key Engineering Features</p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <p style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: '1rem' }}>Key Engineering Features</p>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   {project.features.map((feat, i) => (
-                    <div key={i} className="flex items-center gap-2.5 text-xs text-slate-200">
-                      <CheckCircle2 size={16} className="text-emerald-400 shrink-0" />
+                    <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.85rem', color: 'var(--text-light)' }}>
+                      <CheckCircle2 size={16} color="var(--success)" style={{ flexShrink: 0, marginTop: '2px' }} />
                       {feat}
                     </div>
                   ))}
                 </div>
               </div>
+            </div>
 
-              {/* Resume Bullet Points */}
-              <div className="p-5 rounded-2xl bg-[#1E293B]/60 border border-slate-800">
-                <p className="text-xs font-bold text-blue-400 uppercase tracking-wider mb-3">Ready-to-Use Resume Bullets</p>
-                <ul className="space-y-2">
-                  {project.resumeBullets.map((bullet, i) => (
-                    <li key={i} className="text-xs text-slate-200 flex items-start gap-2.5">
-                      <span className="text-blue-400 font-bold">•</span>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </main>
-
-      <Footer />
+            {/* Resume Bullet Points */}
+            <div style={{ padding: '1.5rem', borderRadius: 'var(--radius-sm)', background: 'var(--card-bg-light)', border: '1px solid var(--input-border)' }}>
+              <p style={{ fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--primary)', textTransform: 'uppercase', marginBottom: '1rem' }}>Ready-to-Use Resume Bullets</p>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', margin: 0, padding: 0, listStyle: 'none' }}>
+                {project.resumeBullets.map((bullet, i) => (
+                  <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                    <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>•</span>
+                    {bullet}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }
