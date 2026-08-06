@@ -28,8 +28,11 @@ console.log("✅ API routes mounted");
 const publicPath = path.join(__dirname, "public");
 app.use(express.static(publicPath));
 
-// Fallback to index.html for client-side React routing (Express 5 compatible)
-app.get("{*path}", (req, res) => {
+// Fallback to index.html for client-side React routing with no-cache headers (Express 5 compatible)
+app.use((req, res) => {
+  res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  res.setHeader("Pragma", "no-cache");
+  res.setHeader("Expires", "0");
   res.sendFile(path.join(publicPath, "index.html"));
 });
 
