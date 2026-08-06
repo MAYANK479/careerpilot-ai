@@ -73,13 +73,13 @@ export default function DashboardLayout() {
             <span className="nav-icon">📊</span>
             Dashboard
           </NavLink>
+          <NavLink to="/job-match" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
+            <span className="nav-icon">🎯</span>
+            Find Jobs & Match
+          </NavLink>
           <NavLink to="/ats" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
             <span className="nav-icon">📄</span>
             ATS Analyzer
-          </NavLink>
-          <NavLink to="/job-match" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
-            <span className="nav-icon">🎯</span>
-            Job Match
           </NavLink>
           <NavLink to="/interview" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
             <span className="nav-icon">🗣️</span>
@@ -91,19 +91,19 @@ export default function DashboardLayout() {
           </NavLink>
           <NavLink to="/roadmap" className={({ isActive }) => isActive ? "nav-item active" : "nav-item"}>
             <span className="nav-icon">🗺️</span>
-            Roadmap
+            Career Roadmap
           </NavLink>
         </nav>
 
         <div className="sidebar-footer">
           <div className="user-profile-mini">
-            <div className="user-avatar">{userInitials}</div>
+            <div className="user-avatar" style={{ background: 'var(--primary)', color: '#fff', fontWeight: 'bold' }}>{userInitials}</div>
             <div className="user-info">
-              <span className="user-name">{userName}</span>
-              <span className="user-role">Free Plan</span>
+              <span className="user-name" style={{ fontWeight: '600', color: 'var(--text-main)' }}>{userName}</span>
+              <span className="user-role" style={{ fontSize: '0.7rem', color: 'var(--primary-light)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>CANDIDATE</span>
             </div>
           </div>
-          <button onClick={handleLogout} className="btn-logout">
+          <button onClick={handleLogout} className="btn-logout" style={{ marginTop: '0.5rem', width: '100%', justifyContent: 'center' }}>
             <span className="nav-icon">🚪</span>
             Sign Out
           </button>

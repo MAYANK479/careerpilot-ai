@@ -1,8 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Sparkles, FileText, Send, Mail, UserCheck, Mic, ArrowRight } from "lucide-react";
 
 function Dashboard() {
   const [targetRole, setTargetRole] = useState("Full Stack Engineer");
+
+  const user = (() => {
+    try {
+      return JSON.parse(localStorage.getItem('user')) || {};
+    } catch {
+      return {};
+    }
+  })();
+
+  const userName = user.name || "Candidate";
 
   const skillMastery = [
     { name: "React 19 / Modern Frontend", progress: 92, status: "Mastered" },
@@ -20,50 +31,116 @@ function Dashboard() {
 
   return (
     <div>
-      <div className="section-header">
-        <h1 className="section-title">Candidate Readiness Command Center</h1>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Target Role:</span>
-          <select
-            value={targetRole}
-            onChange={(e) => setTargetRole(e.target.value)}
-            className="form-input"
-            style={{ width: 'auto', padding: '0.4rem 1rem', background: 'var(--card-bg-light)' }}
-          >
-            <option value="Full Stack Engineer">Full Stack Engineer</option>
-            <option value="Frontend Developer">Frontend Developer</option>
-            <option value="Backend Developer">Backend Developer</option>
-            <option value="AI / ML Engineer">AI / ML Engineer</option>
-            <option value="DevOps & Cloud Engineer">DevOps & Cloud Engineer</option>
-          </select>
+      {/* Header Banner */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem', flexWrap: 'wrap', gap: '1rem' }}>
+        <div>
+          <h1 className="section-title" style={{ fontSize: '1.75rem', marginBottom: '0.35rem' }}>
+            Welcome back, {userName}!
+          </h1>
+          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+            Here's what's happening with your job search today.
+          </p>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>Target Role:</span>
+            <select
+              value={targetRole}
+              onChange={(e) => setTargetRole(e.target.value)}
+              className="form-input"
+              style={{ width: 'auto', padding: '0.4rem 1rem', background: 'var(--card-bg-light)' }}
+            >
+              <option value="Full Stack Engineer">Full Stack Engineer</option>
+              <option value="Frontend Developer">Frontend Developer</option>
+              <option value="Backend Developer">Backend Developer</option>
+              <option value="AI / ML Engineer">AI / ML Engineer</option>
+              <option value="DevOps & Cloud Engineer">DevOps & Cloud Engineer</option>
+            </select>
+          </div>
+          <Link to="/upload" className="btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', padding: '0.6rem 1.25rem' }}>
+            <FileText size={16} />
+            Upload Resume
+          </Link>
         </div>
       </div>
 
-      {/* Top Grid: Score & Summary Metrics */}
-      <div className="dashboard-grid">
-        {/* Readiness Score Card */}
-        <div className="stat-card">
-          <span className="overlay-subtitle" style={{ color: 'var(--success)', fontWeight: 'bold' }}>Top 2% Candidate</span>
-          <h3 className="stat-value" style={{ color: 'var(--primary-light)' }}>91<span style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>/100</span></h3>
-          <span className="stat-label">Readiness Score</span>
-          <p style={{ fontSize: '0.75rem', color: 'var(--text-light)', marginTop: '0.5rem' }}>Ready for senior technical interviews.</p>
+      {/* Top 4 Metrics Row (ScoutMind style) */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
+        {/* Applications */}
+        <div className="stat-card" style={{ position: 'relative', overflow: 'hidden' }}>
+          <div style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>📝</div>
+          <h3 className="stat-value" style={{ fontSize: '1.75rem', margin: '0.2rem 0' }}>0</h3>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '500' }}>Applications</span>
         </div>
 
-        {/* Acquired Skills Count */}
-        <div className="stat-card">
-          <span className="overlay-subtitle" style={{ color: 'var(--text-muted)', fontWeight: 'bold' }}>Skills Acquired</span>
-          <h3 className="stat-value">14 <span style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>/ 17</span></h3>
-          <span className="stat-label" style={{ color: 'var(--success)' }}>82% role coverage</span>
+        {/* Invites */}
+        <div className="stat-card" style={{ position: 'relative', overflow: 'hidden' }}>
+          <div style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>✉️</div>
+          <h3 className="stat-value" style={{ fontSize: '1.75rem', margin: '0.2rem 0' }}>0</h3>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '500' }}>Invites</span>
         </div>
 
-        {/* Skill Gaps Count */}
-        <div className="stat-card">
-          <span className="overlay-subtitle" style={{ color: 'var(--text-muted)', fontWeight: 'bold' }}>Skill Gaps to Close</span>
-          <h3 className="stat-value">3 <span style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>Topics</span></h3>
-          <span className="stat-label" style={{ color: 'var(--danger)' }}>AWS, Redis & GraphQL</span>
+        {/* Profile Completion */}
+        <div className="stat-card" style={{ position: 'relative', overflow: 'hidden' }}>
+          <div style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>👤</div>
+          <h3 className="stat-value" style={{ fontSize: '1.75rem', margin: '0.2rem 0', color: 'var(--success)' }}>85%</h3>
+          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '500' }}>Profile Readiness</span>
+        </div>
+
+        {/* Featured Mock Interview Highlight Card */}
+        <div style={{
+          background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+          borderRadius: 'var(--radius-card)',
+          padding: '1.25rem 1.5rem',
+          color: '#ffffff',
+          display: 'flex',
+          flexDirection: 'column',
+          justify: 'space-between',
+          boxShadow: '0 10px 25px -5px rgba(245, 158, 11, 0.4)'
+        }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <Mic size={20} color="#ffffff" />
+              <span style={{ fontWeight: 'bold', fontSize: '1rem' }}>Mock Interview</span>
+            </div>
+            <p style={{ fontSize: '0.78rem', color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.3' }}>
+              Practice your answers with our AI interviewer in real-time.
+            </p>
+          </div>
+          <Link to="/interview" style={{
+            marginTop: '1rem',
+            background: '#ffffff',
+            color: '#b45309',
+            fontWeight: 'bold',
+            fontSize: '0.82rem',
+            padding: '0.45rem 1rem',
+            borderRadius: 'var(--radius-pill)',
+            textDecoration: 'none',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.4rem',
+            width: 'fit-content'
+          }}>
+            Start Now <ArrowRight size={14} />
+          </Link>
         </div>
       </div>
 
+      {/* Recent Invitations & Applications Empty State Card */}
+      <div className="stat-card" style={{ marginBottom: '2rem', padding: '2.5rem', textAlign: 'center' }}>
+        <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📫</div>
+        <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '0.5rem' }}>
+          No pending invitations
+        </h3>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
+          When recruiters invite you to apply, or when AI matches target positions, they will appear here.
+        </p>
+        <Link to="/job-match" style={{ color: 'var(--primary-light)', fontWeight: 'bold', fontSize: '0.9rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
+          Browse Jobs & Match <ArrowRight size={16} />
+        </Link>
+      </div>
+
+      {/* Skills Mastery & Critical Gaps Grid */}
       <div className="dashboard-grid two-columns" style={{ gridTemplateColumns: '2fr 1fr' }}>
         {/* Skills Mastery Progress */}
         <div className="stat-card">
@@ -108,25 +185,6 @@ function Dashboard() {
           <Link to="/roadmap" className="btn-primary" style={{ marginTop: '2rem', textAlign: 'center', display: 'block', textDecoration: 'none' }}>
             Generate Learning Roadmap
           </Link>
-        </div>
-      </div>
-
-      {/* Bottom Section: Quick Launch Action Suite */}
-      <div style={{ marginTop: '2rem' }}>
-        <h2 className="section-title">Career Pilot Tool Suite</h2>
-        <div className="dashboard-grid">
-          {[
-            { title: "Learning Plan", desc: "Week-by-week track for skill gaps", icon: "🗺️", link: "/roadmap" },
-            { title: "Build Portfolio", desc: "Project ideas & architecture", icon: "📁", link: "/portfolio" },
-            { title: "Resume Architect", desc: "ATS match score & AI rewriter", icon: "📄", link: "/upload" },
-            { title: "Interview Prep", desc: "Voice mock interviews", icon: "🗣️", link: "/interview" },
-          ].map((tool) => (
-            <Link key={tool.title} to={tool.link} className="stat-card" style={{ textDecoration: 'none', transition: 'var(--transition)' }}>
-              <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{tool.icon}</div>
-              <h3 style={{ fontSize: '1rem', color: 'var(--text-main)', marginBottom: '0.5rem' }}>{tool.title}</h3>
-              <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{tool.desc}</p>
-            </Link>
-          ))}
         </div>
       </div>
     </div>
