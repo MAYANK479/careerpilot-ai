@@ -1,77 +1,117 @@
-# 🚀 CareerPilot AI — Full-Stack AI Career Platform & Co-Pilot
+# 🚀 CareerPilot AI — Production-Grade AI Career Co-Pilot Platform
 
 [![Vercel Live Demo](https://img.shields.io/badge/Vercel-Live%20Demo-black?style=for-the-badge&logo=vercel)](https://careerpilot-ai-two-ebon.vercel.app/)
+[![Build & Test](https://img.shields.io/badge/Build%20%26%20Test-Passing-success?style=for-the-badge&logo=node.js)](https://github.com/MAYANK479/careerpilot-ai)
 [![Tech Stack](https://img.shields.io/badge/React_19-Vite_8-61DAFB?style=for-the-badge&logo=react)](https://react.dev)
 [![Node.js](https://img.shields.io/badge/Node.js-Express_5-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org)
 [![Groq LLaMA 3.3](https://img.shields.io/badge/AI-Groq%20LLaMA%203.3%20%2F%20Ollama-f34f29?style=for-the-badge)](https://groq.com)
 
-> An end-to-end, ultra-fast AI career co-pilot platform that provides **ATS resume analysis**, **tailored cover letter generation**, **job-to-resume matching**, **AI mock interviews**, and **custom career learning roadmaps** — powered by **Groq LLaMA 3.3 70B** and **Ollama**.
+> An end-to-end, ultra-fast AI career co-pilot platform designed to bridge candidate skill gaps, optimize ATS compliance, generate tailored cover letters with PDF export, run interactive mock interviews, and chart skill progression — powered by **Groq LLaMA 3.3 70B** and **Ollama**.
 
 ---
 
-## 🌐 Live Demo
-
-🚀 **[https://careerpilot-ai-two-ebon.vercel.app](https://careerpilot-ai-two-ebon.vercel.app/)**
-
----
-
-## ✨ Core Features
-
-- 📄 **ATS Resume Analysis**: Upload PDF resumes to get instant ATS compatibility scores, breakdown of technical skills, key strengths, critical gaps, formatting advice, and actionable feedback.
-- 🎯 **Job Description Matching**: Match your resume text directly against target job descriptions to analyze shortlist probability, skill coverage, and keyword alignment.
-- ✉️ **AI Cover Letter Generator**: Generate role-specific, impactful cover letters tailored to your profile and target companies in seconds.
-- 🗣️ **Interactive AI Mock Interviews**: Practice real-time interactive technical and behavioral interview sessions with automated feedback.
-- 🗺️ **Personalized Career Roadmaps**: Step-by-step skill progression plans with interactive completion tracking.
-- 🔐 **Full Authentication**: User registration and login flow with personalized dashboard states.
-- 🎨 **Modern Glassmorphism SaaS UI**: Built with dark-mode elegance, dynamic SVG gauges, interactive hover states, and smooth Framer Motion micro-animations.
+## 🌐 Live Application
+🔗 **[https://careerpilot-ai-two-ebon.vercel.app](https://careerpilot-ai-two-ebon.vercel.app/)**
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## 🎯 Problem & Product Vision
 
-### **Frontend**
-- **Framework**: React 19 + Vite 8
-- **Styling**: Modern CSS Design System (Custom Glassmorphism, CSS Variables, Dark Aesthetic)
-- **Routing**: React Router v6
-- **HTTP Client**: Axios (Cross-Origin CORS configured)
-- **Icons**: Lucide React
+### The Problem
+Job applicants face high rejection rates due to automated **Applicant Tracking Systems (ATS)** filtering resumes before human review, generic un-tailored cover letters, and lack of real-time technical interview practice.
 
-### **Backend**
-- **Runtime**: Node.js + Express 5
-- **Parsing**: `pdf-parse` for text extraction from uploaded PDF resumes
-- **File Uploads**: `multer` memory storage & handling
-- **AI Integrations**: Groq Cloud REST API (`llama-3.3-70b-versatile`) with seamless local Ollama (`qwen3`) & OpenAI fallback support
+### The Solution
+CareerPilot AI acts as a 24/7 personal career co-pilot. It ingests resume PDFs, extracts text via binary stream parsing, evaluates ATS compliance against target roles, matches candidate profiles to specific job postings, and generates formatted cover letters with instant PDF export options.
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+flowchart TD
+    subgraph Client ["Client Layer (Vercel CDN)"]
+        UI["React 19 + Vite 8 App"]
+        Theme["Theme Switcher (Dark/Light)"]
+        State["LocalStorage Session State"]
+    end
+
+    subgraph API ["Backend API Layer (Render Web Service)"]
+        Express["Express 5 Server"]
+        Multer["Multer PDF Stream Parser"]
+        Auth["Auth Controller & Persistence"]
+        CORS["Cross-Origin Resource Sharing"]
+    end
+
+    subgraph AI ["AI Engine Layer"]
+        Groq["Groq Cloud REST API\n(LLaMA 3.3 70B Versatile)"]
+        Ollama["Local Ollama Service\n(Qwen3 / Fallback)"]
+    end
+
+    UI -->|HTTP Requests / JSON| Express
+    Express --> CORS
+    Express --> Multer
+    Express --> Auth
+    Express -->|Structured JSON Prompt| Groq
+    Express -.->|Local Inference| Ollama
+```
+
+---
+
+## ✨ Core Product Features
+
+| Module | Technical Capability | User Value |
+| :--- | :--- | :--- |
+| 📄 **ATS Resume Analysis** | `pdf-parse` binary stream extraction & LLM skill evaluation | Instant ATS score (0-100), critical gap analysis & formatting tips |
+| 🎯 **Job Match Engine** | Vector keyword overlap & job posting criteria scoring | Shortlist probability & missing skill identification |
+| ✉️ **Cover Letter Studio** | Dynamic prompt synthesis + HTML print-to-PDF pipeline | Custom cover letters exportable in both `.txt` and formatted `.pdf` |
+| 🗣️ **Mock Interview AI** | Interactive prompt turn-taking & evaluation | Simulated role interviews with constructive feedback |
+| 🗺️ **Career Roadmap** | Dynamic checklist generator & mastery progress | Step-by-step skill gap mitigation track |
+| 🎨 **Design System** | Glassmorphism, CSS Variables, Theme Switcher | High-contrast dark SaaS aesthetic + light mode toggle |
+
+---
+
+## 🧪 Testing & Quality Assurance
+
+The codebase includes automated unit test suites covering data persistence and authentication logic using Node.js native test runner (`node:test`).
+
+```bash
+# Run backend test suite
+npm test
+```
+
+### Sample Output:
+```text
+✔ DataStore user persistence test (0.72ms)
+✔ Auth logic test - User registration structure validation (0.09ms)
+ℹ tests 2 | pass 2 | fail 0
+```
 
 ---
 
 ## 🚀 Quick Start (Local Setup)
 
-### 1. Clone the Repository
+### 1. Clone & Install
 ```bash
 git clone https://github.com/MAYANK479/careerpilot-ai.git
 cd careerpilot-ai
+npm run build
 ```
 
-### 2. Environment Configuration
-Create a `.env` file in the `server` directory (or use environment variables on Render):
+### 2. Environment Setup
+Create `.env` in `server/`:
 ```env
 PORT=5002
 AI_PROVIDER=openai
-OPENAI_API_KEY=gsk_your_groq_api_key_here
+OPENAI_API_KEY=gsk_your_groq_api_key
 OPENAI_BASE_URL=https://api.groq.com/openai/v1
 OPENAI_MODEL=llama-3.3-70b-versatile
 ```
 
-### 3. Install & Run Locally
+### 3. Run Development Server
 ```bash
-# Install root, client, and server dependencies
-npm run build
-
-# Start the full-stack app in development mode
 npm run dev
+# Opens frontend at http://localhost:5173 and backend at http://localhost:5002
 ```
-
-Visit `http://localhost:5173` to explore locally.
 
 ---
 
@@ -79,20 +119,23 @@ Visit `http://localhost:5173` to explore locally.
 
 ```text
 careerpilot-ai/
+├── vercel.json            # Vercel Single-Page-App routing rewrites
+├── dev.js                 # Concurrent dev server runner
 ├── client/                # React 19 + Vite Frontend
 │   ├── src/
-│   │   ├── components/    # Navigation, Layouts, Gauges, Skill Chips
+│   │   ├── components/    # Navigation, Layouts, Gauges, Skill Chips, Toast
 │   │   ├── pages/         # Dashboard, Upload, JobMatch, CoverLetter, Interview, Login, Register
-│   │   ├── App.jsx        # App Routing
-│   │   └── index.css      # Custom Design Tokens & Glassmorphism System
+│   │   ├── App.jsx        # React Router routes
+│   │   └── index.css      # Custom Design System, Glassmorphism, Light/Dark themes
 ├── server/                # Express 5 Backend
 │   ├── controllers/       # Auth, Upload, Job Match, Cover Letter, Interview Controllers
-│   ├── routes/            # API Route definitions (/api/auth, /api/upload, /api/job-match, etc.)
-│   └── services/          # Groq, OpenAI, and Ollama AI service handlers
+│   ├── tests/             # Automated test suite (api.test.js)
+│   ├── routes/            # Express API endpoints
+│   └── services/          # Groq, OpenAI & Ollama LLM handlers
 ```
 
 ---
 
 ## 📜 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License. See `LICENSE` for details.

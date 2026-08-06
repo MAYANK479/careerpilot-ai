@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "node dev.js",
     "build": "cd server && npm install && cd ../client && npm install && npm run build && mkdir -p ../server/public && cp -r dist/* ../server/public",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "test": "npm run test --prefix server"
   }
 }
