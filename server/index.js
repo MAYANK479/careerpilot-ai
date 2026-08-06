@@ -13,14 +13,6 @@ const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
-// Serve static files from the React build (client) in production
-app.use(express.static(path.join(__dirname, 'public')));
-// Fallback to index.html for client-side routing
-app.get('/*', (req, res, next) => {
-  if (req.path.startsWith('/api')) return next();
-  res.sendFile('index.html', { root: path.join(__dirname, 'public') });
-});
-
 app.use(cors());
 app.use(express.json({ limit: "5mb" }));
 
@@ -29,27 +21,16 @@ app.use("/api/upload", uploadRoutes);
 app.use("/api/job-match", jobMatchRoutes);
 app.use("/api/interview", interviewRoutes);
 app.use("/api/cover-letter", coverLetterRoutes);
-app.use('/api/auth', authRoutes);
-console.log('✅ auth routes mounted');
+app.use("/api/auth", authRoutes);
+console.log("✅ API routes mounted");
 
+// Serve static files from the React build (client) in production
+const publicPath = path.join(__dirname, "public");
+app.use(express.static(publicPath));
 
-app.use((error, req, res, next) => {
-  console.error("Request failed:", error);
-  const status = error.code === "LIMIT_FILE_SIZE" ? 413 : 500;
-  res.status(status).json({
-    success: false,
-    message:
-      error.code === "LIMIT_FILE_SIZE"
-        ? "PDF files must be 10 MB or smaller."
-        : error.message || "The request could not be processed.",
-  });
-});
-
-app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "Backend Running 🚀",
-  });
+// Fallback to index.html for client-side React routing (Express 5 compatible)
+app.get("{*path}", (req, res) => {
+  res.sendFile(path.join(publicPath, "index.html"));
 });
 
 const PORT = process.env.PORT || 5002;
