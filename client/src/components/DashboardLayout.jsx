@@ -4,8 +4,26 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 export default function DashboardLayout() {
   const navigate = useNavigate();
 
+  const user = (() => {
+    try {
+      return JSON.parse(localStorage.getItem('user')) || {};
+    } catch {
+      return {};
+    }
+  })();
+
+  const userName = user.name || 'Candidate';
+  const userInitials = userName
+    .split(' ')
+    .filter(Boolean)
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2) || 'CP';
+
   const handleLogout = () => {
-    // Basic logout logic for now
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     navigate('/login');
   };
 
@@ -46,9 +64,9 @@ export default function DashboardLayout() {
 
         <div className="sidebar-footer">
           <div className="user-profile-mini">
-            <div className="user-avatar">CP</div>
+            <div className="user-avatar">{userInitials}</div>
             <div className="user-info">
-              <span className="user-name">Candidate</span>
+              <span className="user-name">{userName}</span>
               <span className="user-role">Free Plan</span>
             </div>
           </div>
