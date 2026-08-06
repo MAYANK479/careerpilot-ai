@@ -282,6 +282,39 @@ body {
   border-color: var(--primary);
 }
 
+/* Auth Footer & Links */
+.auth-footer {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+  border-top: 1px solid var(--input-border);
+}
+
+.auth-link {
+  color: #60A5FA !important;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: var(--transition);
+}
+
+.auth-link:hover {
+  color: #93C5FD !important;
+  text-decoration: underline;
+}
+
+[data-theme="light"] .auth-link {
+  color: #2563EB !important;
+}
+
+[data-theme="light"] .auth-link:hover {
+  color: #1D4ED8 !important;
+}
+
 /* Dashboard Layout */
 .dashboard-container {
   display: flex;
