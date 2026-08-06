@@ -13,7 +13,10 @@ const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: true, // Allow all origins (Vercel, localhost, etc.)
+  credentials: true,
+}));
 app.use(express.json({ limit: "5mb" }));
 
 // API routes
