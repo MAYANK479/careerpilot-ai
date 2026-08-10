@@ -116,8 +116,9 @@ function JobMatch() {
 
       {/* Results Card */}
       {result && (
-        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} className="stat-card" style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
+        <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} style={{ maxWidth: '900px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          
+          <div className="stat-card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
               <span className="brand-badge" style={{ background: 'rgba(74, 222, 128, 0.1)', color: 'var(--success)', border: '1px solid rgba(74, 222, 128, 0.2)' }}>Shortlist Rating</span>
               <h2 style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--text-main)', marginTop: '0.5rem' }}>Match Score: {result.matchScore}%</h2>
@@ -132,6 +133,46 @@ function JobMatch() {
               Generate Cover Letter
             </button>
           </div>
+
+          <div className="dashboard-grid two-columns">
+            <div className="stat-card">
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ color: 'var(--success)' }}>✓</span> Matching Skills
+              </h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {result.matchingSkills?.length > 0 ? result.matchingSkills.map((skill, i) => (
+                  <span key={i} className="badge badge-green">
+                    {skill}
+                  </span>
+                )) : <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>No matching skills identified.</p>}
+              </div>
+            </div>
+
+            <div className="stat-card">
+              <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ color: 'var(--danger)' }}>⚠️</span> Missing Skills
+              </h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {result.missingSkills?.length > 0 ? result.missingSkills.map((skill, i) => (
+                  <span key={i} className="badge badge-red">
+                    {skill}
+                  </span>
+                )) : <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>No missing skills! Great match.</p>}
+              </div>
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              💡 Recommendations
+            </h3>
+            <ul style={{ paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0 }}>
+              {result.recommendations?.map((rec, i) => (
+                <li key={i} style={{ marginBottom: '0.75rem' }}>{rec}</li>
+              ))}
+            </ul>
+          </div>
+          
         </motion.div>
       )}
     </div>

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Zap, BarChart2, Gift, CheckCircle, Shield } from "lucide-react";
 
 const features = [
-  { icon: Zap, title: "AI Resume Analyzer", description: "Get a score and actionable feedback for your resume instantly." },
+  { icon: Zap, title: "Resume Analysis", description: "Get a score and actionable feedback for your resume instantly." },
   { icon: BarChart2, title: "Interview Simulator", description: "Practice with AI‑generated technical questions and get real‑time feedback." },
   { icon: Gift, title: "Career Roadmap", description: "Personalised learning path with weekly milestones to master in‑demand skills." },
   { icon: CheckCircle, title: "ATS Optimization", description: "Keyword matching and formatting tips to beat applicant tracking systems." },

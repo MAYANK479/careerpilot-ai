@@ -28,7 +28,7 @@ export default function Login() {
 
   return (
     <div className="auth-left-panel">
-      <div className="brand-badge">AI Resume Analyzer</div>
+      <div className="brand-badge">CareerPilot AI</div>
       <div className="auth-header">
         <h2 className="auth-title">Welcome Back</h2>
         <p className="auth-subtitle">Sign in to continue</p>
@@ -56,7 +56,7 @@ export default function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {error && <div className="auth-error" style={{ color: 'var(--error)', marginBottom: '1rem' }}>{error}</div>}
+        {error && <div className="auth-error" style={{ color: 'var(--danger)', marginBottom: '1rem', fontSize: '0.85rem' }}>{error}</div>}
         <button type="submit" className="btn-primary">Sign In</button>
       </form>
       <div className="auth-footer">

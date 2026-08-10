@@ -555,3 +555,51 @@ body {
   border-color: var(--primary);
   color: var(--primary);
 }
+/* Generic States */
+.state-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: var(--text-muted);
+  background: var(--card-bg);
+  border: 1px dashed var(--input-border);
+  border-radius: var(--radius-card);
+}
+
+.state-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: var(--radius-card);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+}
+
+.badge-blue { background: rgba(59, 130, 246, 0.15); color: #60A5FA; }
+.badge-green { background: rgba(34, 197, 94, 0.15); color: #4ADE80; }
+.badge-red { background: rgba(239, 68, 68, 0.15); color: #F87171; }
+.badge-orange { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+.badge-gray { background: rgba(148, 163, 184, 0.15); color: #94A3B8; }
+
+[data-theme="light"] .badge-blue { background: rgba(37, 99, 235, 0.1); color: #2563EB; }
+[data-theme="light"] .badge-green { background: rgba(22, 163, 74, 0.1); color: #16A34A; }
+[data-theme="light"] .badge-red { background: rgba(220, 38, 38, 0.1); color: #DC2626; }
+[data-theme="light"] .badge-orange { background: rgba(217, 119, 6, 0.1); color: #D97706; }
+[data-theme="light"] .badge-gray { background: rgba(71, 85, 105, 0.1); color: #475569; }
+

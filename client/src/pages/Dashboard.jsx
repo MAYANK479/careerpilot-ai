@@ -64,80 +64,57 @@ function Dashboard() {
         </div>
       </div>
 
-      {/* Top 4 Metrics Row (ScoutMind style) */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
-        {/* Applications */}
-        <div className="stat-card" style={{ position: 'relative', overflow: 'hidden' }}>
-          <div style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>📝</div>
-          <h3 className="stat-value" style={{ fontSize: '1.75rem', margin: '0.2rem 0' }}>0</h3>
-          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '500' }}>Applications</span>
-        </div>
-
-        {/* Invites */}
-        <div className="stat-card" style={{ position: 'relative', overflow: 'hidden' }}>
-          <div style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>✉️</div>
-          <h3 className="stat-value" style={{ fontSize: '1.75rem', margin: '0.2rem 0' }}>0</h3>
-          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '500' }}>Invites</span>
-        </div>
-
-        {/* Profile Completion */}
-        <div className="stat-card" style={{ position: 'relative', overflow: 'hidden' }}>
-          <div style={{ fontSize: '1.75rem', marginBottom: '0.5rem' }}>👤</div>
-          <h3 className="stat-value" style={{ fontSize: '1.75rem', margin: '0.2rem 0', color: 'var(--success)' }}>85%</h3>
-          <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: '500' }}>Profile Readiness</span>
-        </div>
-
-        {/* Featured Mock Interview Highlight Card */}
-        <div style={{
-          background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-          borderRadius: 'var(--radius-card)',
-          padding: '1.25rem 1.5rem',
-          color: '#ffffff',
-          display: 'flex',
-          flexDirection: 'column',
-          justify: 'space-between',
-          boxShadow: '0 10px 25px -5px rgba(245, 158, 11, 0.4)'
-        }}>
-          <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              <Mic size={20} color="#ffffff" />
-              <span style={{ fontWeight: 'bold', fontSize: '1rem' }}>Mock Interview</span>
-            </div>
-            <p style={{ fontSize: '0.78rem', color: 'rgba(255, 255, 255, 0.9)', lineHeight: '1.3' }}>
-              Practice your answers with our AI interviewer in real-time.
-            </p>
-          </div>
-          <Link to="/interview" style={{
-            marginTop: '1rem',
-            background: '#ffffff',
-            color: '#b45309',
-            fontWeight: 'bold',
-            fontSize: '0.82rem',
-            padding: '0.45rem 1rem',
-            borderRadius: 'var(--radius-pill)',
-            textDecoration: 'none',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '0.4rem',
-            width: 'fit-content'
-          }}>
-            Start Now <ArrowRight size={14} />
+      {/* Quick Access Workflows */}
+      <h2 className="section-title" style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>Your Workflows</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
+        
+        {/* ATS Resume Analysis */}
+        <div className="stat-card" style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem' }}>
+          <div style={{ fontSize: '1.75rem', marginBottom: '0.75rem' }}>📄</div>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'var(--text-main)' }}>Resume Analysis</h3>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.25rem', flex: 1 }}>
+            Get an ATS score and identify critical skill gaps.
+          </p>
+          <Link to="/upload" style={{ color: 'var(--primary)', fontWeight: '600', fontSize: '0.85rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            Analyze Resume <ArrowRight size={14} />
           </Link>
         </div>
-      </div>
 
-      {/* Recent Invitations & Applications Empty State Card */}
-      <div className="stat-card" style={{ marginBottom: '2rem', padding: '2.5rem', textAlign: 'center' }}>
-        <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📫</div>
-        <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', color: 'var(--text-main)', marginBottom: '0.5rem' }}>
-          No pending invitations
-        </h3>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1.25rem' }}>
-          When recruiters invite you to apply, or when AI matches target positions, they will appear here.
-        </p>
-        <Link to="/job-match" style={{ color: 'var(--primary-light)', fontWeight: 'bold', fontSize: '0.9rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.3rem' }}>
-          Browse Jobs & Match <ArrowRight size={16} />
-        </Link>
+        {/* Job Match */}
+        <div className="stat-card" style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem' }}>
+          <div style={{ fontSize: '1.75rem', marginBottom: '0.75rem' }}>🎯</div>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'var(--text-main)' }}>Job Match Engine</h3>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.25rem', flex: 1 }}>
+            Match your profile against specific job descriptions.
+          </p>
+          <Link to="/job-match" style={{ color: 'var(--primary)', fontWeight: '600', fontSize: '0.85rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            Find Matches <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        {/* Cover Letter */}
+        <div className="stat-card" style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem' }}>
+          <div style={{ fontSize: '1.75rem', marginBottom: '0.75rem' }}>✉️</div>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'var(--text-main)' }}>Cover Letters</h3>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.25rem', flex: 1 }}>
+            Generate tailored cover letters for your target role.
+          </p>
+          <Link to="/cover-letter" style={{ color: 'var(--primary)', fontWeight: '600', fontSize: '0.85rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            Generate Letter <ArrowRight size={14} />
+          </Link>
+        </div>
+
+        {/* Mock Interview */}
+        <div className="stat-card" style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem', border: '1px solid var(--primary-light)', background: 'rgba(59, 130, 246, 0.05)' }}>
+          <div style={{ fontSize: '1.75rem', marginBottom: '0.75rem' }}>🗣️</div>
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 'bold', marginBottom: '0.5rem', color: 'var(--primary)' }}>Mock Interview</h3>
+          <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', marginBottom: '1.25rem', flex: 1 }}>
+            Practice interactive voice interviews with AI.
+          </p>
+          <Link to="/interview" style={{ background: 'var(--primary)', color: 'white', padding: '0.4rem 0.8rem', borderRadius: 'var(--radius-pill)', fontWeight: '600', fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.25rem', width: 'fit-content' }}>
+            Start Practice <ArrowRight size={14} />
+          </Link>
+        </div>
       </div>
 
       {/* Skills Mastery & Critical Gaps Grid */}

@@ -7,7 +7,7 @@ const footerLinks = [
   {
     title: "Platform",
     links: [
-      { label: "AI Resume Analyzer", to: "/upload" },
+      { label: "Resume Analysis", to: "/upload" },
       { label: "Mock Interviews", to: "/interview" },
       { label: "Job Matcher", to: "/job-match" },
       { label: "Career Roadmaps", to: "/roadmap" },

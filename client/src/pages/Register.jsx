@@ -29,7 +29,7 @@ export default function Register() {
 
   return (
     <div className="auth-left-panel">
-      <div className="brand-badge">AI Resume Analyzer</div>
+      <div className="brand-badge">CareerPilot AI</div>
       <div className="auth-header">
         <h2 className="auth-title">Create Account</h2>
         <p className="auth-subtitle">Join us and start analyzing resumes</p>
@@ -68,7 +68,7 @@ export default function Register() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        {error && <div className="auth-error" style={{ color: 'var(--error)', marginBottom: '1rem' }}>{error}</div>}
+        {error && <div className="auth-error" style={{ color: 'var(--danger)', marginBottom: '1rem', fontSize: '0.85rem' }}>{error}</div>}
         <button type="submit" className="btn-primary">Sign Up</button>
       </form>
       <div className="auth-footer">

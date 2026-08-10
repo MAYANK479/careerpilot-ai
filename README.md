@@ -1,4 +1,4 @@
-# 🚀 CareerPilot AI — Production-Grade AI Career Co-Pilot Platform
+# 🚀 CareerPilot AI — AI-Powered Career Co-Pilot
 
 [![Vercel Live Demo](https://img.shields.io/badge/Vercel-Live%20Demo-black?style=for-the-badge&logo=vercel)](https://careerpilot-ai-two-ebon.vercel.app/)
 [![Build & Test](https://img.shields.io/badge/Build%20%26%20Test-Passing-success?style=for-the-badge&logo=node.js)](https://github.com/MAYANK479/careerpilot-ai)
@@ -6,7 +6,7 @@
 [![Node.js](https://img.shields.io/badge/Node.js-Express_5-339933?style=for-the-badge&logo=nodedotjs)](https://nodejs.org)
 [![Groq LLaMA 3.3](https://img.shields.io/badge/AI-Groq%20LLaMA%203.3%20%2F%20Ollama-f34f29?style=for-the-badge)](https://groq.com)
 
-> An end-to-end, ultra-fast AI career co-pilot platform designed to bridge candidate skill gaps, optimize ATS compliance, generate tailored cover letters with PDF export, run interactive mock interviews, and chart skill progression — powered by **Groq LLaMA 3.3 70B** and **Ollama**.
+> An AI-powered career platform that helps users analyze resumes, evaluate job fit, generate tailored cover letters, practice interviews, and build skill-development roadmaps.
 
 ---
 
@@ -67,6 +67,18 @@ flowchart TD
 | 🗣️ **Mock Interview AI** | Interactive prompt turn-taking & evaluation | Simulated role interviews with constructive feedback |
 | 🗺️ **Career Roadmap** | Dynamic checklist generator & mastery progress | Step-by-step skill gap mitigation track |
 | 🎨 **Design System** | Glassmorphism, CSS Variables, Theme Switcher | High-contrast dark SaaS aesthetic + light mode toggle |
+
+---
+
+## 📸 Screenshots
+
+> **Note to Developer:** Please take screenshots of your local or deployed app and place them in the `docs/screenshots/` folder, replacing the placeholder file names below.
+
+| Dashboard Overview | Job Match Engine |
+| :---: | :---: |
+| <img src="./docs/screenshots/dashboard.png" width="400" alt="Dashboard Screenshot" /> | <img src="./docs/screenshots/job-match.png" width="400" alt="Job Match Screenshot" /> |
+| **Cover Letter Studio** | **Mock Interview & Feedback** |
+| <img src="./docs/screenshots/cover-letter.png" width="400" alt="Cover Letter Screenshot" /> | <img src="./docs/screenshots/mock-interview.png" width="400" alt="Mock Interview Screenshot" /> |
 
 ---
 
