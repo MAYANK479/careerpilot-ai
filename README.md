@@ -72,13 +72,13 @@ flowchart TD
 
 ## 📸 Screenshots
 
-> **Note to Developer:** Please take screenshots of your local or deployed app and place them in the `docs/screenshots/` folder, replacing the placeholder file names below.
-
-| Dashboard Overview | Job Match Engine |
+| Dashboard Overview | ATS Resume Scorer |
 | :---: | :---: |
-| <img src="./docs/screenshots/dashboard.png" width="400" alt="Dashboard Screenshot" /> | <img src="./docs/screenshots/job-match.png" width="400" alt="Job Match Screenshot" /> |
-| **Cover Letter Studio** | **Mock Interview & Feedback** |
-| <img src="./docs/screenshots/cover-letter.png" width="400" alt="Cover Letter Screenshot" /> | <img src="./docs/screenshots/mock-interview.png" width="400" alt="Mock Interview Screenshot" /> |
+| <img src="./docs/screenshots/dashboard.png" width="400" alt="Dashboard Screenshot" /> | <img src="./docs/screenshots/ats-scorer.png" width="400" alt="ATS Scorer Screenshot" /> |
+| **Job Match Engine** | **Cover Letter Studio** |
+| <img src="./docs/screenshots/job-match.png" width="400" alt="Job Match Screenshot" /> | <img src="./docs/screenshots/cover-letter.png" width="400" alt="Cover Letter Screenshot" /> |
+| **Mock Interview & Feedback** | **Career Roadmap** |
+| <img src="./docs/screenshots/mock-interview.png" width="400" alt="Mock Interview Screenshot" /> | <img src="./docs/screenshots/career-roadmap.png" width="400" alt="Career Roadmap Screenshot" /> |
 
 ---
 
