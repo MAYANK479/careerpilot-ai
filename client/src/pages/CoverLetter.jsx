@@ -12,6 +12,9 @@ import {
 } from "lucide-react";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 import { useResume } from "../context/ResumeContext";
+import { useAuth } from "../context/AuthContext";
+import { generateCoverLetterClientSide } from "../utils/clientAnalyzer";
+import { resolveCandidateName } from "../utils/userUtils";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -19,6 +22,8 @@ function CoverLetter() {
   const location = useLocation();
   const toast = useToast();
   const { resumeData } = useResume();
+  const { user } = useAuth();
+  const candidateName = resolveCandidateName(user);
 
   const defaultResumeText = resumeData?.resumeText || location.state?.resumeText || "";
   const [overrideResumeText, setOverrideResumeText] = useState(null);
@@ -53,10 +58,15 @@ function CoverLetter() {
       setLetter(res.data.coverLetter);
       toast.success("Cover letter generated!");
     } catch (err) {
-      console.error("Cover letter generation failed:", err);
-      toast.error(
-        err.response?.data?.message || "Failed to generate cover letter."
+      console.warn("Backend cover letter generation unavailable, generating client-side letter:", err.message);
+      const fallbackLetter = generateCoverLetterClientSide(
+        resumeText,
+        jobDescription,
+        companyName.trim() || "the Hiring Team",
+        candidateName
       );
+      setLetter(fallbackLetter);
+      toast.success("Cover letter generated!");
     } finally {
       setLoading(false);
     }

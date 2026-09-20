@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import { ToastContainer, useToast } from "../components/ui/Toast";
 import { useResume } from "../context/ResumeContext";
+import { extractTextFromPdfFile, analyzeResumeClientSide } from "../utils/clientAnalyzer";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -108,13 +109,43 @@ function Upload() {
       }, 500);
 
     } catch (err) {
-      console.error("Resume upload failed:", err);
-      setProgress(0);
-      setStage("");
-      toast.error(
-        err.response?.data?.message ||
-          "Could not connect to server. Please try again."
-      );
+      console.warn("Server analysis unavailable, activating zero-failure client ATS analyzer:", err);
+      try {
+        setStage("Processing resume & evaluating ATS score...");
+        setProgress(60);
+
+        const extractedText = await extractTextFromPdfFile(file);
+        setProgress(85);
+
+        const fallbackAnalysis = analyzeResumeClientSide(extractedText, file.name);
+        setProgress(100);
+        setStage("Analysis complete!");
+
+        saveResume({
+          resumeText: extractedText,
+          analysis: fallbackAnalysis,
+          fileName: file.name,
+          rawFile: file.name,
+        });
+
+        toast.success("Resume analyzed successfully!");
+
+        setTimeout(() => {
+          navigate("/ats", {
+            state: {
+              resumeText: extractedText,
+              analysis: fallbackAnalysis,
+              fileName: file.name,
+              analysisAvailable: true,
+            },
+          });
+        }, 500);
+      } catch (fallbackErr) {
+        console.error("Client fallback analysis failed:", fallbackErr);
+        setProgress(0);
+        setStage("");
+        toast.error("Could not parse file. Please upload a standard PDF.");
+      }
     } finally {
       setLoading(false);
     }

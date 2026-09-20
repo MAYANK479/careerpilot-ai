@@ -11,7 +11,14 @@ exports.uploadResume = async (req, res, next) => {
   }
 
   try {
-    const fileBuffer = await fs.readFile(req.file.path);
+    const fileBuffer = req.file.buffer || (req.file.path ? await fs.readFile(req.file.path) : null);
+    if (!fileBuffer) {
+      return res.status(400).json({
+        success: false,
+        message: "Unable to read uploaded file.",
+      });
+    }
+
     const parser = new PDFParse({ data: fileBuffer });
     const parsedPdf = await parser.getText();
     await parser.destroy();
@@ -30,7 +37,7 @@ exports.uploadResume = async (req, res, next) => {
       message: analysis
         ? "Resume uploaded and analyzed successfully!"
         : "Resume uploaded and text extracted successfully.",
-      file: req.file.filename,
+      file: req.file.originalname || req.file.filename || "resume.pdf",
       resumeText,
       analysis,
       analysisAvailable: Boolean(analysis),
@@ -38,7 +45,7 @@ exports.uploadResume = async (req, res, next) => {
   } catch (error) {
     return next(error);
   } finally {
-    // Always clean up the uploaded file
+    // Only unlink if a physical disk file was written
     if (req.file?.path) {
       await fs.unlink(req.file.path).catch(() => {});
     }

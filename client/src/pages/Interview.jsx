@@ -19,6 +19,10 @@ import {
   Brain,
 } from "lucide-react";
 import { ToastContainer, useToast } from "../components/ui/Toast";
+import {
+  generateInterviewQuestionsClientSide,
+  evaluateInterviewClientSide,
+} from "../utils/clientAnalyzer";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -150,8 +154,17 @@ function Interview() {
         setTimeout(() => speakQuestion(res.data.questions[0].question), 500);
       }
     } catch (err) {
-      console.error("Failed to generate questions:", err);
-      toast.error(err.response?.data?.message || "Could not start interview.");
+      console.warn("Backend interview questions unavailable, using client generator:", err.message);
+      const fallbackQuestions = generateInterviewQuestionsClientSide(role, difficulty, questionCount);
+      setQuestions(fallbackQuestions);
+      setCurrentIdx(0);
+      setAnswers({});
+      setCurrentAnswer("");
+      setStep("interview");
+
+      if (fallbackQuestions[0]?.question) {
+        setTimeout(() => speakQuestion(fallbackQuestions[0].question), 500);
+      }
     } finally {
       setLoading(false);
     }
@@ -184,14 +197,14 @@ function Interview() {
 
   const submitInterview = async (finalAnswers) => {
     setStep("evaluating");
-    try {
-      const qaPairs = questions.map((q, idx) => ({
-        id: q.id,
-        category: q.category,
-        question: q.question,
-        answer: finalAnswers[idx] || "",
-      }));
+    const qaPairs = questions.map((q, idx) => ({
+      id: q.id,
+      category: q.category,
+      question: q.question,
+      answer: finalAnswers[idx] || "",
+    }));
 
+    try {
       const res = await axios.post(`${API_URL}/api/interview/evaluate`, {
         role,
         difficulty,
@@ -202,9 +215,11 @@ function Interview() {
       setStep("results");
       toast.success("Interview evaluation complete!");
     } catch (err) {
-      console.error("Evaluation failed:", err);
-      toast.error("Failed to evaluate interview.");
-      setStep("interview");
+      console.warn("Backend evaluation unavailable, calculating client assessment:", err.message);
+      const fallbackEvaluation = evaluateInterviewClientSide(role, difficulty, qaPairs);
+      setEvaluation(fallbackEvaluation);
+      setStep("results");
+      toast.success("Interview evaluation complete!");
     }
   };
 

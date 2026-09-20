@@ -21,19 +21,31 @@ app.use(cors({
 app.use(express.json({ limit: "5mb" }));
 
 // Health check endpoint
-app.get("/api/health", (req, res) => {
+const healthHandler = (req, res) => {
   res.json({ status: "healthy", timestamp: new Date().toISOString() });
-});
+};
+app.get("/api/health", healthHandler);
+app.get("/health", healthHandler);
 
-// API routes
+// API routes (support both /api/* and root rewrites for maximum Vercel flexibility)
 app.use("/api/upload", uploadRoutes);
+app.use("/upload", uploadRoutes);
+
 app.use("/api/job-match", jobMatchRoutes);
+app.use("/job-match", jobMatchRoutes);
+
 app.use("/api/interview", interviewRoutes);
+app.use("/interview", interviewRoutes);
+
 app.use("/api/cover-letter", coverLetterRoutes);
+app.use("/cover-letter", coverLetterRoutes);
+
 app.use("/api/auth", authRoutes);
+app.use("/auth", authRoutes);
+
 console.log("✅ API routes mounted");
 
-// Serve static files from the React build (client) in production
+// Serve static files from the React build (client) in local production
 const publicPath = path.join(__dirname, "public");
 const indexPath = path.join(publicPath, "index.html");
 
@@ -66,8 +78,12 @@ app.use((err, req, res, _next) => {
   });
 });
 
-const PORT = process.env.PORT || 5002;
+// Only listen on port when running in standalone mode (not serverless)
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 5002;
+  app.listen(PORT, () => {
+    console.log(`Server running on ${PORT}`);
+  });
+}
 
-app.listen(PORT, () => {
-  console.log(`Server running on ${PORT}`);
-});
+module.exports = app;

@@ -1,28 +1,10 @@
 const multer = require("multer");
-const fs = require("fs");
-const path = require("path");
 
-const uploadDirectory = path.join(__dirname, "..", "uploads");
-fs.mkdirSync(uploadDirectory, { recursive: true });
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, uploadDirectory);
-  },
-
-  filename: function (req, file, cb) {
-    const uniqueName =
-      Date.now() + "-" + Math.round(Math.random() * 1e9);
-
-    cb(
-      null,
-      uniqueName + path.extname(file.originalname)
-    );
-  },
-});
+// Use memoryStorage for serverless and ephemeral runtime resilience (no disk writes, zero EROFS risk)
+const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {
-  if (file.mimetype === "application/pdf") {
+  if (file.mimetype === "application/pdf" || (file.originalname && file.originalname.toLowerCase().endsWith(".pdf"))) {
     cb(null, true);
   } else {
     cb(new Error("Only PDF files are allowed!"), false);
