@@ -1,15 +1,17 @@
 const express = require('express');
-console.log('✅ authRoutes loaded');
 const router = express.Router();
 const authController = require('../controllers/authController');
+const authMiddleware = require('../middleware/authMiddleware');
 
-router.get('/', (req, res) => {
-  res.json({ success: true, message: 'Auth root works' });
-});
+console.log('✅ authRoutes loaded');
+
 router.post('/register', authController.register);
 router.post('/login', authController.login);
+router.post('/google', authController.googleAuth);
+router.get('/me', authMiddleware, authController.getMe);
+
 router.get('/test', (req, res) => {
-  res.json({ success: true, message: 'Auth test route works' });
+  res.json({ success: true, message: 'Auth service operational' });
 });
 
 module.exports = router;

@@ -9,6 +9,7 @@ import {
   BarChart3,
 } from "lucide-react";
 import { ToastContainer, useToast } from "../components/ui/Toast";
+import { useResume } from "../context/ResumeContext";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -16,10 +17,12 @@ function JobMatch() {
   const location = useLocation();
   const navigate = useNavigate();
   const toast = useToast();
+  const { resumeData } = useResume();
 
-  const [resumeText, setResumeText] = useState(
-    location.state?.resumeText || ""
-  );
+  const defaultResumeText = resumeData?.resumeText || location.state?.resumeText || "";
+  const [overrideResumeText, setOverrideResumeText] = useState(null);
+  const resumeText = overrideResumeText !== null ? overrideResumeText : defaultResumeText;
+
   const [jobDescription, setJobDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -65,18 +68,26 @@ function JobMatch() {
       {/* Inputs */}
       <div className="dashboard-grid two-columns">
         <div className="stat-card">
-          <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: '1rem' }}>
-            <Target size={18} color="var(--primary)" />
-            Your Resume Text
-          </label>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: 0 }}>
+              <Target size={18} color="var(--primary)" />
+              Your Resume Text
+            </label>
+            {resumeData?.fileName && (
+              <span className="brand-badge" style={{ background: 'rgba(34, 197, 94, 0.1)', color: 'var(--success)', border: '1px solid rgba(34, 197, 94, 0.2)', marginBottom: 0, fontSize: '0.72rem', padding: '0.2rem 0.5rem' }}>
+                ✓ {resumeData.fileName}
+              </span>
+            )}
+          </div>
           <textarea
             value={resumeText}
-            onChange={(e) => setResumeText(e.target.value)}
+            onChange={(e) => setOverrideResumeText(e.target.value)}
             placeholder="Paste resume text or upload a PDF first..."
             className="form-input"
             style={{ minHeight: '300px', resize: 'vertical' }}
           />
         </div>
+
 
         <div className="stat-card">
           <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: 'bold', color: 'var(--text-light)', textTransform: 'uppercase', marginBottom: '1rem' }}>

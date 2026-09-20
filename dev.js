@@ -6,14 +6,29 @@ const processes = [
   spawn("node", ["index.js"], {
     cwd: path.join(projectRoot, "server"),
     stdio: "inherit",
+    shell: true,
   }),
   spawn("npm", ["run", "dev"], {
     cwd: path.join(projectRoot, "client"),
     stdio: "inherit",
-    shell: process.platform === "win32",
+    shell: true,
   }),
 ];
 
-const stop = () => processes.forEach((child) => child.kill());
-process.on("SIGINT", stop);
-process.on("SIGTERM", stop);
+const stop = () => processes.forEach((child) => {
+  try {
+    child.kill();
+  } catch (e) {
+    // Process might already be dead
+  }
+});
+
+process.on("SIGINT", () => {
+  stop();
+  process.exit(0);
+});
+
+process.on("SIGTERM", () => {
+  stop();
+  process.exit(0);
+});

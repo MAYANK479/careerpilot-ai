@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { PenTool, Sparkles, Wand2, Plus, ArrowRight } from "lucide-react";
+import { Sparkles, Wand2, Plus, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function ResumeBuilderSection() {

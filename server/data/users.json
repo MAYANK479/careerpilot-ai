@@ -9,6 +9,53 @@
     "id": 1785964840236,
     "name": "Mayank Pandey",
     "email": "mayankpandey1331@gmail.com",
-    "password": "test1234"
+    "password": "$2b$10$yc25qThtVLozihmR2tAUleD/fIFMWHENPfTkyZxcSXonpRm0oiazK",
+    "provider": "google"
+  },
+  {
+    "id": 1789932527251,
+    "name": "Priya Sharma",
+    "email": "priya.sharma@techcorp.com",
+    "password": "$2b$10$lfiH2USX/ZJXvXwAfnVMVOyxkOSYBQ8p.asj6pZm8WMZ2H/TGTubW",
+    "provider": "local",
+    "createdAt": "2026-09-20T19:28:47.251Z"
+  },
+  {
+    "id": 1789932532545,
+    "name": "Google Developer",
+    "email": "google.developer@gmail.com",
+    "googleId": "google-demo-1789932532545",
+    "avatar": "https://lh3.googleusercontent.com/a/test-avatar",
+    "provider": "google",
+    "password": "$2b$10$whhxZK5bqB2q3f9FE4CZZu4j3mWsHhiNqA/k.mpdJ0YsrBecGhN/a",
+    "createdAt": "2026-09-20T19:28:52.618Z"
+  },
+  {
+    "id": 1789933443222,
+    "name": "Mister Berlin",
+    "email": "misterberlin1331@gmail.com",
+    "password": "$2b$10$/flxWGitYl0ASPPkEHPOCuZJ5HiLhSTX1saoKZRDGlHGBo/A1TqAS",
+    "provider": "local",
+    "createdAt": "2026-09-20T19:44:03.222Z"
+  },
+  {
+    "id": 1789933916235,
+    "name": "Google User",
+    "email": "rohit.sharma99@gmail.com",
+    "googleId": "google-demo-1789933916234",
+    "avatar": "",
+    "provider": "google",
+    "password": "$2b$10$TcPMvsF/ZoqrtUAW7w4LkO3rtiTBqoGCZydOr8ouafcZs3qb44EFq",
+    "createdAt": "2026-09-20T19:51:56.347Z"
+  },
+  {
+    "id": 1789933950050,
+    "name": "Arjun Kapoor",
+    "email": "arjun.kapoor22@gmail.com",
+    "googleId": "google-auth-1789933949975",
+    "avatar": "https://ui-avatars.com/api/?name=Arjun%20Kapoor&background=2563EB&color=fff&bold=true",
+    "provider": "google",
+    "password": "$2b$10$Ex5eVhouK1GyuuIOLsoRxOtT5Cs7rNnjiHdCI.RR1VhVNjCCqehJC",
+    "createdAt": "2026-09-20T19:52:30.050Z"
   }
 ]

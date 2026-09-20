@@ -13,10 +13,14 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const ACTIVITY_LEVELS = [
+  0.1, 0.8, 0.4, 0.95, 0.3, 0.75, 0.2, 0.85, 0.6, 0.1, 0.9, 0.4, 0.7, 0.3,
+  0.8, 0.2, 0.5, 0.92, 0.1, 0.78, 0.88, 0.3, 0.65, 0.15, 0.82, 0.45, 0.9,
+  0.35, 0.7, 0.25, 0.85, 0.4, 0.95, 0.1, 0.6, 0.8, 0.3, 0.75, 0.9, 0.2, 0.85, 0.5
+];
+
 function HeatmapGrid() {
-  const squares = Array.from({ length: 42 }).map((_, i) => {
-    // Generate some random-looking activity
-    const activityLevel = Math.random();
+  const squares = ACTIVITY_LEVELS.map((activityLevel, i) => {
     let bgClass = "bg-[#111B2E]"; // Empty
     if (activityLevel > 0.9) bgClass = "bg-blue-400";
     else if (activityLevel > 0.7) bgClass = "bg-blue-500";
@@ -27,6 +31,7 @@ function HeatmapGrid() {
       <div key={i} className={`w-3 h-3 rounded-sm ${bgClass}`} />
     );
   });
+
 
   return (
     <div className="p-4 rounded-xl bg-[#111B2E] border border-white/5">

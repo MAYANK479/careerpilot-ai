@@ -44,7 +44,7 @@ function Interview() {
   const [step, setStep] = useState("setup");
   const [role, setRole] = useState("Full-Stack Developer");
   const [difficulty, setDifficulty] = useState("Mid-Level");
-  const [questionCount, setQuestionCount] = useState(3);
+  const questionCount = 3;
   const [interviewMode, setInterviewMode] = useState("select");
 
   const [questions, setQuestions] = useState([]);
@@ -54,7 +54,9 @@ function Interview() {
 
   const [isRecording, setIsRecording] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [speechSupported, setSpeechSupported] = useState(false);
+  const [speechSupported] = useState(() => {
+    return typeof window !== 'undefined' && Boolean(window.SpeechRecognition || window.webkitSpeechRecognition);
+  });
 
   const [loading, setLoading] = useState(false);
   const [evaluation, setEvaluation] = useState(null);
@@ -64,7 +66,6 @@ function Interview() {
   useEffect(() => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     if (SpeechRecognition) {
-      setSpeechSupported(true);
       const rec = new SpeechRecognition();
       rec.continuous = true;
       rec.interimResults = true;

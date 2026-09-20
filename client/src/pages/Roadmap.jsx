@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Map, Sparkles, CheckCircle, Clock } from "lucide-react";
+import { Map, Sparkles, CheckCircle, Clock, AlertTriangle, ArrowRight } from "lucide-react";
+import { useResume } from "../context/ResumeContext";
 
 const sampleRoadmaps = {
   "Frontend Engineer": [
@@ -24,10 +26,26 @@ const sampleRoadmaps = {
 };
 
 function Roadmap() {
+  const { resumeData, hasResume } = useResume();
   const [selectedRole, setSelectedRole] = useState("Frontend Engineer");
   const [customRole, setCustomRole] = useState("");
   const [generating, setGenerating] = useState(false);
   const [activePlan, setActivePlan] = useState(sampleRoadmaps["Frontend Engineer"]);
+
+  const handleGapSelect = (gapName) => {
+    setSelectedRole("Custom Role");
+    setCustomRole(`${gapName} Mastery Sprint`);
+    setGenerating(true);
+    setTimeout(() => {
+      setActivePlan([
+        { week: "Week 1-2", title: `${gapName} Fundamentals & Core Architecture`, topics: ["Core Concepts & Runtime Execution", "Syntax Patterns & Conventions", "Memory & Performance Profile", "Standard Tooling Setup"] },
+        { week: "Week 3-4", title: `Real-World Integration & APIs`, topics: ["Middleware & Handlers", "Authentication & Security", "Error Resilience & Retries", "Local Testing Benchmarks"] },
+        { week: "Week 5-6", title: `Scaling & Distributed Systems`, topics: ["Production Optimization", "High Availability & Caching", "Data Integrity & Migrations", "Observability & Tracing"] },
+        { week: "Week 7-8", title: `Resume Project & Interview Readiness`, topics: ["Production Deployment", "Automated CI/CD Workflows", "Live Demo Hosting", "System Design Interview Walkthrough"] }
+      ]);
+      setGenerating(false);
+    }, 400);
+  };
 
   const handleGenerate = (e) => {
     e.preventDefault();
@@ -52,9 +70,97 @@ function Roadmap() {
       <div className="section-header">
         <h1 className="section-title">Personalized Career Learning Plans</h1>
       </div>
-      <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
+      <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
         Select your target career path to generate a week-by-week structured learning roadmap.
       </p>
+
+      {/* Active Resume Context Bar */}
+      {hasResume && (
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.12) 0%, rgba(30, 64, 175, 0.05) 100%)',
+          border: '1px solid rgba(59, 130, 246, 0.25)',
+          borderRadius: 'var(--radius-card)',
+          padding: '1rem 1.25rem',
+          marginBottom: '2rem',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexWrap: 'wrap',
+          gap: '1rem'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <span style={{ fontSize: '1.4rem' }}>📄</span>
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <span style={{ fontWeight: '700', fontSize: '0.95rem', color: 'var(--text-main)' }}>
+                  Active Profile: {resumeData?.fileName}
+                </span>
+                <span className="brand-badge" style={{ marginBottom: 0, padding: '0.15rem 0.45rem', fontSize: '0.7rem', background: 'rgba(34, 197, 94, 0.15)', color: '#4ADE80', border: '1px solid rgba(34, 197, 94, 0.3)' }}>
+                  ATS {resumeData?.analysis?.atsScore || 90}%
+                </span>
+              </div>
+              <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', margin: '0.2rem 0 0 0' }}>
+                Roadmaps can be customized to close the exact gaps discovered in your resume.
+              </p>
+            </div>
+          </div>
+          <Link
+            to="/ats"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.4rem',
+              color: 'var(--primary-light)',
+              fontWeight: '600',
+              fontSize: '0.85rem',
+              textDecoration: 'none'
+            }}
+          >
+            Review ATS Scorecard <ArrowRight size={14} />
+          </Link>
+        </div>
+      )}
+
+      {/* Recommended Focus Areas if gaps exist */}
+      {hasResume && resumeData?.analysis?.missingSkills?.length > 0 && (
+        <div className="stat-card" style={{ marginBottom: '2rem', padding: '1.25rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
+            <AlertTriangle size={16} color="var(--warning)" />
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 'bold', color: 'var(--text-main)', margin: 0 }}>
+              Identified Skill Gaps to Bridge (1-Click Roadmaps)
+            </h3>
+          </div>
+          <p style={{ fontSize: '0.82rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
+            Click any skill to instantly generate a targeted 8-week mastery sprint:
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {resumeData.analysis.missingSkills.map((gap) => (
+              <button
+                key={gap}
+                type="button"
+                onClick={() => handleGapSelect(gap)}
+                style={{
+                  background: customRole.includes(gap) ? 'var(--primary)' : 'rgba(59, 130, 246, 0.1)',
+                  color: customRole.includes(gap) ? '#FFFFFF' : 'var(--primary-light)',
+                  border: '1px solid rgba(59, 130, 246, 0.25)',
+                  padding: '0.4rem 0.85rem',
+                  borderRadius: 'var(--radius-pill)',
+                  fontSize: '0.82rem',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.35rem',
+                  transition: 'all 0.2s'
+                }}
+              >
+                <Sparkles size={12} />
+                Generate {gap} Track
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Input Card */}
       <div className="stat-card" style={{ marginBottom: '3rem' }}>

@@ -4,6 +4,7 @@ import { useDropzone } from "react-dropzone";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
 import { ToastContainer, useToast } from "../components/ui/Toast";
+import { useResume } from "../context/ResumeContext";
 
 const API_URL = import.meta.env.VITE_API_URL || "";
 
@@ -20,6 +21,8 @@ function Upload() {
   const [stage, setStage] = useState("");
   const navigate = useNavigate();
   const toast = useToast();
+  const { saveResume } = useResume();
+
 
   const onDrop = useCallback(
     (acceptedFiles, rejectedFiles) => {
@@ -84,18 +87,26 @@ function Upload() {
         throw new Error("Unexpected backend response format.");
       }
 
+      saveResume({
+        resumeText: res.data.resumeText,
+        analysis: res.data.analysis,
+        fileName: file.name || res.data.file,
+        rawFile: res.data.file,
+      });
+
       toast.success("Resume analyzed successfully!");
 
       setTimeout(() => {
-        navigate("/dashboard", {
+        navigate("/ats", {
           state: {
             resumeText: res.data.resumeText,
             analysis: res.data.analysis,
-            fileName: res.data.file,
+            fileName: file.name || res.data.file,
             analysisAvailable: res.data.analysisAvailable,
           },
         });
-      }, 600);
+      }, 500);
+
     } catch (err) {
       console.error("Resume upload failed:", err);
       setProgress(0);

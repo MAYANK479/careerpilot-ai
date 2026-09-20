@@ -5,13 +5,6 @@ import { Link } from "react-router-dom";
 import ResumeDemo from "./ResumeDemo";
 import InterviewSection from "./InterviewSection";
 
-// Placeholder images – replace with real screenshots
-const screenshots = {
-  ats: "https://via.placeholder.com/800x450?text=Resume+Analysis+Preview",
-  interview: "https://via.placeholder.com/800x450?text=Mock+Interview+Preview",
-  dashboard: "https://via.placeholder.com/800x450?text=Dashboard+Preview",
-};
-
 const tabs = [
   { id: "ats", label: "Resume Analysis", component: <ResumeDemo />, route: "/ats" },
   { id: "interview", label: "Mock Interview", component: <InterviewSection />, route: "/interview" },

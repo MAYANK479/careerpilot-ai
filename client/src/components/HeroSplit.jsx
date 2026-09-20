@@ -31,15 +31,15 @@ function HeroSplit() {
         </Link>
         <div className="mt-12 flex flex-col sm:flex-row gap-6 text-center">
           <div>
-            <span ref={usersRef} className="text-2xl font-bold text-white" />+
+            <span ref={usersRef} className="text-2xl font-bold text-white">{users}</span>+
             <p className="text-sm text-[#94A3B8]">Active Users</p>
           </div>
           <div>
-            <span ref={atsRef} className="text-2xl font-bold text-white" />%
+            <span ref={atsRef} className="text-2xl font-bold text-white">{ats}</span>%
             <p className="text-sm text-[#94A3B8]">ATS Success</p>
           </div>
           <div>
-            <span ref={interviewsRef} className="text-2xl font-bold text-white" />%
+            <span ref={interviewsRef} className="text-2xl font-bold text-white">{interviews}</span>%
             <p className="text-sm text-[#94A3B8]">Interview Rate</p>
           </div>
         </div>
