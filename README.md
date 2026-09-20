@@ -29,30 +29,35 @@ CareerPilot AI acts as a 24/7 personal career co-pilot. It ingests resume PDFs, 
 
 ```mermaid
 flowchart TD
-    subgraph Client ["Client Layer (Vercel CDN)"]
-        UI["React 19 + Vite 8 App"]
+    subgraph Client ["Client Layer (Vercel CDN + Vite 8)"]
+        UI["React 19 App"]
         Theme["Theme Switcher (Dark/Light)"]
-        State["LocalStorage Session State"]
+        AuthCtx["AuthContext (JWT + Google Auth + Remember Me)"]
+        ResumeCtx["ResumeContext (Cross-Page Active Resume State)"]
+        ClientEngine["Client-Side Resilient AI Engine (Zero-Failure Fallback)"]
     end
 
-    subgraph API ["Backend API Layer (Render Web Service)"]
-        Express["Express 5 Server"]
-        Multer["Multer PDF Stream Parser"]
-        Auth["Auth Controller & Persistence"]
-        CORS["Cross-Origin Resource Sharing"]
+    subgraph API ["Serverless API Layer (Vercel Serverless / Node.js)"]
+        Express["Express 5 Serverless Handler (api/index.js)"]
+        Multer["Multer Memory Buffer Parser"]
+        Auth["Auth Controller (Bcryptjs + Signed JWT)"]
+        ResumeService["Resume ATS Analysis Service"]
     end
 
     subgraph AI ["AI Engine Layer"]
         Groq["Groq Cloud REST API\n(LLaMA 3.3 70B Versatile)"]
         Ollama["Local Ollama Service\n(Qwen3 / Fallback)"]
+        Heuristics["High-Precision ATS Heuristic Engine"]
     end
 
     UI -->|HTTP Requests / JSON| Express
-    Express --> CORS
+    UI -.->|Network/Cold-Start Fallback| ClientEngine
     Express --> Multer
     Express --> Auth
-    Express -->|Structured JSON Prompt| Groq
-    Express -.->|Local Inference| Ollama
+    Express --> ResumeService
+    ResumeService --> Groq
+    ResumeService -.-> Ollama
+    ResumeService -.-> Heuristics
 ```
 
 ---
@@ -61,12 +66,13 @@ flowchart TD
 
 | Module | Technical Capability | User Value |
 | :--- | :--- | :--- |
-| 📄 **ATS Resume Analysis** | `pdf-parse` binary stream extraction & LLM skill evaluation | Instant ATS score (0-100), critical gap analysis & formatting tips |
-| 🎯 **Job Match Engine** | Vector keyword overlap & job posting criteria scoring | Shortlist probability & missing skill identification |
-| ✉️ **Cover Letter Studio** | Dynamic prompt synthesis + HTML print-to-PDF pipeline | Custom cover letters exportable in both `.txt` and formatted `.pdf` |
-| 🗣️ **Mock Interview AI** | Interactive prompt turn-taking & evaluation | Simulated role interviews with constructive feedback |
-| 🗺️ **Career Roadmap** | Dynamic checklist generator & mastery progress | Step-by-step skill gap mitigation track |
-| 🎨 **Design System** | Glassmorphism, CSS Variables, Theme Switcher | High-contrast dark SaaS aesthetic + light mode toggle |
+| 🔐 **Interactive Google Auth** | Real candidate name resolution, JWT signing, password hashing & "Remember me" persistence | Seamless 1-click login and signup with personalized candidate profile across navbar and dashboard |
+| 📄 **ATS Resume Analysis** | `pdf-parse` memory buffer parsing, dual-layer heuristic & LLM scoring | Instant ATS score (0-100), critical gap analysis, keyword & formatting recommendations |
+| 🎯 **Job Match Engine** | Skill matching & keyword gap analyzer against target job descriptions | Match score %, missing requirements breakdown & shortlist probability |
+| ✉️ **Cover Letter Studio** | Dynamic prompt synthesis tailored to candidate skills & target company | Custom cover letters signed with candidate's real name, exportable to clipboard |
+| 🗣️ **Mock Interview AI** | Role-specific prompt generator + speech-to-text recording | Simulated technical/scenario interviews with actionable scoring and feedback |
+| 🗺️ **Active Resume Roadmap** | Dynamic skill-gap bridge generator tied to uploaded resume | 8-week mastery sprints for missing skills (Docker, AWS, Redis, etc.) |
+| 🎨 **Design System** | Glassmorphism, CSS Variables, Theme Switcher | High-contrast dark SaaS aesthetic + light mode toggle with clean transparent branding |
 
 ---
 
@@ -84,18 +90,22 @@ flowchart TD
 
 ## 🧪 Testing & Quality Assurance
 
-The codebase includes automated unit test suites covering data persistence and authentication logic using Node.js native test runner (`node:test`).
+The codebase includes automated unit test suites covering data persistence, password security, JWT verification, and serverless route handling using Node.js native test runner (`node:test`).
 
 ```bash
 # Run backend test suite
 npm test
 ```
 
-### Sample Output:
+### Test Suite Results:
 ```text
-✔ DataStore user persistence test (0.72ms)
-✔ Auth logic test - User registration structure validation (0.09ms)
-ℹ tests 2 | pass 2 | fail 0
+✔ DataStore user persistence test (0.44ms)
+✔ Password hashing with bcryptjs (202.59ms)
+✔ JWT signing and verification (1.88ms)
+✔ Email normalization prevents case-sensitive auth bypass (0.06ms)
+✔ Serverless Express App Export Test (0.32ms)
+✔ Health check endpoint responds with healthy status (18.70ms)
+ℹ tests 6 | pass 6 | fail 0
 ```
 
 ---
@@ -131,19 +141,24 @@ npm run dev
 
 ```text
 careerpilot-ai/
-├── vercel.json            # Vercel Single-Page-App routing rewrites
+├── api/
+│   └── index.js           # Vercel Serverless Function entry point
+├── vercel.json            # Vercel API routing and SPA fallback
 ├── dev.js                 # Concurrent dev server runner
 ├── client/                # React 19 + Vite Frontend
 │   ├── src/
-│   │   ├── components/    # Navigation, Layouts, Gauges, Skill Chips, Toast
-│   │   ├── pages/         # Dashboard, Upload, JobMatch, CoverLetter, Interview, Login, Register
-│   │   ├── App.jsx        # React Router routes
-│   │   └── index.css      # Custom Design System, Glassmorphism, Light/Dark themes
+│   │   ├── components/    # GoogleAuthButton, Navbar, DashboardLayout, Gauges, Toast
+│   │   ├── context/       # AuthContext, ResumeContext
+│   │   ├── pages/         # Dashboard, Upload, ATS, JobMatch, CoverLetter, Interview, Login, Register
+│   │   ├── utils/         # clientAnalyzer, userUtils
+│   │   ├── App.jsx        # Protected & Public routing
+│   │   └── index.css      # Design System, Glassmorphism, Dark/Light theme tokens
 ├── server/                # Express 5 Backend
 │   ├── controllers/       # Auth, Upload, Job Match, Cover Letter, Interview Controllers
-│   ├── tests/             # Automated test suite (api.test.js)
+│   ├── middleware/        # Upload memory buffer & JWT auth middleware
+│   ├── tests/             # Automated test suites (api.test.js, serverless.test.js)
 │   ├── routes/            # Express API endpoints
-│   └── services/          # Groq, OpenAI & Ollama LLM handlers
+│   └── services/          # Groq, OpenAI & Ollama LLM handlers + Heuristic analyzer
 ```
 
 ---
